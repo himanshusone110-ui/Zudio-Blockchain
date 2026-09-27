@@ -1,0 +1,9 @@
+.vercel
+_vendor
+coins
+zrc20_state.json
+zrc20_state.json.tmp
+zrc20_out.log
+zrc20_err.log
+zrc20_server.log
+zrc20_server.err

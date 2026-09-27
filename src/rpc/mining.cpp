@@ -1056,9 +1056,13 @@ static RPCMethod getblocktemplate()
         result.pushKV("signet_challenge", HexStr(consensusParams.signet_challenge));
     }
 
-    if (const auto& coinbase{block_template->m_coinbase_tx}; coinbase.required_outputs.size() > 0) {
-        CHECK_NONFATAL(coinbase.required_outputs.size() == 1); // Only one output is currently expected
-        result.pushKV("default_witness_commitment", HexStr(coinbase.required_outputs[0].scriptPubKey));
+    if (const auto& coinbase{block_template->m_coinbase_tx}; !coinbase.required_outputs.empty()) {
+        for (const CTxOut& out : coinbase.required_outputs) {
+            if (out.scriptPubKey.size() >= MINIMUM_WITNESS_COMMITMENT && out.scriptPubKey[0] == OP_RETURN) {
+                result.pushKV("default_witness_commitment", HexStr(out.scriptPubKey));
+                break;
+            }
+        }
     }
 
     return result;

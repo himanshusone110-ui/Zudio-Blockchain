@@ -104,8 +104,8 @@ void CChainParams::ApplyDeploymentOptions(const DeploymentOptions& opts)
 
 /**
  * ZUDIO main network. Separate genesis, ports, and magic from Bitcoin.
- * Block reward is 50 ZUDIO. The genesis output cannot be spent.
- * Later blocks can be mined to a wallet with generatetoaddress before any peer is added.
+ * Fair launch: every block pays 50 ZUDIO to whoever mines it.
+ * The genesis output cannot be spent.
  */
 class CMainParams : public CChainParams {
 public:
@@ -114,6 +114,7 @@ public:
         consensus.signet_blocks = false;
         consensus.signet_challenge.clear();
         consensus.nSubsidyHalvingInterval = 210000;
+        consensus.nInitialSubsidy = 50 * COIN;
         // Fresh ZUDIO chain: modern script rules from the first blocks.
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256{};
@@ -126,7 +127,10 @@ public:
         // before any other node is started. Difficulty does not retarget.
         consensus.powLimit = uint256{"7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"};
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
-        consensus.nPowTargetSpacing = 60;
+        // From block 147076, one block every 372 seconds. The remaining
+        // paying blocks then take about 80 years.
+        consensus.nPowTargetSpacing = 372;
+        consensus.nMinBlockSpacingHeight = 147076;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.enforce_BIP94 = false;
         consensus.fPowNoRetargeting = true;

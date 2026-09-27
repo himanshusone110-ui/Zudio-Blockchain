@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZUDIO Explorer · Official Block Explorer & Public RPC</title>
+  <meta name="description" content="Official read-only block explorer and public JSON-RPC interface for the ZUDIO blockchain." />
+  <link rel="icon" href="logo.png?v=2" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css?v=14" />
+</head>
+
+<body>
+  <!-- TOP NETWORK BAR -->
+  <div class="network-bar">
+    <span class="dot"></span>
+    <span>ZUDIO mainnet · port 9333 · fee 0 ZDC · client-side signing.</span>
+  </div>
+
+  <!-- HEADER NAVIGATION -->
+  <header class="site-header">
+    <a href="index.html" class="logo-link">
+      <img src="logo.png?v=2" alt="ZUDIO" class="brand-logo" />
+      <div class="logo-text-wrap">
+        <h1>ZUDIO</h1>
+        <span>Mainnet Network</span>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Hub</a>
+      <a href="explorer.html" class="nav-link active">Explorer</a>
+      <a href="wallet.html" class="nav-link" style="color: var(--cyan) !important;">📱 Mobile Wallet</a>
+      <a href="ZudioCoin.apk" download="ZudioCoin.apk" class="nav-link">Android APK</a>
+      <a href="downloads/ZUDIO-Windows-Release.zip" class="nav-link nav-btn">Download Node</a>
+      <div id="headerAuthArea" style="display: flex; align-items: center; gap: 8px; margin-left: 6px;">
+        <button type="button" id="headerSignInBtn" class="nav-link nav-btn" style="background: var(--cyan); color: #050811 !important;">Sign in</button>
+        <div id="headerUserWrap" style="display: none; align-items: center; gap: 8px;">
+          <span id="headerUserAddress" class="header-user-badge">zudio1...</span>
+          <button type="button" id="headerSignOutBtn" class="nav-link" style="padding: 6px 12px; font-size: 12px; border: 1px solid var(--border);">Sign out</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- QUICK STAT CARDS -->
+  <section class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Block Height</span>
+      <strong class="stat-val" id="statHeight">Loading...</strong>
+      <span class="stat-sub" id="statBestHash">Best: loading...</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label">Total ZDC Supply</span>
+      <strong class="stat-val" id="statSupply">Loading...</strong>
+      <span class="stat-sub">50 ZDC / Block · Interval ≥ 6m 12s</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label">Flagship ZMEME</span>
+      <strong class="stat-val" id="statZmemeSupply">1,000,000</strong>
+      <span class="stat-sub" id="statZmemeHolders">Total Supply: 1 Million</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label">Public JSON-RPC</span>
+      <strong class="stat-val" style="color: var(--cyan); font-size: 18px;">/api/rpc</strong>
+      <span class="stat-sub">Read-Only · Zero Risk</span>
+    </div>
+  </section>
+
+  <!-- UNIVERSAL SEARCH BAR -->
+  <section class="panel" style="padding: 20px;">
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Search by Block Height, Block Hash, TxID, or ZUDIO Address (zudio1q...)" />
+      <button type="button" id="searchBtn">🔍 Search</button>
+    </div>
+    <p class="search-hints">
+      Examples: Block Height <code class="clickable-search" data-q="147078">147078</code> · Token <code class="clickable-search" data-q="ZMEME">ZMEME</code> · Address <code class="clickable-search" data-q="zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc">zudio1qtgh...</code>
+    </p>
+  </section>
+
+  <!-- SEARCH RESULT CONTAINER -->
+  <section class="panel" id="searchResultPanel" hidden>
+    <div class="panel-header">
+      <h2 id="searchResultTitle">🔍 Search Result</h2>
+      <button type="button" id="closeSearchBtn" class="btn-inline" style="background: transparent;">✕ Close</button>
+    </div>
+    <div id="searchResultContent"></div>
+  </section>
+
+  <main class="explorer-grid">
+    <!-- RECENT BLOCKS LOG PANEL -->
+    <section class="panel" id="blocksPanel" style="margin-bottom: 0;">
+      <div class="panel-header">
+        <h2>📦 Recent Blocks</h2>
+        <button type="button" id="refreshBlocksBtn" class="btn-inline" style="background: transparent;">🔄 Refresh</button>
+      </div>
+      <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 12px;">Latest blocks mined on ZUDIO mainnet:</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Height</th>
+              <th>Block Hash</th>
+              <th>Time</th>
+              <th>Txs</th>
+              <th>Size</th>
+            </tr>
+          </thead>
+          <tbody id="blocksTableBody">
+            <tr><td colspan="5" style="text-align:center;">Loading blocks...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- RECENT TRANSACTIONS LOG PANEL -->
+    <section class="panel" id="txsPanel" style="margin-bottom: 0;">
+      <div class="panel-header">
+        <h2>💸 Transaction & Token Log</h2>
+        <span class="badge-tag">Recent Activity</span>
+      </div>
+      <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 12px;">Latest transactions and ZRC-20 token transfers:</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>TxID</th>
+              <th>Type</th>
+              <th>Payload / Details</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="txsTableBody">
+            <tr><td colspan="4" style="text-align:center;">Loading transactions...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- ZMEME & TOKEN HOLDERS SECTION -->
+  <section class="panel" id="zmemeSection" style="margin-top: 32px;">
+    <div class="panel-header">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <img src="coins/ZMEME.jpg" alt="ZMEME" class="coin-img-round" style="width: 42px; height: 42px;" />
+        <div>
+          <h2>🐸 ZMEME · Holders & Balances</h2>
+          <span style="font-size: 12px; color: var(--ink-muted);">Flagship ZRC-20 Meme Token</span>
+        </div>
+      </div>
+      <span class="badge-tag cyan">1,000,000 ZMEME Max Supply</span>
+    </div>
+
+    <div class="table-wrap" style="margin-top: 14px;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Holder Address</th>
+            <th>ZMEME Balance</th>
+            <th>Supply Share</th>
+          </tr>
+        </thead>
+        <tbody id="zmemeHoldersBody">
+          <tr><td colspan="4" style="text-align:center;">Loading ZMEME holders...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ALL MEME COINS & BALANCES SECTION -->
+  <section class="panel" id="allCoinsSection">
+    <div class="panel-header">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span style="font-size: 24px;">🪙</span>
+        <div>
+          <h2>All ZRC-20 Meme Coins · Chain Registry</h2>
+          <span style="font-size: 12px; color: var(--ink-muted);">Tokens deployed on the ZUDIO blockchain</span>
+        </div>
+      </div>
+      <button type="button" id="refreshAllCoinsBtn" class="btn-inline" style="background: transparent;">🔄 Refresh</button>
+    </div>
+
+    <div class="table-wrap" style="margin-top: 14px;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Name</th>
+            <th>Max Supply</th>
+            <th>Creator Address</th>
+            <th>Holders</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="allCoinsTableBody">
+          <tr><td colspan="6" style="text-align:center;">Loading token registry...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PUBLIC READ-ONLY RPC PORTAL & INTERACTIVE TESTER -->
+  <section class="panel" id="rpcSection">
+    <div class="panel-header">
+      <h2>⚡ Public Read-Only JSON-RPC Portal</h2>
+      <span class="badge-tag green">Read-Only Verified</span>
+    </div>
+    <p style="color: var(--ink-secondary); font-size: 14px; margin-bottom: 16px;">
+      Query blockchain data directly via JSON-RPC. Wallet commands and private key imports are strictly disabled on this public endpoint.
+    </p>
+
+    <div class="addr-row" style="margin-bottom: 20px;">
+      <div>
+        <span style="font-size: 12px; color: var(--ink-muted); display: block; margin-bottom: 2px;">Public RPC URL:</span>
+        <code id="rpcUrlDisplay">https://feet-row-bailey-invoice.trycloudflare.com/api/rpc</code>
+      </div>
+      <button type="button" id="copyRpcUrlBtn" class="btn-inline">Copy URL</button>
+    </div>
+
+    <!-- INTERACTIVE RPC TESTER -->
+    <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px;">
+      <h3 style="font-size: 15px; font-weight: 700; color: var(--ink-primary); margin-bottom: 12px;">🧪 Interactive RPC Query Playground</h3>
+      
+      <div>
+        <label for="rpcMethodSelect">Method (Select Read-Only Command):</label>
+        <select id="rpcMethodSelect">
+          <option value="getblockchaininfo">getblockchaininfo — Chain height, best block, sync status</option>
+          <option value="getblockcount">getblockcount — Total block height</option>
+          <option value="getbestblockhash">getbestblockhash — Hash of latest block</option>
+          <option value="getdifficulty">getdifficulty — Current mining difficulty</option>
+          <option value="getmininginfo">getmininginfo — Mining hashrate & difficulty</option>
+          <option value="getmempoolinfo">getmempoolinfo — Unconfirmed transactions in mempool</option>
+          <option value="getblock">getblock — Block details [params: "blockhash", 1]</option>
+          <option value="getrawtransaction">getrawtransaction — Decoded tx [params: "txid", true]</option>
+        </select>
+
+        <label for="rpcParamsInput">Params (JSON Array):</label>
+        <input id="rpcParamsInput" value="[]" />
+
+        <div style="display: flex; gap: 10px; margin-top: 14px;">
+          <button type="button" id="sendRpcQueryBtn" class="btn-cta primary" style="padding: 10px 20px; font-size: 13px;">🚀 Run RPC Query</button>
+          <button type="button" id="copyCurlBtn" class="btn-cta secondary" style="padding: 10px 20px; font-size: 13px;">📋 Copy cURL Command</button>
+        </div>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <label>JSON-RPC Response:</label>
+        <pre id="rpcResponseOutput" style="background: #000000; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--cyan); overflow-x: auto; max-height: 320px;">Response will appear here...</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p><strong>ZUDIO Blockchain</strong> · Read-Only Public Node · No Wallet Commands Active</p>
+    <p style="font-size: 12px;">Mainnet P2P Port 9333 · Native Ticker ZDC · Not Bitcoin</p>
+  </footer>
+
+  <!-- FULL SCREEN GATE (BEFORE WEBSITE OPENS) -->
+  <div class="gate-overlay" id="zudioGate">
+    <div class="gate-card">
+      <div class="gate-header">
+        <img src="logo.png?v=2" alt="ZUDIO" class="gate-logo" />
+        <h1 class="gate-title">Zudio Coin</h1>
+        <p class="gate-subtitle">Mainnet Network · Client-Side Cryptographic Vault</p>
+      </div>
+
+      <!-- EXACT FOUR CHOICES -->
+      <div class="gate-tabs">
+        <button type="button" class="gate-tab-btn active" id="gateTabBtnSignup" data-tab="gateTabSignup">1. Sign up</button>
+        <button type="button" class="gate-tab-btn" id="gateTabBtnSignin" data-tab="gateTabSignin">2. Sign in</button>
+        <button type="button" class="gate-tab-btn" id="gateTabBtnKey" data-tab="gateTabKey">3. Key login</button>
+        <button type="button" class="gate-tab-btn" id="gateTabBtnGoogle" data-tab="gateTabGoogle">4. Continue with Google</button>
+      </div>
+
+      <!-- CHOICE 1: SIGN UP -->
+      <div class="gate-panel" id="gateTabSignup">
+        <div class="gate-notice">
+          The browser creates a new <strong>zudio1</strong> address. Set a password to encrypt your key locally. The key never leaves your browser.
+        </div>
+        <div id="signupInputArea">
+          <label for="gateSignupPass">Set Wallet Password</label>
+          <input type="password" id="gateSignupPass" placeholder="Enter password (min 4 characters)" />
+          <label for="gateSignupPassConfirm">Confirm Password</label>
+          <input type="password" id="gateSignupPassConfirm" placeholder="Confirm password" />
+          <button type="button" id="btnGateDoSignup" class="btn-cta primary" style="width: 100%; margin-top: 14px;">✨ Create & Encrypt Wallet</button>
+        </div>
+        <div id="signupSuccessArea" style="display: none;">
+          <div class="note success" style="margin-bottom: 14px;">
+            🎉 Wallet created! Your private key is encrypted and stored locally in this browser.
+          </div>
+          <div class="addr-row" style="margin-bottom: 14px;">
+            <code id="gateCreatedAddress">zudio1...</code>
+          </div>
+          <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 14px;">
+            Your backup file has been saved to your downloads. Keep this file safe so you can restore your wallet on any device.
+          </p>
+          <div style="display: flex; gap: 10px; flex-direction: column;">
+            <button type="button" id="btnGateDownloadAgain" class="btn-cta secondary">💾 Download Backup Again</button>
+            <button type="button" id="btnGateOpenSite" class="btn-cta primary" style="font-size: 15px; padding: 14px;">🚀 Open Website</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHOICE 2: SIGN IN -->
+      <div class="gate-panel" id="gateTabSignin" style="display: none;">
+        <div class="gate-notice" id="gateSigninNotice">
+          Type the password for the wallet already saved in this browser.
+        </div>
+        <div id="gateSigninFormArea">
+          <label for="gateSigninPass">Wallet Password</label>
+          <input type="password" id="gateSigninPass" placeholder="Enter your wallet password" />
+          <button type="button" id="btnGateDoSignin" class="btn-cta primary" style="width: 100%; margin-top: 14px;">🔓 Unlock & Open Website</button>
+        </div>
+        <div id="gateNoWalletArea" style="display: none;">
+          <div class="note" style="border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.08); color: #fb7185; margin-bottom: 16px;">
+            ⚠️ No wallet is currently saved in this browser. Please use <strong>Sign up</strong> to create a new wallet or <strong>Key login</strong> to restore from a backup file.
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button type="button" id="btnGateGoSignup" class="btn-cta primary" style="flex: 1;">1. Go to Sign up</button>
+            <button type="button" id="btnGateGoKey" class="btn-cta secondary" style="flex: 1;">3. Go to Key login</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHOICE 3: KEY LOGIN -->
+      <div class="gate-panel" id="gateTabKey" style="display: none;">
+        <div class="gate-notice">
+          Enter your <strong>Private Key</strong> (WIF or 64-hex) to login instantly. <strong>No password required.</strong> Your key stays 100% in your browser.
+        </div>
+        <label for="gatePrivateKeyInput">Private Key (WIF or Hex)</label>
+        <textarea id="gatePrivateKeyInput" rows="2" placeholder="Paste your private key (e.g. 5K... / L... / TQ... or 64-char hex key)" style="font-family: var(--font-mono); font-size: 13px; resize: vertical;"></textarea>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px; margin-bottom: 6px;">
+          <label for="gateKeyFile" class="btn-inline" style="cursor: pointer; font-size: 12px; padding: 6px 12px; background: rgba(255,255,255,0.06); border: 1px solid var(--border);">📁 Or Select Key / Backup File</label>
+          <input type="file" id="gateKeyFile" accept=".json,.txt" style="display: none;" />
+          <span id="gateKeyFileName" style="font-size: 12px; color: var(--cyan); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 250px;"></span>
+        </div>
+
+        <button type="button" id="btnGateDoRestore" class="btn-cta primary" style="width: 100%; margin-top: 10px; font-size: 15px; padding: 13px;">🔓 Login with Private Key & Open Website</button>
+      </div>
+
+      <!-- CHOICE 4: CONTINUE WITH GOOGLE -->
+      <div class="gate-panel" id="gateTabGoogle" style="display: none;">
+        <div class="gate-notice">
+          Sign in with Google to show your name. Your private key stays 100% in your browser and is never sent to Google or to the server.
+        </div>
+        <div id="googleInitialArea">
+          <button type="button" class="btn-google" id="btnGateGoogle">
+            <svg viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            Continue with Google
+          </button>
+        </div>
+        <div id="googleConnectedArea" style="display: none;">
+          <div class="note success" style="margin-bottom: 12px;" id="googleUserGreeting">
+            Signed in as Google user.
+          </div>
+          <div id="googleWalletSetupArea"></div>
+        </div>
+      </div>
+
+      <!-- STATUS MESSAGES -->
+      <p class="note error" id="gateErrorNote" hidden style="margin-top: 14px;"></p>
+      <p class="note success" id="gateSuccessNote" hidden style="margin-top: 14px;"></p>
+    </div>
+  </div>
+
+  <script type="module" src="explorer.js?v=14"></script>
+</body>
+
+</html>

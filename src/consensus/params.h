@@ -6,6 +6,7 @@
 #ifndef BITCOIN_CONSENSUS_PARAMS_H
 #define BITCOIN_CONSENSUS_PARAMS_H
 
+#include <consensus/amount.h>
 #include <script/verify_flags.h>
 #include <uint256.h>
 
@@ -88,6 +89,8 @@ struct BIP9Deployment {
 struct Params {
     uint256 hashGenesisBlock;
     int nSubsidyHalvingInterval;
+    /** Reward of a block before any halvings. */
+    CAmount nInitialSubsidy{50 * COIN};
     /**
      * Hashes of blocks that
      * - are known to be consensus valid, and
@@ -123,6 +126,8 @@ struct Params {
     bool fPowNoRetargeting;
     int64_t nPowTargetSpacing;
     int64_t nPowTargetTimespan;
+    /** First block that must be at least nPowTargetSpacing after the previous one. */
+    int nMinBlockSpacingHeight{std::numeric_limits<int>::max()};
     std::chrono::seconds PowTargetSpacing() const
     {
         return std::chrono::seconds{nPowTargetSpacing};

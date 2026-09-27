@@ -1,0 +1,24 @@
+{
+  "name": "ZUDIO Wallet",
+  "short_name": "Zudio",
+  "description": "Official Non-Custodial Wallet for ZUDIO Blockchain",
+  "start_url": "/wallet.html",
+  "display": "standalone",
+  "background_color": "#050811",
+  "theme_color": "#050811",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/logo.png?v=2",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png?v=2",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

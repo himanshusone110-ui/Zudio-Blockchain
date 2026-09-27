@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>ZUDIO Wallet · Official Mobile App</title>
+  <meta name="description" content="Official Phantom-Style Non-Custodial Mobile Wallet for the ZUDIO Blockchain." />
+
+  <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#050811" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Zudio" />
+  <link rel="apple-touch-icon" href="logo.png?v=2" />
+
+  <link rel="icon" type="image/png" href="logo.png?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=14" />
+
+  <style>
+    /* Mobile App-Specific Viewport & Layout */
+    body {
+      background: #050811;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      overflow-x: hidden;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 440px;
+      min-height: 100vh;
+      background: #080c18;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+      padding-bottom: 74px; /* Space for bottom nav */
+    }
+
+    /* PWA Install Banner */
+    .pwa-banner {
+      background: linear-gradient(90deg, rgba(0, 242, 254, 0.15), rgba(79, 172, 254, 0.15));
+      border-bottom: 1px solid rgba(0, 242, 254, 0.3);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #ffffff;
+    }
+
+    .pwa-banner button {
+      background: var(--cyan);
+      color: #050811;
+      border: none;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    /* App Header */
+    .app-header {
+      padding: 16px 18px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(8, 12, 24, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .network-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cyan);
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--cyan);
+    }
+
+    /* Hero Balance Card */
+    .hero-card {
+      padding: 28px 20px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: radial-gradient(circle at top, rgba(0, 242, 254, 0.08) 0%, transparent 70%);
+    }
+
+    .hero-account {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--ink-secondary);
+      margin-bottom: 8px;
+    }
+
+    .hero-balance-val {
+      font-size: 38px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .hero-balance-sub {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 14px;
+    }
+
+    .address-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cyan);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .address-chip:hover {
+      background: rgba(0, 242, 254, 0.12);
+      border-color: var(--cyan);
+    }
+
+    /* Action Buttons (Phantom Style) */
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 8px 20px 22px;
+    }
+
+    .action-btn-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .action-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #141c2e;
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .action-btn-item:hover .action-circle {
+      background: var(--cyan);
+      color: #050811;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+    }
+
+    /* App Tab Bar Under Hero */
+    .wallet-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0 16px;
+      gap: 18px;
+    }
+
+    .wallet-tab-link {
+      background: none;
+      border: none;
+      color: var(--ink-muted);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 4px;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.15s ease;
+    }
+
+    .wallet-tab-link.active {
+      color: #ffffff;
+    }
+
+    .wallet-tab-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--cyan);
+      border-radius: 2px;
+    }
+
+    /* Content Area */
+    .tab-content-area {
+      flex: 1;
+      padding: 14px 16px;
+      overflow-y: auto;
+    }
+
+    /* Token List (Phantom Style) */
+    .token-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 8px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .token-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(0, 242, 254, 0.2);
+    }
+
+    .token-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .token-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #141c2e;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--cyan);
+      object-fit: cover;
+    }
+
+    .token-name-wrap strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .token-name-wrap span {
+      font-size: 12px;
+      color: var(--ink-secondary);
+    }
+
+    .token-right {
+      text-align: right;
+    }
+
+    .token-right strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .token-right span {
+      font-size: 12px;
+      color: var(--cyan);
+    }
+
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 440px;
+      height: 64px;
+      background: rgba(10, 14, 26, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+    }
+
+    .bottom-nav-btn {
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--ink-muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      padding: 8px 0;
+    }
+
+    .bottom-nav-btn span.icon {
+      font-size: 18px;
+    }
+
+    .bottom-nav-btn.active {
+      color: var(--cyan);
+    }
+
+    /* Modals / Drawers (Phantom Style Bottom Sheets) */
+    .sheet-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .sheet-overlay[hidden] {
+      display: none !important;
+    }
+
+    .sheet-card {
+      width: 100%;
+      max-width: 440px;
+      background: #0c1222;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: none;
+      padding: 24px 20px 34px;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.9);
+      animation: slideUp 0.25s ease-out;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .sheet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .sheet-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .qr-container {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 16px;
+      display: inline-block;
+      margin: 0 auto 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    #qrCanvas {
+      display: block;
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- PWA INSTALL BANNER -->
+    <div class="pwa-banner" id="pwaBanner" style="display: none;">
+      <div>📲 <strong>Install Zudio App</strong> on Home Screen</div>
+      <div style="display: flex; gap: 8px;">
+        <button type="button" id="btnInstallPwa">Install</button>
+        <button type="button" id="btnClosePwa" style="background: transparent; color: var(--ink-muted); padding: 0 4px;">✕</button>
+      </div>
+    </div>
+
+    <!-- APP HEADER -->
+    <header class="app-header">
+      <div class="network-badge">
+        <span class="pulse-dot"></span>
+        <span>ZUDIO Mainnet</span>
+      </div>
+
+      <div class="header-actions">
+        <a href="index.html" class="icon-btn" title="Open Web Hub">🌐</a>
+        <button type="button" id="btnOpenSettings" class="icon-btn" title="Settings / Security">⚙️</button>
+      </div>
+    </header>
+
+    <!-- HERO BALANCE CARD -->
+    <section class="hero-card">
+      <div class="hero-account" id="heroAccountBadge">
+        <span>👤</span>
+        <strong id="heroAccountName">Main Account</strong>
+      </div>
+      <div class="hero-balance-val" id="heroBalance">0.00 <span style="font-size: 20px; color: var(--cyan);">ZDC</span></div>
+      <div class="hero-balance-sub">ZUDIO Layer-1 Native Coin · Zero Gas Fee</div>
+      <div class="address-chip" id="chipCopyAddress" title="Click to copy address">
+        <span id="heroAddressShort">zudio1...</span>
+        <span style="font-size: 11px;">📋</span>
+      </div>
+    </section>
+
+    <!-- QUICK ACTIONS (PHANTOM STYLE) -->
+    <section class="action-grid">
+      <button type="button" class="action-btn-item" id="btnActionReceive">
+        <div class="action-circle">📥</div>
+        <span>Receive</span>
+      </button>
+
+      <button type="button" class="action-btn-item" id="btnActionSend">
+        <div class="action-circle">📤</div>
+        <span>Send</span>
+      </button>
+
+      <button type="button" class="action-btn-item" id="btnActionMint">
+        <div class="action-circle">🪙</div>
+        <span>Deploy</span>
+      </button>
+
+      <button type="button" class="action-btn-item" id="btnActionRefresh">
+        <div class="action-circle">🔄</div>
+        <span>Refresh</span>
+      </button>
+    </section>
+
+    <!-- TABS -->
+    <nav class="wallet-tabs">
+      <button type="button" class="wallet-tab-link active" data-tab="tabTokens">Tokens</button>
+      <button type="button" class="wallet-tab-link" data-tab="tabActivity">Activity</button>
+      <button type="button" class="wallet-tab-link" data-tab="tabChain">Network</button>
+    </nav>
+
+    <!-- TAB 1: TOKENS -->
+    <main class="tab-content-area" id="tabTokens">
+      <div id="tokenListContainer">
+        <!-- ZDC Native Coin -->
+        <div class="token-item" id="itemNativeZdc">
+          <div class="token-left">
+            <img src="logo.png?v=2" alt="ZDC" class="token-avatar" />
+            <div class="token-name-wrap">
+              <strong>ZDC</strong>
+              <span>Zudio Native Chain Coin</span>
+            </div>
+          </div>
+          <div class="token-right">
+            <strong id="itemZdcBalance">0.00</strong>
+            <span>Mainnet</span>
+          </div>
+        </div>
+
+        <!-- ZRC-20 Meme Tokens rendered dynamically -->
+        <div id="dynamicTokensList">
+          <div style="text-align: center; color: var(--ink-muted); padding: 24px; font-size: 13px;">
+            Loading tokens from blockchain...
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 2: ACTIVITY -->
+    <section class="tab-content-area" id="tabActivity" style="display: none;">
+      <h4 style="font-size: 14px; margin-top: 4px; margin-bottom: 12px; color: var(--ink-secondary);">Recent Chain Activity</h4>
+      <div id="activityListContainer">
+        <div style="text-align: center; color: var(--ink-muted); padding: 24px; font-size: 13px;">
+          Loading transactions...
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: NETWORK / CHAIN -->
+    <section class="tab-content-area" id="tabChain" style="display: none;">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div class="token-item">
+          <div><strong>Chain Height</strong><br><span style="font-size: 12px; color: var(--ink-muted);">Mined Blocks</span></div>
+          <strong id="mobileStatHeight" style="color: var(--cyan);">147,079</strong>
+        </div>
+
+        <div class="token-item">
+          <div><strong>P2P Port</strong><br><span style="font-size: 12px; color: var(--ink-muted);">Public Node</span></div>
+          <strong>Port 9333</strong>
+        </div>
+
+        <div class="token-item">
+          <div><strong>Block Reward</strong><br><span style="font-size: 12px; color: var(--ink-muted);">Proof-of-Work</span></div>
+          <strong>50 ZDC / Block</strong>
+        </div>
+
+        <div class="token-item">
+          <div><strong>Block Time Interval</strong><br><span style="font-size: 12px; color: var(--ink-muted);">Difficulty Target</span></div>
+          <strong>≥ 6m 12s (372s)</strong>
+        </div>
+
+        <div class="token-item">
+          <div><strong>Founder Holdings</strong><br><span style="font-size: 12px; color: var(--ink-muted);">Genesis Verified</span></div>
+          <strong>7,350,000 ZDC</strong>
+        </div>
+
+        <a href="explorer.html" class="btn-cta secondary" style="width: 100%; text-align: center; margin-top: 10px; font-size: 14px; padding: 12px;">🔍 Open Block Explorer</a>
+      </div>
+    </section>
+
+    <!-- BOTTOM NAVIGATION BAR (FIXED) -->
+    <nav class="bottom-nav">
+      <button type="button" class="bottom-nav-btn active" data-tab="tabTokens">
+        <span class="icon">🪙</span>
+        <span>Wallet</span>
+      </button>
+      <button type="button" class="bottom-nav-btn" data-tab="tabActivity">
+        <span class="icon">⚡</span>
+        <span>Activity</span>
+      </button>
+      <button type="button" class="bottom-nav-btn" data-tab="tabChain">
+        <span class="icon">⛏️</span>
+        <span>Chain</span>
+      </button>
+      <button type="button" class="bottom-nav-btn" id="bottomNavSettings">
+        <span class="icon">⚙️</span>
+        <span>Settings</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- RECEIVE MODAL (WITH QR CODE) -->
+  <div class="sheet-overlay" id="sheetReceive" hidden>
+    <div class="sheet-card">
+      <div class="sheet-header">
+        <h3>📥 Receive ZDC / Tokens</h3>
+        <button type="button" class="icon-btn" id="btnCloseReceive">✕</button>
+      </div>
+
+      <div style="text-align: center;">
+        <div class="qr-container">
+          <canvas id="qrCanvas"></canvas>
+        </div>
+        <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 8px;">Scan QR Code or copy your Zudio address:</p>
+        <div class="addr-row" style="margin-bottom: 14px;">
+          <code id="receiveAddressText" style="word-break: break-all; font-size: 12px;">zudio1...</code>
+        </div>
+        <button type="button" class="btn-cta primary" id="btnCopyReceiveAddr" style="width: 100%; padding: 13px;">📋 Copy Address</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEND MODAL -->
+  <div class="sheet-overlay" id="sheetSend" hidden>
+    <div class="sheet-card">
+      <div class="sheet-header">
+        <h3>📤 Send Tokens</h3>
+        <button type="button" class="icon-btn" id="btnCloseSend">✕</button>
+      </div>
+
+      <form id="mobileSendForm" style="display: flex; flex-direction: column; gap: 12px;">
+        <label for="mobileSendToken">Select Token</label>
+        <select id="mobileSendToken" style="background: var(--bg-card); color: #fff; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm);">
+          <option value="ZMEME">ZMEME (Flagship)</option>
+        </select>
+
+        <label for="mobileSendTo">Recipient Address</label>
+        <input type="text" id="mobileSendTo" placeholder="zudio1..." style="font-family: var(--font-mono); font-size: 13px;" required />
+
+        <label for="mobileSendAmt">Amount</label>
+        <div style="position: relative;">
+          <input type="number" id="mobileSendAmt" step="any" min="1" placeholder="Enter amount" required style="width: 100%; padding-right: 60px;" />
+          <button type="button" id="btnMobileMax" style="position: absolute; right: 8px; top: 8px; background: rgba(0,242,254,0.15); border: 1px solid var(--cyan); color: var(--cyan); border-radius: 4px; padding: 4px 8px; font-size: 11px; cursor: pointer;">MAX</button>
+        </div>
+
+        <div style="font-size: 12px; color: var(--ink-muted); display: flex; justify-content: space-between; margin-top: 4px;">
+          <span>Network Fee:</span>
+          <span style="color: var(--cyan); font-weight: 700;">0 ZDC (Free)</span>
+        </div>
+
+        <p class="note error" id="sendErrorNote" hidden style="margin: 4px 0;"></p>
+        <p class="note success" id="sendSuccessNote" hidden style="margin: 4px 0;"></p>
+
+        <button type="submit" id="btnSubmitMobileSend" class="btn-cta primary" style="width: 100%; margin-top: 6px; padding: 14px;">🚀 Sign & Send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DEPLOY TOKEN MODAL -->
+  <div class="sheet-overlay" id="sheetMint" hidden>
+    <div class="sheet-card">
+      <div class="sheet-header">
+        <h3>🪙 Deploy ZRC-20 Meme Coin</h3>
+        <button type="button" class="icon-btn" id="btnCloseMint">✕</button>
+      </div>
+
+      <form id="mobileDeployForm" style="display: flex; flex-direction: column; gap: 12px;">
+        <label for="mobileCoinName">Coin Name</label>
+        <input type="text" id="mobileCoinName" placeholder="e.g. Pepe Zudio" required />
+
+        <label for="mobileCoinTick">Ticker (2-6 letters)</label>
+        <input type="text" id="mobileCoinTick" placeholder="e.g. PEPE" maxlength="6" style="text-transform: uppercase;" required />
+
+        <label for="mobileCoinMax">Total Supply</label>
+        <input type="number" id="mobileCoinMax" placeholder="1000000" min="1" required />
+
+        <div style="font-size: 12px; color: var(--ink-muted); display: flex; justify-content: space-between; margin-top: 4px;">
+          <span>Deployment Gas Fee:</span>
+          <span style="color: var(--cyan); font-weight: 700;">0 ZDC (Free)</span>
+        </div>
+
+        <p class="note error" id="deployErrorNote" hidden style="margin: 4px 0;"></p>
+        <p class="note success" id="deploySuccessNote" hidden style="margin: 4px 0;"></p>
+
+        <button type="submit" id="btnSubmitMobileDeploy" class="btn-cta primary" style="width: 100%; margin-top: 6px; padding: 14px;">✨ Deploy Meme Coin</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="sheet-overlay" id="sheetSettings" hidden>
+    <div class="sheet-card">
+      <div class="sheet-header">
+        <h3>⚙️ Wallet Security & Settings</h3>
+        <button type="button" class="icon-btn" id="btnCloseSettings">✕</button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="gate-notice" style="margin-bottom: 6px;">
+          Your private key is stored exclusively inside this device. Keep your backup safe.
+        </div>
+
+        <a href="ZudioCoin.apk" download="ZudioCoin.apk" class="btn-cta primary" style="width: 100%; padding: 13px; text-align: center; text-decoration: none; font-size: 14px; font-weight: 700; background: var(--cyan); color: #050811 !important; display: block;">📥 Download Android APK (Zudio Coin)</a>
+
+        <button type="button" class="btn-cta secondary" id="btnExportBackup" style="width: 100%; padding: 12px;">💾 Download Keystore Backup (.json)</button>
+        <button type="button" class="btn-cta secondary" id="btnToggleWifView" style="width: 100%; padding: 12px;">👁️ View Private Key (WIF)</button>
+        <div id="wifBox" hidden style="background: #000; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 12px; color: var(--cyan); word-break: break-all;"></div>
+
+        <button type="button" class="btn-cta primary" id="btnWalletSignOut" style="width: 100%; padding: 12px; background: #e11d48; border-color: #f43f5e; color: #fff;">🔒 Sign Out & Lock Wallet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL SCREEN GATE (BEFORE WALLET OPENS) -->
+  <div class="gate-overlay" id="zudioGate">
+    <div class="gate-card">
+      <div class="gate-header">
+        <img src="logo.png?v=2" alt="ZUDIO" class="gate-logo" />
+        <h1 class="gate-title">Zudio Coin</h1>
+        <p class="gate-subtitle">Mainnet Network · Client-Side Cryptographic Vault</p>
+      </div>
+
+      <!-- EXACT FOUR CHOICES -->
+      <div class="gate-tabs">
+        <button type="button" class="gate-tab-btn active" id="gateTabBtnSignup" data-tab="gateTabSignup">1. Sign up</button>
+        <button type="button" class="gate-tab-btn" id="gateTabBtnSignin" data-tab="gateTabSignin">2. Sign in</button>
+        <button type="button" class="gate-tab-btn" id="gateTabBtnKey" data-tab="gateTabKey">3. Key login</button>
+        <button type="button" class="gate-tab-btn" id="gateTabBtnGoogle" data-tab="gateTabGoogle">4. Continue with Google</button>
+      </div>
+
+      <!-- CHOICE 1: SIGN UP -->
+      <div class="gate-panel" id="gateTabSignup">
+        <div class="gate-notice">
+          The browser creates a new <strong>zudio1</strong> address. Set a password to encrypt your key locally. The key never leaves your browser.
+        </div>
+        <div id="signupInputArea">
+          <label for="gateSignupPass">Set Wallet Password</label>
+          <input type="password" id="gateSignupPass" placeholder="Enter password (min 4 characters)" />
+          <label for="gateSignupPassConfirm">Confirm Password</label>
+          <input type="password" id="gateSignupPassConfirm" placeholder="Confirm password" />
+          <button type="button" id="btnGateDoSignup" class="btn-cta primary" style="width: 100%; margin-top: 14px;">✨ Create & Encrypt Wallet</button>
+        </div>
+        <div id="signupSuccessArea" style="display: none;">
+          <div class="note success" style="margin-bottom: 14px;">
+            🎉 Wallet created! Your private key is encrypted and stored locally in this browser.
+          </div>
+          <div class="addr-row" style="margin-bottom: 14px;">
+            <code id="gateCreatedAddress">zudio1...</code>
+          </div>
+          <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 14px;">
+            Your backup file has been saved to your downloads. Keep this file safe so you can restore your wallet on any device.
+          </p>
+          <div style="display: flex; gap: 10px; flex-direction: column;">
+            <button type="button" id="btnGateDownloadAgain" class="btn-cta secondary">💾 Download Backup Again</button>
+            <button type="button" id="btnGateOpenSite" class="btn-cta primary" style="font-size: 15px; padding: 14px;">🚀 Open Wallet</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHOICE 2: SIGN IN -->
+      <div class="gate-panel" id="gateTabSignin" style="display: none;">
+        <div class="gate-notice" id="gateSigninNotice">
+          Type the password for the wallet already saved in this browser.
+        </div>
+        <div id="gateSigninFormArea">
+          <label for="gateSigninPass">Wallet Password</label>
+          <input type="password" id="gateSigninPass" placeholder="Enter your wallet password" />
+          <button type="button" id="btnGateDoSignin" class="btn-cta primary" style="width: 100%; margin-top: 14px;">🔓 Unlock & Open Wallet</button>
+        </div>
+        <div id="gateNoWalletArea" style="display: none;">
+          <div class="note" style="border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.08); color: #fb7185; margin-bottom: 16px;">
+            ⚠️ No wallet is currently saved in this browser. Please use <strong>Sign up</strong> to create a new wallet or <strong>Key login</strong> to restore from a private key.
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button type="button" id="btnGateGoSignup" class="btn-cta primary" style="flex: 1;">1. Go to Sign up</button>
+            <button type="button" id="btnGateGoKey" class="btn-cta secondary" style="flex: 1;">3. Go to Key login</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHOICE 3: KEY LOGIN (DIRECT PRIVATE KEY) -->
+      <div class="gate-panel" id="gateTabKey" style="display: none;">
+        <div class="gate-notice">
+          Enter your <strong>Private Key</strong> (WIF or 64-hex) to login instantly. <strong>No password required.</strong> Your key stays 100% in your browser.
+        </div>
+        <label for="gatePrivateKeyInput">Private Key (WIF or Hex)</label>
+        <textarea id="gatePrivateKeyInput" rows="2" placeholder="Paste your private key (e.g. 5K... / L... / TQ... or 64-char hex key)" style="font-family: var(--font-mono); font-size: 13px; resize: vertical;"></textarea>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px; margin-bottom: 6px;">
+          <label for="gateKeyFile" class="btn-inline" style="cursor: pointer; font-size: 12px; padding: 6px 12px; background: rgba(255,255,255,0.06); border: 1px solid var(--border);">📁 Or Select Key / Backup File</label>
+          <input type="file" id="gateKeyFile" accept=".json,.txt" style="display: none;" />
+          <span id="gateKeyFileName" style="font-size: 12px; color: var(--cyan); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 250px;"></span>
+        </div>
+
+        <button type="button" id="btnGateDoRestore" class="btn-cta primary" style="width: 100%; margin-top: 10px; font-size: 15px; padding: 13px;">🔓 Login with Private Key & Open Wallet</button>
+      </div>
+
+      <!-- CHOICE 4: CONTINUE WITH GOOGLE -->
+      <div class="gate-panel" id="gateTabGoogle" style="display: none;">
+        <div class="gate-notice">
+          Sign in with Google to show your name. Your private key stays 100% in your browser and is never sent to Google or to the server.
+        </div>
+        <div id="googleInitialArea">
+          <button type="button" class="btn-google" id="btnGateGoogle">
+            <svg viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            Continue with Google
+          </button>
+        </div>
+        <div id="googleConnectedArea" style="display: none;">
+          <div class="note success" style="margin-bottom: 12px;" id="googleUserGreeting">
+            Signed in as Google user.
+          </div>
+          <div id="googleWalletSetupArea"></div>
+        </div>
+      </div>
+
+      <!-- STATUS MESSAGES -->
+      <p class="note error" id="gateErrorNote" hidden style="margin-top: 14px;"></p>
+      <p class="note success" id="gateSuccessNote" hidden style="margin-top: 14px;"></p>
+    </div>
+  </div>
+
+  <script type="module" src="wallet.js?v=3"></script>
+</body>
+
+</html>

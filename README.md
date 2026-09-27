@@ -1,19 +1,66 @@
-Bitcoin Core integration/staging tree
-=====================================
+# ZUDIO Blockchain 🚀
 
-https://bitcoincore.org
+> **Independent Layer-1 Proof-of-Work Blockchain & Zero-Fee ZRC-20 Meme Token Ecosystem**
 
-For an immediately usable, binary version of the Bitcoin Core software, see
-https://bitcoincore.org/en/download/.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Network: Mainnet](https://img.shields.io/badge/Network-Mainnet-green.svg)]()
+[![P2P Port: 9333](https://img.shields.io/badge/P2P%20Port-9333-blue.svg)]()
+[![RPC Port: 8332](https://img.shields.io/badge/RPC%20Port-8332-purple.svg)]()
 
-What is Bitcoin Core?
----------------------
+ZUDIO is an ultra-fast, independent Layer-1 blockchain engineered with native support for the **ZRC-20** token standard (zero-fee meme coin creation & client-side cryptographic signing), decentralized peer-to-peer networking, integrated blockchain explorer, and web/mobile self-custody wallets.
 
-Bitcoin Core connects to the Bitcoin peer-to-peer network to download and fully
-validate blocks and transactions. It also includes a wallet and graphical user
-interface, which can be optionally built.
+---
 
-Further information about Bitcoin Core is available in the [doc folder](/doc).
+## 🌟 Key Highlights
+
+- **Native Coin**: ZDC (Zudio Coin)
+- **Token Standard**: ZRC-20 (Zero-gas meme token deployments & transfers with secp256k1 client-side signatures)
+- **P2P Port**: `9333` | **RPC Port**: `8332`
+- **Bech32 Address Prefix**: `zudio1...`
+- **Ecosystem Tools Included**:
+  - 🖥️ **Full Node & Daemon** (`bitcoind`, `bitcoin-qt`, `bitcoin-cli`)
+  - 🌐 **Web Blockchain Explorer** (Live blocks, transactions, mempool)
+  - 👛 **Self-Custodial Web Wallet** (Generate seed, import/export private key WIF, send & receive ZDC + ZRC-20 tokens)
+  - 📱 **Android Mobile Wallet & Miner APK** (`zudio-miner/ZudioCoin.apk`)
+  - ⛏️ **One-Click Node Launcher** (`start_zudio.bat`)
+
+---
+
+## 🚀 Quick Start
+
+### 1. Launching the Node
+Run the interactive batch launcher:
+```cmd
+start_zudio.bat
+```
+Or start the daemon directly:
+```bash
+./build/bin/Release/bitcoind.exe -datadir=%LOCALAPPDATA%\Zudio -server=1
+```
+
+### 2. Launching the Web Portal & Explorer
+Start the built-in ZRC-20 daemon and web portal:
+```cmd
+cd zudio-miner
+python zrc20_server.py
+```
+Open your browser at `http://127.0.0.1:8780` to access the Web Wallet, Explorer, and Token Creator.
+
+### 3. Checking Balances & Tokens via CLI
+```cmd
+zudio_balance.bat coins
+zudio_balance.bat balance <your-zudio1-address>
+```
+
+---
+
+## 🔒 Security & Privacy
+- **Self-Custody**: All transactions and token transfers are signed client-side via ECDSA (secp256k1).
+- **Zero Key Leakage**: Servers and node operators never see or store user private keys.
+
+---
+
+## Technical Architecture & Core
 
 License
 -------

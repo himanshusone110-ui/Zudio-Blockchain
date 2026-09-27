@@ -27,3 +27,25 @@ target/
 /guix-build-*
 
 /ci/scratch/
+
+# Security: Ignore all wallet keys, backups, credentials, and local logs
+*WALLET_KEYS*
+*.key
+*.wif
+*backup*.json
+scratch/
+*.log
+*.err
+cloudflared.exe
+
+# Ignore local blockchain data & binary release artifacts
+second_computer_test/
+ZUDIO-Windows-Release/
+downloads/
+*.zip
+*.7z
+mining_log.txt
+mine_target.ps1
+mining_check.ps1
+test_backup_restore_simulation.py
+test_second_computer.py

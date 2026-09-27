@@ -178,7 +178,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock()
     // Add an output that spends the full coinbase reward.
     coinbaseTx.vout.resize(1);
     coinbaseTx.vout[0].scriptPubKey = m_options.coinbase_output_script;
-    // Block subsidy + fees
+    // Block subsidy + fees. The miner receives the whole reward.
     const CAmount block_reward{nFees + GetBlockSubsidy(nHeight, chainparams.GetConsensus())};
     coinbaseTx.vout[0].nValue = block_reward;
     coinbase_tx.block_reward_remaining = block_reward;
@@ -215,9 +215,9 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock()
         Assert(witness_stack.size() == 1 && witness_stack[0].size() == 32);
         coinbase_tx.witness = uint256(witness_stack[0]);
     }
-    if (const int witness_index = GetWitnessCommitmentIndex(*pblock); witness_index != NO_WITNESS_COMMITMENT) {
-        Assert(witness_index >= 0 && static_cast<size_t>(witness_index) < final_coinbase->vout.size());
-        coinbase_tx.required_outputs.push_back(final_coinbase->vout[witness_index]);
+    // Every coinbase output after the miner reward must be copied into a mined block.
+    for (size_t i = 1; i < final_coinbase->vout.size(); ++i) {
+        coinbase_tx.required_outputs.push_back(final_coinbase->vout[i]);
     }
 
     LogInfo("CreateNewBlock(): block weight: %u txs: %u fees: %ld sigops %d\n", GetBlockWeight(*pblock), nBlockTx, nFees, nBlockSigOpsCost);

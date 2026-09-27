@@ -1837,8 +1837,8 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     if (halvings >= 64)
         return 0;
 
-    CAmount nSubsidy = 50 * COIN;
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
+    CAmount nSubsidy = consensusParams.nInitialSubsidy;
+    // Subsidy is cut in half every nSubsidyHalvingInterval blocks.
     nSubsidy >>= halvings;
     return nSubsidy;
 }
@@ -4100,6 +4100,14 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, BlockValidatio
     if (block.GetBlockTime() <= pindexPrev->GetMedianTimePast())
         return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "time-too-old", "block's timestamp is too early");
 
+    // ZUDIO: after the founder blocks, real time must pass between blocks.
+    if (nHeight >= consensusParams.nMinBlockSpacingHeight) {
+        const int64_t earliest = pindexPrev->GetBlockTime() + consensusParams.nPowTargetSpacing;
+        if (block.GetBlockTime() < earliest) {
+            return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "time-too-soon", "block timestamp is earlier than the mining interval");
+        }
+    }
+
     // Testnet4 and regtest only: Check timestamp against prev for difficulty-adjustment
     // blocks to prevent timewarp attacks (see https://github.com/bitcoin/bitcoin/pull/15482).
     if (consensusParams.enforce_BIP94) {
@@ -4113,7 +4121,10 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, BlockValidatio
     }
 
     // Check timestamp
-    if (block.Time() > NodeClock::now() + std::chrono::seconds{MAX_FUTURE_BLOCK_TIME}) {
+    const int64_t future_limit = nHeight >= consensusParams.nMinBlockSpacingHeight
+        ? consensusParams.nPowTargetSpacing
+        : MAX_FUTURE_BLOCK_TIME;
+    if (block.Time() > NodeClock::now() + std::chrono::seconds{future_limit}) {
         return state.Invalid(BlockValidationResult::BLOCK_TIME_FUTURE, "time-too-new", "block timestamp too far in the future");
     }
 
