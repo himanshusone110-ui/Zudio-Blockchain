@@ -17,12 +17,19 @@ ZUDIO is an ultra-fast, independent Layer-1 blockchain engineered with native su
 - **Token Standard**: ZRC-20 (Zero-gas meme token deployments & transfers with secp256k1 client-side signatures)
 - **P2P Port**: `9333` | **RPC Port**: `8332`
 - **Bech32 Address Prefix**: `zudio1...`
-- **Ecosystem Tools Included**:
-  - 🖥️ **Full Node & Daemon** (`bitcoind`, `bitcoin-qt`, `bitcoin-cli`)
-  - 🌐 **Web Blockchain Explorer** (Live blocks, transactions, mempool)
-  - 👛 **Self-Custodial Web Wallet** (Generate seed, import/export private key WIF, send & receive ZDC + ZRC-20 tokens)
-  - 📱 **Android Mobile Wallet & Miner APK** (`zudio-miner/ZudioCoin.apk`)
-  - ⛏️ **One-Click Node Launcher** (`start_zudio.bat`)
+- **Mainnet Seed Node**: `zudio.duckdns.org:9333`
+
+---
+
+## 📥 Official Downloads & Live Services
+
+| Resource | Download / Access | Description |
+| :--- | :--- | :--- |
+| 🪟 **Windows Full Node & Miner** | [Download v1.0.0 (.zip)](https://github.com/himanshusone110-ui/Zudio-Blockchain/releases/download/v1.0.0/ZUDIO-Windows-Release.zip) | 1-Click bitcoind, GUI Qt Wallet & Solo CPU Miner |
+| 📱 **Android Mobile Miner & Wallet** | [Download APK](https://github.com/himanshusone110-ui/Zudio-Blockchain/releases/download/v1.0.0/ZudioCoin.apk) | Android mobile app for mining and token custody |
+| 👛 **Live Web Wallet** | [Launch Web Wallet](http://zudio.duckdns.org:8780/wallet.html) | Self-custodial web wallet for ZDC & ZRC-20 tokens |
+| 🔍 **Live Blockchain Explorer** | [Launch Explorer](http://zudio.duckdns.org:8780/explorer.html) | Live blocks, transactions, and token analytics |
+| 🚀 **Seed Node (P2P)** | `zudio.duckdns.org:9333` | Connect your node to sync with mainnet blocks |
 
 ---
 
