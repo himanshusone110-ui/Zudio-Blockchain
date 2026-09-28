@@ -486,7 +486,7 @@ if (modalCreateForm) {
 
       if (note) {
         note.className = "trade-note success";
-        note.textContent = `🎉 Coin ${data.tick} created on ZUDIO.FUN! Redirecting...`;
+        note.textContent = `🎉 Coin ${data.tick} created on ZudioCoin! Redirecting...`;
       }
 
       setTimeout(() => {
@@ -502,7 +502,7 @@ if (modalCreateForm) {
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Create on ZUDIO.FUN";
+        submitBtn.textContent = "Create on ZudioCoin";
       }
     }
   });

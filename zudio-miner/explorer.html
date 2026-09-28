@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZUDIO.FUN Explorer · Official Block Explorer & Public RPC</title>
-  <meta name="description" content="Official read-only block explorer and public JSON-RPC interface for the ZUDIO blockchain." />
+  <title>ZudioCoin Explorer · Block Explorer</title>
+  <meta name="description" content="Block explorer for the ZUDIO blockchain." />
   <link rel="icon" href="logo.png?v=2" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css?v=15" />
@@ -24,13 +24,13 @@
     <a href="index.html" class="logo-link">
       <img src="logo.png?v=2" alt="ZUDIO" class="brand-logo" />
       <div class="logo-text-wrap">
-        <h1>ZUDIO.FUN</h1>
+        <h1>ZudioCoin</h1>
         <span>ZUDIO Explorer</span>
       </div>
     </a>
 
     <nav class="nav-links">
-      <a href="index.html" class="nav-link">ZUDIO.FUN</a>
+      <a href="index.html" class="nav-link">ZudioCoin</a>
       <a href="explorer.html" class="nav-link active">Explorer</a>
       <a href="wallet.html" class="nav-link" style="color: var(--cyan) !important;">📱 Mobile Wallet</a>
       <a href="ZudioCoin.apk" download="ZudioCoin.apk" class="nav-link">Android APK</a>
@@ -73,9 +73,9 @@
     </div>
 
     <div class="stat-card">
-      <span class="stat-label">Public JSON-RPC</span>
-      <strong class="stat-val" style="color: var(--cyan); font-size: 18px;">/api/rpc</strong>
-      <span class="stat-sub">Read-Only · Zero Risk</span>
+      <span class="stat-label">Network Protocol</span>
+      <strong class="stat-val" style="color: var(--cyan); font-size: 18px;">PoW SHA-256d</strong>
+      <span class="stat-sub">Zero Fee Trading</span>
     </div>
   </section>
 
@@ -209,57 +209,6 @@
           <tr><td colspan="6" style="text-align:center;">Loading token registry...</td></tr>
         </tbody>
       </table>
-    </div>
-  </section>
-
-  <!-- PUBLIC READ-ONLY RPC PORTAL & INTERACTIVE TESTER -->
-  <section class="panel" id="rpcSection">
-    <div class="panel-header">
-      <h2>⚡ Public Read-Only JSON-RPC Portal</h2>
-      <span class="badge-tag green">Read-Only Verified</span>
-    </div>
-    <p style="color: var(--ink-secondary); font-size: 14px; margin-bottom: 16px;">
-      Query blockchain data directly via JSON-RPC. Wallet commands and private key imports are strictly disabled on this public endpoint.
-    </p>
-
-    <div class="addr-row" style="margin-bottom: 20px;">
-      <div>
-        <span style="font-size: 12px; color: var(--ink-muted); display: block; margin-bottom: 2px;">Public RPC URL:</span>
-        <code id="rpcUrlDisplay">https://feet-row-bailey-invoice.trycloudflare.com/api/rpc</code>
-      </div>
-      <button type="button" id="copyRpcUrlBtn" class="btn-inline">Copy URL</button>
-    </div>
-
-    <!-- INTERACTIVE RPC TESTER -->
-    <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px;">
-      <h3 style="font-size: 15px; font-weight: 700; color: var(--ink-primary); margin-bottom: 12px;">🧪 Interactive RPC Query Playground</h3>
-      
-      <div>
-        <label for="rpcMethodSelect">Method (Select Read-Only Command):</label>
-        <select id="rpcMethodSelect">
-          <option value="getblockchaininfo">getblockchaininfo — Chain height, best block, sync status</option>
-          <option value="getblockcount">getblockcount — Total block height</option>
-          <option value="getbestblockhash">getbestblockhash — Hash of latest block</option>
-          <option value="getdifficulty">getdifficulty — Current mining difficulty</option>
-          <option value="getmininginfo">getmininginfo — Mining hashrate & difficulty</option>
-          <option value="getmempoolinfo">getmempoolinfo — Unconfirmed transactions in mempool</option>
-          <option value="getblock">getblock — Block details [params: "blockhash", 1]</option>
-          <option value="getrawtransaction">getrawtransaction — Decoded tx [params: "txid", true]</option>
-        </select>
-
-        <label for="rpcParamsInput">Params (JSON Array):</label>
-        <input id="rpcParamsInput" value="[]" />
-
-        <div style="display: flex; gap: 10px; margin-top: 14px;">
-          <button type="button" id="sendRpcQueryBtn" class="btn-cta primary" style="padding: 10px 20px; font-size: 13px;">🚀 Run RPC Query</button>
-          <button type="button" id="copyCurlBtn" class="btn-cta secondary" style="padding: 10px 20px; font-size: 13px;">📋 Copy cURL Command</button>
-        </div>
-      </div>
-
-      <div style="margin-top: 16px;">
-        <label>JSON-RPC Response:</label>
-        <pre id="rpcResponseOutput" style="background: #000000; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--cyan); overflow-x: auto; max-height: 320px;">Response will appear here...</pre>
-      </div>
     </div>
   </section>
 

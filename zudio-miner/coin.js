@@ -28,7 +28,7 @@ export async function loadCoinData() {
 }
 
 function renderCoinDetails(coin) {
-  document.getElementById("pageTitle").textContent = `${coin.name} (${coin.tick}) · ZUDIO.FUN`;
+  document.getElementById("pageTitle").textContent = `${coin.name} (${coin.tick}) · ZudioCoin`;
   document.getElementById("coinName").textContent = coin.name;
   document.getElementById("coinTick").textContent = coin.tick;
   document.getElementById("coinDesc").textContent = coin.desc || "No description provided.";
@@ -68,13 +68,19 @@ function renderCoinDetails(coin) {
   const sellTickLabel = document.getElementById("sellTokenTickLabel");
   if (sellTickLabel) sellTickLabel.textContent = coin.tick;
 
-  // Social Links
+  // Social Links - only show when creator actually typed it into form
   const socialEl = document.getElementById("coinSocialLinks");
   if (socialEl) {
     let linksHtml = "";
-    if (coin.website) linksHtml += `<a href="${coin.website}" target="_blank" class="tx-link">🌐 Website</a>`;
-    if (coin.twitter) linksHtml += `<a href="${coin.twitter}" target="_blank" class="tx-link">🐦 X</a>`;
-    if (coin.telegram) linksHtml += `<a href="${coin.telegram}" target="_blank" class="tx-link">✈️ Telegram</a>`;
+    if (coin.website && coin.website.trim() && coin.website.trim() !== "https://..." && !coin.website.includes("example.com")) {
+      linksHtml += `<a href="${coin.website}" target="_blank" class="tx-link">🌐 Website</a>`;
+    }
+    if (coin.twitter && coin.twitter.trim() && coin.twitter.trim() !== "https://twitter.com/ZudioCoin" && coin.twitter.trim() !== "https://x.com/...") {
+      linksHtml += `<a href="${coin.twitter}" target="_blank" class="tx-link">🐦 X</a>`;
+    }
+    if (coin.telegram && coin.telegram.trim() && coin.telegram.trim() !== "https://t.me/ZudioCoin" && coin.telegram.trim() !== "https://t.me/...") {
+      linksHtml += `<a href="${coin.telegram}" target="_blank" class="tx-link">✈️ Telegram</a>`;
+    }
     socialEl.innerHTML = linksHtml;
   }
 
@@ -90,8 +96,8 @@ function renderCoinDetails(coin) {
     }
   }
 
-  // CURVE FULL CHECK
-  const isCurveFull = coin.curve_full || Number(coin.progress || 0) >= 100;
+  // CURVE FULL CHECK - disable buy and show "curve full" when reaching 50k target
+  const isCurveFull = coin.curve_full || Number(coin.progress || 0) >= 100 || Number(coin.confirmed_zdc_paid_in || 0) >= 50000;
   const banner = document.getElementById("curveFullBanner");
   const buyBtn = document.getElementById("btnExecuteBuy");
   const buyInput = document.getElementById("tradeBuyZdcInput");
@@ -100,7 +106,7 @@ function renderCoinDetails(coin) {
     if (banner) banner.style.display = "block";
     if (buyBtn) {
       buyBtn.disabled = true;
-      buyBtn.textContent = "Curve Full (Trading Graduated)";
+      buyBtn.textContent = "curve full";
       buyBtn.style.background = "#475569";
     }
     if (buyInput) buyInput.disabled = true;

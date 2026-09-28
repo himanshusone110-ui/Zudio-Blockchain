@@ -36,7 +36,7 @@ function renderCard(coin) {
     <a href="coin.html?tick=${encodeURIComponent(coin.tick)}" class="pump-feed-card ${isFull ? 'card-graduated' : ''}">
       <div class="card-thumb-wrap">
         <img src="${imgUrl}" alt="${coin.tick}" onerror="this.onerror=null;this.src='logo.png';" class="card-thumb" />
-        ${isFull ? '<span class="curve-full-badge">Curve Full</span>' : ''}
+        ${isFull ? '<span class="curve-full-badge">Curve full</span>' : ''}
       </div>
       <div class="card-details">
         <div class="card-header-row">
@@ -81,7 +81,7 @@ function renderColumn(containerId, coins, emptyMessage) {
 export function renderFeed() {
   renderColumn("feedNewestCol", feedData.newest, "No new coins yet.");
   renderColumn("feedBondingCol", feedData.bonding, "No active bonding coins.");
-  renderColumn("feedCurveFullCol", feedData.curve_full, "No graduated curve-full coins yet.");
+  renderColumn("feedCurveFullCol", feedData.curve_full, "No curve full coins yet.");
 }
 
 export function initFeed() {

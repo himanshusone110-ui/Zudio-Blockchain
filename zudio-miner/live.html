@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="livePageTitle">Live Stream · ZUDIO.FUN</title>
+  <title id="livePageTitle">Live Stream · ZudioCoin</title>
   <link rel="icon" href="logo.png?v=2" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css?v=15" />
@@ -77,7 +77,7 @@
     <div style="display: flex; align-items: center; gap: 14px;">
       <a href="index.html" class="pump-logo-wrap">
         <img src="logo.png" alt="ZUDIO" style="width: 28px; height: 28px;" />
-        <span class="pump-pill-logo">ZUDIO.FUN</span>
+        <span class="pump-pill-logo">ZudioCoin</span>
         <span class="pump-logo-tag">ZUDIO (ZDC)</span>
       </a>
       <a id="backToCoinLink" href="coin.html" class="btn-pump-pill btn-pump-subtle">⬅ Coin Page</a>
@@ -168,7 +168,7 @@
         const res = await fetch(`/api/coin?tick=${encodeURIComponent(tick)}`);
         const coin = await res.json();
 
-        document.getElementById("livePageTitle").textContent = `LIVE: ${coin.name} (${coin.tick}) · ZUDIO.FUN`;
+        document.getElementById("livePageTitle").textContent = `LIVE: ${coin.name} (${coin.tick}) · ZudioCoin`;
         document.getElementById("streamCoinTitle").textContent = `${coin.name} (${coin.tick})`;
         document.getElementById("streamCoinDesc").textContent = coin.desc || "";
 

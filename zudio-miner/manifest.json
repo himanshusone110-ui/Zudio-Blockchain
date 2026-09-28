@@ -1,7 +1,7 @@
 {
-  "name": "ZUDIO.FUN Wallet",
-  "short_name": "ZUDIO.FUN",
-  "description": "Official Non-Custodial Wallet for ZUDIO.FUN and ZUDIO Blockchain",
+  "name": "ZudioCoin Wallet",
+  "short_name": "ZudioCoin",
+  "description": "Official Non-Custodial Wallet for ZudioCoin and ZUDIO Blockchain",
   "start_url": "/wallet.html",
   "display": "standalone",
   "background_color": "#050811",

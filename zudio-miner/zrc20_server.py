@@ -1313,10 +1313,6 @@ class Handler(BaseHTTPRequestHandler):
             self._send(400, json.dumps({"error": "Invalid JSON: " + str(exc)}), "application/json")
             return
 
-        if path in ("/api/rpc", "/rpc"):
-            result = handle_public_rpc(incoming)
-            self._send(200, json.dumps(result), "application/json")
-            return
 
         # POST /api/trade/buy
         if path == "/api/trade/buy":

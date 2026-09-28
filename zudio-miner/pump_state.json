@@ -1413,7 +1413,7 @@
       "created_at": 1790518380,
       "avatar": "",
       "twitter": "",
-      "telegram": "https://t.me/ZudioCoin",
+      "telegram": "",
       "website": "",
       "graduated": false,
       "trades": [
@@ -1750,8 +1750,8 @@
       "replies_count": 5,
       "created_at": 1790535531,
       "avatar": "logo.png",
-      "twitter": "https://twitter.com/ZudioCoin",
-      "telegram": "https://t.me/ZudioCoin",
+      "twitter": "",
+      "telegram": "",
       "website": "",
       "graduated": false,
       "trades": [
@@ -2447,7 +2447,7 @@
     "NEBULA": {
       "tick": "NEBULA",
       "name": "Nebula Coin",
-      "desc": "Interstellar community token with 100% fair launch mechanics and decentralized liquidity.",
+      "desc": "Interstellar community token on Zudio Blockchain.",
       "supply": 888888,
       "creator": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
       "curve_tokens": 711110,

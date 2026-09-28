@@ -23,20 +23,6 @@ const searchResultTitle = document.getElementById("searchResultTitle");
 const searchResultContent = document.getElementById("searchResultContent");
 const closeSearchBtn = document.getElementById("closeSearchBtn");
 
-// RPC Playground elements
-const rpcUrlDisplay = document.getElementById("rpcUrlDisplay");
-const copyRpcUrlBtn = document.getElementById("copyRpcUrlBtn");
-const rpcMethodSelect = document.getElementById("rpcMethodSelect");
-const rpcParamsInput = document.getElementById("rpcParamsInput");
-const sendRpcQueryBtn = document.getElementById("sendRpcQueryBtn");
-const copyCurlBtn = document.getElementById("copyCurlBtn");
-const rpcResponseOutput = document.getElementById("rpcResponseOutput");
-
-// Set dynamic RPC URL based on current origin
-const publicRpcUrl = `${window.location.origin}/api/rpc`;
-if (rpcUrlDisplay) {
-  rpcUrlDisplay.textContent = publicRpcUrl;
-}
 
 // Helpers
 function formatNumber(num) {
@@ -323,50 +309,6 @@ async function performSearch(query) {
   }
 }
 
-// Interactive RPC Tester Handler
-async function runRpcQuery() {
-  const method = rpcMethodSelect.value;
-  let params = [];
-  try {
-    params = JSON.parse(rpcParamsInput.value || "[]");
-  } catch (e) {
-    rpcResponseOutput.textContent = 'Error: Invalid JSON params array. Example: [] or ["blockhash", 1]';
-    return;
-  }
-
-  rpcResponseOutput.textContent = "Executing query against Public Read-Only RPC...";
-  sendRpcQueryBtn.disabled = true;
-
-  try {
-    const res = await fetch("/api/rpc", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        jsonrpc: "2.0",
-        id: "explorer-query",
-        method: method,
-        params: params,
-      }),
-    });
-
-    const data = await res.json();
-    rpcResponseOutput.textContent = JSON.stringify(data, null, 2);
-  } catch (err) {
-    rpcResponseOutput.textContent = `Network / RPC Error: ${err.message}`;
-  } finally {
-    sendRpcQueryBtn.disabled = false;
-  }
-}
-
-// Copy cURL command generator
-function generateAndCopyCurl() {
-  const method = rpcMethodSelect.value;
-  const params = rpcParamsInput.value || "[]";
-  const curlCmd = `curl -X POST "${publicRpcUrl}" -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":"1","method":"${method}","params":${params}}'`;
-  copyText(curlCmd);
-  copyCurlBtn.textContent = "✅ Copied!";
-  setTimeout(() => { copyCurlBtn.textContent = "📋 Copy cURL Command"; }, 2500);
-}
 
 // Event Listeners
 searchBtn.addEventListener("click", () => performSearch());
@@ -395,26 +337,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-sendRpcQueryBtn.addEventListener("click", runRpcQuery);
-copyCurlBtn.addEventListener("click", generateAndCopyCurl);
-
-copyRpcUrlBtn.addEventListener("click", async () => {
-  await copyText(publicRpcUrl);
-  copyRpcUrlBtn.textContent = "Copied!";
-  setTimeout(() => { copyRpcUrlBtn.textContent = "Copy URL"; }, 2500);
-});
-
-// Auto-fill sample params on method change
-rpcMethodSelect.addEventListener("change", () => {
-  const method = rpcMethodSelect.value;
-  if (method === "getblock") {
-    rpcParamsInput.value = '["30be9d6ee319de0fc0dbac25429a4def56bcb1114c61d5d3eefae6e1a2668d6b", 1]';
-  } else if (method === "getrawtransaction") {
-    rpcParamsInput.value = '["1780b57434fa75b8785ae402e2bcddc2142a01a04320478c3656acdbee9fc578", true]';
-  } else {
-    rpcParamsInput.value = "[]";
-  }
-});
 
 // All Coins Loader
 const allCoinsTableBody = document.getElementById("allCoinsTableBody");
