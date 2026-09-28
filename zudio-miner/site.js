@@ -19,7 +19,8 @@ import {
 // DOM References
 const copyButton = document.getElementById("copy");
 const copyNote = document.getElementById("copyNote");
-const founder = document.getElementById("founder").textContent.trim();
+const founderEl = document.getElementById("founder");
+const founder = founderEl ? founderEl.textContent.trim() : "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc";
 const myAddressEl = document.getElementById("myAddress");
 const copyMineBtn = document.getElementById("copyMine");
 const downloadBackupBtn = document.getElementById("downloadBackupBtn");
@@ -129,126 +130,153 @@ const auth = setupAuthUI({
 });
 
 // Copy Founder Address
-copyButton.addEventListener("click", async () => {
-  await copyText(founder);
-  copyNote.hidden = false;
-  copyButton.textContent = "Copied!";
-  setTimeout(() => { copyButton.textContent = "Copy Address"; }, 2500);
-});
+if (copyButton) {
+  copyButton.addEventListener("click", async () => {
+    await copyText(founder);
+    if (copyNote) copyNote.hidden = false;
+    copyButton.textContent = "Copied!";
+    setTimeout(() => { copyButton.textContent = "Copy Address"; }, 2500);
+  });
+}
 
 // Copy User Address
-copyMineBtn.addEventListener("click", async () => {
-  const wallet = getActiveWallet();
-  if (!wallet) {
-    auth.openModal();
-    return;
-  }
-  await copyText(wallet.address);
-  walletNote.className = "note success";
-  walletNote.hidden = false;
-  walletNote.textContent = "✅ Address copied to clipboard.";
-  setTimeout(() => { walletNote.hidden = true; }, 4000);
-});
+if (copyMineBtn) {
+  copyMineBtn.addEventListener("click", async () => {
+    const wallet = getActiveWallet();
+    if (!wallet) {
+      auth.openModal();
+      return;
+    }
+    await copyText(wallet.address);
+    if (walletNote) {
+      walletNote.className = "note success";
+      walletNote.hidden = false;
+      walletNote.textContent = "✅ Address copied to clipboard.";
+      setTimeout(() => { walletNote.hidden = true; }, 4000);
+    }
+  });
+}
 
 // Download Backup File
-downloadBackupBtn.addEventListener("click", () => {
-  const savedVault = getSavedVault();
-  if (savedVault) {
-    downloadBackupFile(savedVault);
-    walletNote.className = "note success";
-    walletNote.hidden = false;
-    walletNote.textContent = "💾 Backup file saved to disk. Keep this file safe to restore your wallet.";
-    setTimeout(() => { walletNote.hidden = true; }, 6000);
-  } else {
-    auth.openModal("tabCreate");
-  }
-});
+if (downloadBackupBtn) {
+  downloadBackupBtn.addEventListener("click", () => {
+    const savedVault = getSavedVault();
+    if (savedVault) {
+      downloadBackupFile(savedVault);
+      if (walletNote) {
+        walletNote.className = "note success";
+        walletNote.hidden = false;
+        walletNote.textContent = "💾 Backup file saved to disk. Keep this file safe to restore your wallet.";
+        setTimeout(() => { walletNote.hidden = true; }, 6000);
+      }
+    } else {
+      auth.openModal("tabCreate");
+    }
+  });
+}
 
 // Restore from File (Opens Choice 3 in Sign in Modal)
-restoreBackupBtn.addEventListener("click", () => {
-  auth.openModal("tabRestore");
-});
+if (restoreBackupBtn) {
+  restoreBackupBtn.addEventListener("click", () => {
+    auth.openModal("tabRestore");
+  });
+}
 
 // Toggle Key Visibility
-toggleKeyBtn.addEventListener("click", () => {
-  if (!isWalletUnlocked()) {
-    auth.openModal();
-    return;
-  }
-  const isHidden = keyDetailsBox.hidden;
-  keyDetailsBox.hidden = !isHidden;
-  toggleKeyBtn.textContent = isHidden ? "🙈 Hide Key" : "👁️ View Key";
-});
+if (toggleKeyBtn) {
+  toggleKeyBtn.addEventListener("click", () => {
+    if (!isWalletUnlocked()) {
+      auth.openModal();
+      return;
+    }
+    if (keyDetailsBox) {
+      const isHidden = keyDetailsBox.hidden;
+      keyDetailsBox.hidden = !isHidden;
+      toggleKeyBtn.textContent = isHidden ? "🙈 Hide Key" : "👁️ View Key";
+    }
+  });
+}
 
 // Create New Wallet (Opens Choice 1 in Sign in Modal)
-newKeyBtn.addEventListener("click", () => {
-  auth.openModal("tabCreate");
-});
+if (newKeyBtn) {
+  newKeyBtn.addEventListener("click", () => {
+    auth.openModal("tabCreate");
+  });
+}
 
 // Live Signing Preview Updaters
 function updateDeploySigningPreview() {
+  if (!deploySigningPreview) return;
   const wallet = getActiveWallet();
   const addr = wallet ? wallet.address : "<YOUR_ADDRESS>";
-  const name = coinNameInput.value.trim() || "<NAME>";
-  const tick = (coinTickInput.value.trim() || "<SYMBOL>").toUpperCase();
-  const max = coinMaxInput.value.trim() || "<SUPPLY>";
+  const name = coinNameInput?.value.trim() || "<NAME>";
+  const tick = (coinTickInput?.value.trim() || "<SYMBOL>").toUpperCase();
+  const max = coinMaxInput?.value.trim() || "<SUPPLY>";
   deploySigningPreview.textContent = `zrc-20:deploy:${tick}:${name}:${max}:${addr}:<nonce>`;
 }
 
 function updateTransferSigningPreview() {
+  if (!transferSigningPreview) return;
   const wallet = getActiveWallet();
   const addr = wallet ? wallet.address : "<YOUR_ADDRESS>";
-  const tick = sendTickSelect.value || "<SYMBOL>";
-  const amt = sendAmtInput.value.trim() || "<AMT>";
-  const to = sendToInput.value.trim() || "<TO_ADDRESS>";
+  const tick = sendTickSelect?.value || "<SYMBOL>";
+  const amt = sendAmtInput?.value.trim() || "<AMT>";
+  const to = sendToInput?.value.trim() || "<TO_ADDRESS>";
   transferSigningPreview.textContent = `zrc-20:transfer:${tick}:${amt}:${addr}:${to}:<nonce>`;
 }
 
-coinNameInput.addEventListener("input", updateDeploySigningPreview);
-coinTickInput.addEventListener("input", (e) => {
-  e.target.value = e.target.value.toUpperCase();
-  updateDeploySigningPreview();
-});
-coinMaxInput.addEventListener("input", updateDeploySigningPreview);
+if (coinNameInput) coinNameInput.addEventListener("input", updateDeploySigningPreview);
+if (coinTickInput) {
+  coinTickInput.addEventListener("input", (e) => {
+    e.target.value = e.target.value.toUpperCase();
+    updateDeploySigningPreview();
+  });
+}
+if (coinMaxInput) coinMaxInput.addEventListener("input", updateDeploySigningPreview);
 
-sendAmtInput.addEventListener("input", updateTransferSigningPreview);
-sendToInput.addEventListener("input", (e) => {
-  const val = e.target.value.trim();
-  updateTransferSigningPreview();
-  if (!val) {
-    addrValidationNote.style.display = "none";
-    return;
-  }
-  if (val.startsWith("zudio1") && val.length >= 20) {
-    addrValidationNote.style.display = "block";
-    addrValidationNote.style.color = "#34d399";
-    addrValidationNote.textContent = "✓ Valid Zudio Bech32 address format";
-  } else {
-    addrValidationNote.style.display = "block";
-    addrValidationNote.style.color = "#fb7185";
-    addrValidationNote.textContent = "⚠️ Address must start with 'zudio1'";
-  }
-});
+if (sendAmtInput) sendAmtInput.addEventListener("input", updateTransferSigningPreview);
+if (sendToInput) {
+  sendToInput.addEventListener("input", (e) => {
+    const val = e.target.value.trim();
+    updateTransferSigningPreview();
+    if (!addrValidationNote) return;
+    if (!val) {
+      addrValidationNote.style.display = "none";
+      return;
+    }
+    if (val.startsWith("zudio1") && val.length >= 20) {
+      addrValidationNote.style.display = "block";
+      addrValidationNote.style.color = "#34d399";
+      addrValidationNote.textContent = "✓ Valid Zudio Bech32 address format";
+    } else {
+      addrValidationNote.style.display = "block";
+      addrValidationNote.style.color = "#fb7185";
+      addrValidationNote.textContent = "⚠️ Address must start with 'zudio1'";
+    }
+  });
+}
 
 // Image Handling
-uploadDropzone.addEventListener("click", () => fileInput.click());
-uploadDropzone.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  uploadDropzone.style.borderColor = "var(--cyan)";
-});
-uploadDropzone.addEventListener("dragleave", () => {
-  uploadDropzone.style.borderColor = "var(--border)";
-});
-uploadDropzone.addEventListener("drop", (e) => {
-  e.preventDefault();
-  uploadDropzone.style.borderColor = "var(--border)";
-  if (e.dataTransfer.files && e.dataTransfer.files.length) {
-    fileInput.files = e.dataTransfer.files;
-    handleImageSelected();
-  }
-});
+if (uploadDropzone && fileInput) {
+  uploadDropzone.addEventListener("click", () => fileInput.click());
+  uploadDropzone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    uploadDropzone.style.borderColor = "var(--cyan)";
+  });
+  uploadDropzone.addEventListener("dragleave", () => {
+    uploadDropzone.style.borderColor = "var(--border)";
+  });
+  uploadDropzone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    uploadDropzone.style.borderColor = "var(--border)";
+    if (e.dataTransfer.files && e.dataTransfer.files.length) {
+      fileInput.files = e.dataTransfer.files;
+      handleImageSelected();
+    }
+  });
+}
 
-fileInput.addEventListener("change", handleImageSelected);
+if (fileInput) fileInput.addEventListener("change", handleImageSelected);
 
 function handleImageSelected() {
   const file = fileInput.files && fileInput.files[0];
@@ -288,71 +316,197 @@ async function imageBytes() {
   return btoa(binary);
 }
 
-// Deploy Coin Form Submit
-deployForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
+// Deploy Coin Form Submit (Classic form)
+if (deployForm) {
+  deployForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  if (!isWalletUnlocked()) {
-    deployNote.className = "note error";
-    deployNote.hidden = false;
-    deployNote.textContent = "Please sign in or unlock your wallet first to create a coin.";
-    auth.openModal();
-    return;
-  }
+    if (!isWalletUnlocked()) {
+      if (deployNote) {
+        deployNote.className = "note error";
+        deployNote.hidden = false;
+        deployNote.textContent = "Please sign in or unlock your wallet first to create a coin.";
+      }
+      auth.openModal();
+      return;
+    }
 
-  const wallet = getActiveWallet();
-  deployNote.className = "note";
-  deployNote.hidden = false;
-  deployNote.textContent = "⏳ Signing transaction client-side in browser...";
-  deploySubmitBtn.disabled = true;
+    const wallet = getActiveWallet();
+    if (deployNote) {
+      deployNote.className = "note";
+      deployNote.hidden = false;
+      deployNote.textContent = "⏳ Signing transaction client-side in browser...";
+    }
+    if (deploySubmitBtn) deploySubmitBtn.disabled = true;
 
-  const name = coinNameInput.value.trim().replace(/\s+/g, " ");
-  const tick = coinTickInput.value.trim().toUpperCase();
-  const max = String(Number(coinMaxInput.value.trim()));
-  const id = nonce();
+    const name = coinNameInput.value.trim().replace(/\s+/g, " ");
+    const tick = coinTickInput.value.trim().toUpperCase();
+    const max = String(Number(coinMaxInput.value.trim()));
+    const id = nonce();
 
-  if (tick === "ZDC") {
-    deployNote.className = "note error";
-    deployNote.textContent = "ZDC is the native chain coin. Please choose a different ticker.";
-    deploySubmitBtn.disabled = false;
-    return;
-  }
+    if (tick === "ZDC") {
+      if (deployNote) {
+        deployNote.className = "note error";
+        deployNote.textContent = "ZDC is the native chain coin. Please choose a different ticker.";
+      }
+      if (deploySubmitBtn) deploySubmitBtn.disabled = false;
+      return;
+    }
 
-  try {
-    const image = await imageBytes();
-    const signMsg = `zrc-20:deploy:${tick}:${name}:${max}:${wallet.address}:${id}`;
-    
-    // User signs inside browser
-    const sig = await sign(signMsg);
-    deployNote.textContent = `✍️ Signed! Broadcasting deploy transaction to Zudio network...`;
+    try {
+      const image = await imageBytes();
+      const signMsg = `zrc-20:deploy:${tick}:${name}:${max}:${wallet.address}:${id}`;
+      
+      const sig = await sign(signMsg);
+      if (deployNote) deployNote.textContent = `✍️ Signed! Broadcasting deploy transaction to Zudio network...`;
 
-    const response = await fetch("/api/deploy", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, tick, max, to: wallet.address, pub: wallet.pubHex, sig, nonce: id, image }),
-    });
+      const response = await fetch("/api/deploy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, tick, max, to: wallet.address, pub: wallet.pubHex, sig, nonce: id, image }),
+      });
 
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.error || "Deploy transaction failed");
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Deploy transaction failed");
 
-    const where = data.block
-      ? "Block mined and recorded to blockchain!"
-      : "Broadcasted to mempool — will confirm in next block.";
+      const where = data.block
+        ? "Block mined and recorded to blockchain!"
+        : "Broadcasted to mempool — will confirm in next block.";
 
-    deployNote.className = "note success";
-    deployNote.textContent = `🎉 Token ${data.tick} (${name}) created successfully! Supply: ${Number(max).toLocaleString()} ${data.tick} credited to your address. Network Fee: 0 ZDC. ${where} (TXID: ${data.txid})`;
+      if (deployNote) {
+        deployNote.className = "note success";
+        deployNote.textContent = `🎉 Token ${data.tick} (${name}) created successfully! Supply: ${Number(max).toLocaleString()} ${data.tick} credited to your address. Network Fee: 0 ZDC. ${where} (TXID: ${data.txid})`;
+      }
 
-    deployForm.reset();
-    removeImageBtn.click();
-    updateDeploySigningPreview();
-    await loadCoins();
-  } catch (error) {
-    deployNote.className = "note error";
-    deployNote.textContent = "❌ Deploy failed: " + error.message;
-  } finally {
-    deploySubmitBtn.disabled = false;
-  }
-});
+      deployForm.reset();
+      if (removeImageBtn) removeImageBtn.click();
+      updateDeploySigningPreview();
+      await loadCoins();
+    } catch (error) {
+      if (deployNote) {
+        deployNote.className = "note error";
+        deployNote.textContent = "❌ Deploy failed: " + error.message;
+      }
+    } finally {
+      if (deploySubmitBtn) deploySubmitBtn.disabled = false;
+    }
+  });
+}
+
+// ZUDIO.FUN Create-Coin Modal Form
+const modalCreateForm = document.getElementById("createCoinModalForm");
+if (modalCreateForm) {
+  modalCreateForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const note = document.getElementById("modalDeployNote");
+    const submitBtn = document.getElementById("btnSubmitModalDeploy");
+
+    if (!isWalletUnlocked()) {
+      if (note) {
+        note.className = "trade-note error";
+        note.textContent = "Please sign in or unlock your wallet first to create a coin.";
+      }
+      auth.openModal();
+      return;
+    }
+
+    const wallet = getActiveWallet();
+    const name = document.getElementById("createCoinName")?.value.trim() || "";
+    const tick = (document.getElementById("createCoinTick")?.value.trim() || "").toUpperCase();
+    const max = String(Number(document.getElementById("createCoinMax")?.value.trim() || "1000000"));
+    const desc = document.getElementById("createCoinDesc")?.value.trim() || "";
+    const website = document.getElementById("createCoinWebsite")?.value.trim() || "";
+    const twitter = document.getElementById("createCoinTwitter")?.value.trim() || "";
+    const telegram = document.getElementById("createCoinTelegram")?.value.trim() || "";
+    const live_url = document.getElementById("createCoinLiveUrl")?.value.trim() || "";
+    const imageInput = document.getElementById("createCoinImage");
+
+    if (tick === "ZDC") {
+      if (note) {
+        note.className = "trade-note error";
+        note.textContent = "ZDC is the native chain coin. Please choose a different ticker.";
+      }
+      return;
+    }
+
+    try {
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "⏳ Signing Deploy...";
+      }
+      if (note) {
+        note.className = "trade-note";
+        note.textContent = "Signing deploy transaction client-side in browser...";
+      }
+
+      let imageBase64 = "";
+      if (imageInput && imageInput.files && imageInput.files[0]) {
+        const file = imageInput.files[0];
+        if (file.size > 2000000) throw new Error("Image must be smaller than 2 MB");
+        const bytes = new Uint8Array(await file.arrayBuffer());
+        let binary = "";
+        for (let i = 0; i < bytes.length; i += 0x8000) {
+          binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+        }
+        imageBase64 = btoa(binary);
+      }
+
+      const id = nonce();
+      const signMsg = `zrc-20:deploy:${tick}:${name}:${max}:${wallet.address}:${id}`;
+      const sig = await sign(signMsg);
+
+      if (note) {
+        note.textContent = "Broadcasting deploy transaction to ZUDIO network...";
+      }
+
+      const res = await fetch("/api/deploy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          tick,
+          max,
+          to: wallet.address,
+          pub: wallet.pubHex,
+          sig,
+          nonce: id,
+          image: imageBase64,
+          desc,
+          website,
+          twitter,
+          telegram,
+          live_url
+        })
+      });
+
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        throw new Error(data.error || "Deployment failed");
+      }
+
+      if (note) {
+        note.className = "trade-note success";
+        note.textContent = `🎉 Coin ${data.tick} created on ZUDIO.FUN! Redirecting...`;
+      }
+
+      setTimeout(() => {
+        window.location.href = `coin.html?tick=${encodeURIComponent(data.tick)}`;
+      }, 1200);
+
+    } catch (err) {
+      console.error("Create coin error:", err);
+      if (note) {
+        note.className = "trade-note error";
+        note.textContent = "❌ " + err.message;
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Create on ZUDIO.FUN";
+      }
+    }
+  });
+}
 
 // Transfer Form Submit
 transferForm.addEventListener("submit", async (event) => {
@@ -421,30 +575,37 @@ transferForm.addEventListener("submit", async (event) => {
 });
 
 // MAX button handler
-maxBtn.addEventListener("click", () => {
-  const selectedTick = sendTickSelect.value;
-  if (!selectedTick) return;
-  const coin = currentCoins.find((c) => c.tick === selectedTick);
-  if (coin && coin.mine > 0) {
-    sendAmtInput.value = coin.mine;
-    updateTransferSigningPreview();
-  }
-});
+if (maxBtn) {
+  maxBtn.addEventListener("click", () => {
+    const selectedTick = sendTickSelect.value;
+    if (!selectedTick) return;
+    const coin = currentCoins.find((c) => c.tick === selectedTick);
+    if (coin && coin.mine > 0) {
+      sendAmtInput.value = coin.mine;
+      updateTransferSigningPreview();
+    }
+  });
+}
 
-sendTickSelect.addEventListener("change", () => {
-  const selectedTick = sendTickSelect.value;
-  const coin = currentCoins.find((c) => c.tick === selectedTick);
-  if (coin) {
-    coinBalanceHint.hidden = false;
-    coinBalanceHint.textContent = `Available balance: ${coin.mine.toLocaleString()} ${coin.tick}`;
-  } else {
-    coinBalanceHint.hidden = true;
-  }
-  updateTransferSigningPreview();
-});
+if (sendTickSelect) {
+  sendTickSelect.addEventListener("change", () => {
+    const selectedTick = sendTickSelect.value;
+    const coin = currentCoins.find((c) => c.tick === selectedTick);
+    if (coin) {
+      if (coinBalanceHint) {
+        coinBalanceHint.hidden = false;
+        coinBalanceHint.textContent = `Available balance: ${coin.mine.toLocaleString()} ${coin.tick}`;
+      }
+    } else {
+      if (coinBalanceHint) coinBalanceHint.hidden = true;
+    }
+    updateTransferSigningPreview();
+  });
+}
 
 // Load All Coins
 async function loadCoins() {
+  if (!coinList) return;
   try {
     const wallet = getActiveWallet();
     const queryAddr = wallet ? wallet.address : "";
@@ -455,13 +616,15 @@ async function loadCoins() {
     coinList.replaceChildren();
     
     // Clear select while keeping default placeholder
-    sendTickSelect.replaceChildren();
-    const defaultOpt = document.createElement("option");
-    defaultOpt.value = "";
-    defaultOpt.disabled = true;
-    defaultOpt.selected = true;
-    defaultOpt.textContent = "Select a token...";
-    sendTickSelect.appendChild(defaultOpt);
+    if (sendTickSelect) {
+      sendTickSelect.replaceChildren();
+      const defaultOpt = document.createElement("option");
+      defaultOpt.value = "";
+      defaultOpt.disabled = true;
+      defaultOpt.selected = true;
+      defaultOpt.textContent = "Select a token...";
+      sendTickSelect.appendChild(defaultOpt);
+    }
 
     if (!currentCoins.length) {
       const emptyLi = document.createElement("li");
@@ -477,7 +640,7 @@ async function loadCoins() {
     let ownedCount = 0;
 
     for (const coin of currentCoins) {
-      if (!coin.legacy && coin.mine > 0) {
+      if (!coin.legacy && coin.mine > 0 && sendTickSelect) {
         const opt = document.createElement("option");
         opt.value = coin.tick;
         opt.textContent = `${coin.tick} — ${coin.name} (Balance: ${coin.mine.toLocaleString()})`;
@@ -552,10 +715,13 @@ async function loadCoins() {
         sendBtn.style.marginTop = "4px";
         sendBtn.textContent = `Send ${coin.tick}`;
         sendBtn.addEventListener("click", () => {
-          sendTickSelect.value = coin.tick;
-          sendTickSelect.dispatchEvent(new Event("change"));
-          document.getElementById("transferPanel").scrollIntoView({ behavior: "smooth" });
-          sendAmtInput.focus();
+          if (sendTickSelect) {
+            sendTickSelect.value = coin.tick;
+            sendTickSelect.dispatchEvent(new Event("change"));
+          }
+          const transferP = document.getElementById("transferPanel");
+          if (transferP) transferP.scrollIntoView({ behavior: "smooth" });
+          if (sendAmtInput) sendAmtInput.focus();
         });
         card.appendChild(sendBtn);
       }
@@ -563,29 +729,36 @@ async function loadCoins() {
       coinList.appendChild(card);
     }
 
-    if (ownedCount > 0) {
+    if (ownedCount > 0 && coinBalanceHint) {
       coinBalanceHint.hidden = false;
       coinBalanceHint.textContent = `You hold balances in ${ownedCount} token(s).`;
     }
   } catch (error) {
-    coinList.innerHTML = `<li style="grid-column:1/-1; color:#fb7185; padding:20px; text-align:center;">Failed to load tokens: ${error.message}</li>`;
+    if (coinList) {
+      coinList.innerHTML = `<li style="grid-column:1/-1; color:#fb7185; padding:20px; text-align:center;">Failed to load tokens: ${error.message}</li>`;
+    }
   }
 }
 
-refreshCoinsBtn.addEventListener("click", () => {
-  refreshCoinsBtn.textContent = "Refreshing...";
-  loadCoins().finally(() => {
-    refreshCoinsBtn.textContent = "🔄 Refresh";
+if (refreshCoinsBtn) {
+  refreshCoinsBtn.addEventListener("click", () => {
+    refreshCoinsBtn.textContent = "Refreshing...";
+    loadCoins().finally(() => {
+      refreshCoinsBtn.textContent = "🔄 Refresh";
+    });
   });
-});
+}
 
 // Initial startup state
 const saved = getSavedVault();
-if (saved) {
-  myAddressEl.textContent = `${saved.address.slice(0, 10)}...${saved.address.slice(-6)} (Locked — Click Sign in)`;
-} else {
-  myAddressEl.textContent = "No wallet saved — Click Sign in to create one";
+if (myAddressEl) {
+  if (saved) {
+    myAddressEl.textContent = `${saved.address.slice(0, 10)}...${saved.address.slice(-6)} (Locked — Click Sign in)`;
+  } else {
+    myAddressEl.textContent = "No wallet saved — Click Sign in to create one";
+  }
 }
 updateDeploySigningPreview();
 updateTransferSigningPreview();
 loadCoins();
+

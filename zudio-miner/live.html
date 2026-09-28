@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="livePageTitle">Live Stream · ZUDIO.FUN</title>
+  <link rel="icon" href="logo.png?v=2" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css?v=15" />
+  <link rel="stylesheet" href="pump.css?v=2" />
+  <style>
+    .live-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 24px;
+    }
+    @media (max-width: 1024px) {
+      .live-container { grid-template-columns: 1fr; }
+    }
+    .stream-card {
+      background: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .stream-embed-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #000;
+    }
+    .stream-embed-wrap iframe,
+    .stream-embed-wrap video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .stream-meta-box {
+      padding: 20px;
+    }
+    .stream-chat-card {
+      background: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 180px);
+      min-height: 520px;
+    }
+    .founder-notice-banner {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #334155;
+      padding: 10px 16px;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .founder-notice-banner code {
+      color: #38bdf8;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="pump-nav">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <a href="index.html" class="pump-logo-wrap">
+        <img src="logo.png" alt="ZUDIO" style="width: 28px; height: 28px;" />
+        <span class="pump-pill-logo">ZUDIO.FUN</span>
+        <span class="pump-logo-tag">ZUDIO (ZDC)</span>
+      </a>
+      <a id="backToCoinLink" href="coin.html" class="btn-pump-pill btn-pump-subtle">⬅ Coin Page</a>
+    </div>
+
+    <!-- Right Controls -->
+    <div class="pump-nav-right">
+      <a href="wallet.html" class="btn-pump-pill btn-pump-subtle" style="color: var(--cyan) !important;">📱 Wallet</a>
+      <a href="explorer.html" class="btn-pump-pill btn-pump-subtle">🔍 Explorer</a>
+      <button type="button" id="headerAuthBtn" class="btn-pump-pill btn-pump-create">Sign In</button>
+    </div>
+  </header>
+
+  <!-- FOUNDER NOTICE -->
+  <div style="max-width: 1400px; margin: 16px auto 0; padding: 0 20px;">
+    <div class="founder-notice-banner">
+      founder holds 7,350,000 ZDC at <code>zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc</code>. Do not mine to that address. Trade fee is 0.
+    </div>
+  </div>
+
+  <main class="live-container">
+    <!-- Stream Video Area -->
+    <section>
+      <div class="stream-card">
+        <div class="stream-embed-wrap" id="streamEmbedContainer">
+          <div id="noStreamFallback" style="position: absolute; top:0; left:0; width:100%; height:100%; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #64748b;">
+            <span style="font-size: 40px; margin-bottom: 8px;">📡</span>
+            <p style="margin: 0; font-size: 16px; color: #94a3b8;">No live stream configured for this coin yet.</p>
+          </div>
+        </div>
+
+        <div class="stream-meta-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <h1 id="streamCoinTitle" style="color: #fff; font-size: 22px; font-weight: 800; margin: 0;">Loading...</h1>
+                <span class="badge-buy" style="background: #ef4444; color: #fff;">LIVE</span>
+              </div>
+              <p id="streamCoinDesc" style="color: #94a3b8; font-size: 13px; margin: 6px 0 0;"></p>
+            </div>
+
+            <div>
+              <a id="streamTradeBtn" href="#" class="btn-pump-pill btn-pump-create" style="padding: 10px 24px; font-size: 14px;">
+                📈 Trade on Curve
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Side Chat & Comments (No viewer count) -->
+    <aside>
+      <div class="stream-chat-card">
+        <h3 style="color: #fff; font-size: 16px; font-weight: 800; margin: 0 0 12px; padding-bottom: 10px; border-bottom: 1px solid #1e293b;">
+          💬 Community Discussion
+        </h3>
+
+        <!-- Comments List -->
+        <div id="commentsList" style="flex: 1; overflow-y: auto; margin-bottom: 16px;">
+          <div class="empty-sub-state"><p>Loading comments...</p></div>
+        </div>
+
+        <!-- Comment Input -->
+        <form id="commentForm">
+          <textarea id="commentInput" rows="2" placeholder="Send a message (wallet signed)..." class="pump-search-input" style="width: 100%; border-radius: 10px; resize: none; margin-bottom: 6px;"></textarea>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div id="commentStatus" class="trade-note" style="font-size: 11px;"></div>
+            <button type="submit" class="btn-pump-pill btn-pump-create" style="padding: 6px 16px; font-size: 12px;">Send</button>
+          </div>
+        </form>
+      </div>
+    </aside>
+  </main>
+
+  <script type="module">
+    import { setupComments } from "./comments.js";
+    import { setupAuthUI, getActiveWallet } from "./vault.js";
+
+    const params = new URLSearchParams(window.location.search);
+    const tick = (params.get("tick") || "ZMEME").toUpperCase();
+
+    document.getElementById("backToCoinLink").href = `coin.html?tick=${encodeURIComponent(tick)}`;
+    document.getElementById("streamTradeBtn").href = `coin.html?tick=${encodeURIComponent(tick)}`;
+
+    async function loadStream() {
+      try {
+        const res = await fetch(`/api/coin?tick=${encodeURIComponent(tick)}`);
+        const coin = await res.json();
+
+        document.getElementById("livePageTitle").textContent = `LIVE: ${coin.name} (${coin.tick}) · ZUDIO.FUN`;
+        document.getElementById("streamCoinTitle").textContent = `${coin.name} (${coin.tick})`;
+        document.getElementById("streamCoinDesc").textContent = coin.desc || "";
+
+        const embedWrap = document.getElementById("streamEmbedContainer");
+        const fallback = document.getElementById("noStreamFallback");
+
+        if (coin.live_url && coin.live_url.startsWith("https://")) {
+          fallback.style.display = "none";
+
+          let embedSrc = coin.live_url;
+          // Youtube conversion helper
+          if (embedSrc.includes("youtube.com/watch?v=")) {
+            embedSrc = embedSrc.replace("watch?v=", "embed/");
+          } else if (embedSrc.includes("youtu.be/")) {
+            embedSrc = embedSrc.replace("youtu.be/", "www.youtube.com/embed/");
+          }
+
+          embedWrap.innerHTML = `
+            <iframe src="${embedSrc}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          `;
+        }
+      } catch (err) {
+        console.error("Stream load error:", err);
+      }
+    }
+
+    setupComments(tick);
+    loadStream();
+
+    const authBtn = document.getElementById("headerAuthBtn");
+    const auth = setupAuthUI({
+      onUnlock: (w) => {
+        if (authBtn) {
+          authBtn.textContent = w.address.slice(0, 8) + "...";
+          authBtn.style.background = "#059669";
+        }
+      },
+      onLock: () => {
+        if (authBtn) {
+          authBtn.textContent = "Sign In";
+          authBtn.style.background = "";
+        }
+      }
+    });
+
+    if (authBtn) {
+      authBtn.addEventListener("click", () => {
+        const w = getActiveWallet();
+        if (!w) auth.showGate();
+      });
+    }
+  </script>
+</body>
+</html>

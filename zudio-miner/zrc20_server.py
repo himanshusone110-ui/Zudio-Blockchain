@@ -13,6 +13,12 @@ from ecdsa import SECP256k1, VerifyingKey
 from ecdsa.ellipticcurve import Point
 from ecdsa.util import sigdecode_string
 import pump_engine
+import curve
+import trades
+import candles
+import comments
+import holders
+import feed_rank
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 COIN_DIR = os.path.join(ROOT, "coins")
@@ -519,6 +525,12 @@ def deploy(incoming):
         block = maybe_confirm()
         if picture:
             write_image(tick, picture)
+        desc = incoming.get("desc") or incoming.get("description") or ""
+        website = incoming.get("website") or ""
+        twitter = incoming.get("twitter") or incoming.get("x") or ""
+        telegram = incoming.get("telegram") or ""
+        live_url = incoming.get("live_url") or incoming.get("stream") or ""
+        pump_engine.ENGINE.update_coin_metadata(tick, desc=desc, website=website, twitter=twitter, telegram=telegram, live_url=live_url)
         view = refresh_locked()
     coin = view["coins"].get(tick, {})
     return {"txid": txid, "tick": tick, "fee": "0", "block": block, "balance": int(coin.get("balances", {}).get(to_addr, 0)), "image": image_file(tick)}
@@ -894,6 +906,165 @@ def get_explorer_address(address):
     }
 
 
+def handle_trade_buy(incoming):
+    tick = clean_tick(incoming.get("tick", ""))
+    action = str(incoming.get("action", "preview")).lower()
+    zdc_amount = float(incoming.get("zdc_amount", incoming.get("amount", 0.0)))
+    if zdc_amount <= 0:
+        raise ValueError("ZDC amount must be greater than 0")
+
+    view = view_state()
+    coin = view["coins"].get(tick)
+    if not coin:
+        raise ValueError(f"Coin '{tick}' not found")
+    supply = int(coin.get("max", 1000000))
+    c_state = trades.get_confirmed_curve_state(tick, supply)
+
+    if c_state["confirmed_zdc_paid_in"] >= curve.GRADUATION_TARGET_ZDC:
+        raise ValueError("Curve full: Target reached. Trading graduated.")
+
+    calc = curve.calculate_buy(zdc_amount, c_state["zdc_reserve"], c_state["token_reserve"])
+
+    if action == "preview":
+        return {
+            "action": "preview",
+            "tick": tick,
+            "zdc_amount": zdc_amount,
+            "tokens_out": calc["tokens_out"],
+            "new_price": calc["price"],
+            "curve_address": curve.CURVE_ADDRESS,
+            "target_zdc": curve.GRADUATION_TARGET_ZDC,
+            "confirmed_zdc_paid_in": c_state["confirmed_zdc_paid_in"],
+            "fee": 0
+        }
+
+    # action == "execute"
+    trader = str(incoming.get("trader", incoming.get("from", ""))).strip()
+    if not trader:
+        raise ValueError("Trader address required")
+    address_program(trader)
+    txid = str(incoming.get("txid", "")).strip()
+
+    if txid:
+        if trades.is_txid_recorded(txid):
+            raise ValueError("This transaction has already been recorded")
+        raw_tx = rpc("getrawtransaction", [txid, True])
+        confs = int(raw_tx.get("confirmations", 0))
+        if confs < 1:
+            raise ValueError("Transaction not yet confirmed in a block. Please wait for confirmation.")
+
+        paid = 0.0
+        for vout in raw_tx.get("vout", []):
+            spk = vout.get("scriptPubKey", {})
+            addr = spk.get("address", spk.get("addresses", [""])[0] if spk.get("addresses") else "")
+            if addr == curve.CURVE_ADDRESS:
+                paid += float(vout.get("value", 0.0))
+        if paid < zdc_amount * 0.999:
+            raise ValueError(f"Transaction does not pay required {zdc_amount} ZDC to curve address")
+
+        block_time = raw_tx.get("blocktime", raw_tx.get("time", int(time.time())))
+        record = trades.record_confirmed_trade(
+            tick=tick,
+            side="buy",
+            zdc_amount=zdc_amount,
+            token_amount=calc["tokens_out"],
+            price=calc["price"],
+            trader_address=trader,
+            txid=txid,
+            block_time=block_time
+        )
+        return {"status": "ok", "trade": record, "tokens_out": calc["tokens_out"], "new_price": calc["price"]}
+
+    # If executing via node / sponsor wallet
+    try:
+        payment_txid = rpc("sendtoaddress", [curve.CURVE_ADDRESS, zdc_amount], wallet=True)
+        maybe_confirm()
+        raw_tx = rpc("getrawtransaction", [payment_txid, True])
+        block_time = raw_tx.get("blocktime", int(time.time()))
+        record = trades.record_confirmed_trade(
+            tick=tick,
+            side="buy",
+            zdc_amount=zdc_amount,
+            token_amount=calc["tokens_out"],
+            price=calc["price"],
+            trader_address=trader,
+            txid=payment_txid,
+            block_time=block_time
+        )
+        return {"status": "ok", "trade": record, "tokens_out": calc["tokens_out"], "new_price": calc["price"], "txid": payment_txid}
+    except Exception as exc:
+        raise ValueError(f"Buy payment execution failed: {exc}")
+
+
+def handle_trade_sell(incoming):
+    tick = clean_tick(incoming.get("tick", ""))
+    action = str(incoming.get("action", "preview")).lower()
+    token_amount = int(incoming.get("token_amount", incoming.get("amt", incoming.get("amount", 0))))
+    if token_amount <= 0:
+        raise ValueError("Token amount must be greater than 0")
+
+    view = view_state()
+    coin = view["coins"].get(tick)
+    if not coin:
+        raise ValueError(f"Coin '{tick}' not found")
+    supply = int(coin.get("max", 1000000))
+    c_state = trades.get_confirmed_curve_state(tick, supply)
+
+    calc = curve.calculate_sell(token_amount, c_state["zdc_reserve"], c_state["token_reserve"])
+
+    if action == "preview":
+        return {
+            "action": "preview",
+            "tick": tick,
+            "token_amount": token_amount,
+            "zdc_out": calc["zdc_out"],
+            "new_price": calc["price"],
+            "fee": 0
+        }
+
+    # action == "execute"
+    trader = str(incoming.get("from", "")).strip()
+    to_addr = str(incoming.get("to", curve.CURVE_ADDRESS)).strip()
+    if to_addr != curve.CURVE_ADDRESS:
+        raise ValueError(f"Sell must transfer tokens to curve address {curve.CURVE_ADDRESS}")
+
+    transfer_res = transfer(incoming)
+    txid = transfer_res["txid"]
+
+    raw_tx = rpc("getrawtransaction", [txid, True])
+    block_time = raw_tx.get("blocktime", raw_tx.get("time", int(time.time())))
+    zdc_payout = calc["zdc_out"]
+    payout_txid = ""
+    if zdc_payout > 0:
+        try:
+            payout_txid = rpc("sendtoaddress", [trader, zdc_payout], wallet=True)
+            maybe_confirm()
+        except Exception as e:
+            print(f"[SELL PAYOUT WARN] {e}", flush=True)
+
+    record = trades.record_confirmed_trade(
+        tick=tick,
+        side="sell",
+        zdc_amount=zdc_payout,
+        token_amount=token_amount,
+        price=calc["price"],
+        trader_address=trader,
+        txid=txid,
+        block_time=block_time
+    )
+    return {"status": "ok", "trade": record, "zdc_out": zdc_payout, "new_price": calc["price"], "txid": txid, "payout_txid": payout_txid}
+
+
+def handle_comment(incoming):
+    tick = clean_tick(incoming.get("tick", ""))
+    author = str(incoming.get("author", "")).strip()
+    text = str(incoming.get("text", "")).strip()
+    pub = str(incoming.get("pub", "")).strip()
+    sig = str(incoming.get("sig", "")).strip()
+    record = comments.add_comment(tick, author, text, pub, sig)
+    return {"status": "ok", "comment": record}
+
+
 class Handler(BaseHTTPRequestHandler):
     def _send(self, code, body, content_type):
         data = body if isinstance(body, bytes) else body.encode()
@@ -925,23 +1096,115 @@ class Handler(BaseHTTPRequestHandler):
         path = parsed.path
         query_params = parse_qs(parsed.query)
 
-        if path == "/api/pump/coins":
+        # 1. GET /api/feed
+        if path in ("/api/feed", "/api/pump/coins"):
             try:
-                addr = query_params.get("address", [""])[0].strip()
                 view = view_state()
-                data = pump_engine.ENGINE.get_overview(view["coins"], addr)
+                data = pump_engine.ENGINE.get_feed(view["coins"], image_file)
                 self._send(200, json.dumps(data), "application/json")
             except Exception as exc:
                 self._send(400, json.dumps({"error": str(exc)}), "application/json")
             return
 
-        if path == "/api/pump/coin":
+        # 2. GET /api/coin?tick=
+        if path in ("/api/coin", "/api/pump/coin"):
             try:
-                tick = query_params.get("tick", [""])[0].strip()
-                addr = query_params.get("address", [""])[0].strip()
+                tick = query_params.get("tick", [""])[0].strip().upper()
+                if not tick:
+                    raise ValueError("tick parameter required")
                 view = view_state()
-                data = pump_engine.ENGINE.get_coin_detail(tick, view["coins"], addr)
+                data = pump_engine.ENGINE.get_coin_detail(tick, view["coins"], image_file)
                 self._send(200, json.dumps(data), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
+            return
+
+        # 3. GET /api/trades?tick=
+        if path == "/api/trades":
+            try:
+                tick = query_params.get("tick", [""])[0].strip().upper()
+                rows = trades.get_trades(tick) if tick else trades.get_all_trades()
+                self._send(200, json.dumps({"trades": rows, "count": len(rows)}), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
+            return
+
+        # 4. GET /api/candles?tick=
+        if path == "/api/candles":
+            try:
+                tick = query_params.get("tick", [""])[0].strip().upper()
+                interval = int(query_params.get("interval", [300])[0])
+                data = candles.build_candles(tick, interval_seconds=interval)
+                self._send(200, json.dumps({"candles": data, "tick": tick}), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
+            return
+
+        # 5. GET /api/holders?tick=
+        if path == "/api/holders":
+            try:
+                tick = query_params.get("tick", [""])[0].strip().upper()
+                view = view_state()
+                coin = view["coins"].get(tick)
+                data = holders.get_coin_holders(tick, coin)
+                self._send(200, json.dumps({"holders": data, "count": len(data)}), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
+            return
+
+        # 6. GET /api/comments?tick=
+        if path == "/api/comments":
+            try:
+                tick = query_params.get("tick", [""])[0].strip().upper()
+                data = comments.get_comments(tick)
+                self._send(200, json.dumps({"comments": data, "count": len(data)}), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
+            return
+
+        # 7. GET /api/profile?address=
+        if path == "/api/profile":
+            try:
+                addr = query_params.get("address", [""])[0].strip()
+                if not addr:
+                    raise ValueError("address parameter required")
+                view = view_state()
+                zdc_bal = get_address_zdc_balance(addr, allow_slow_scan=True)
+                created_coins = []
+                held_coins = []
+                for t, c in sorted(view["coins"].items()):
+                    supply = int(c.get("max", 0))
+                    c_state = trades.get_confirmed_curve_state(t, supply)
+                    c_prog = curve.calculate_progress(c_state["confirmed_zdc_paid_in"])
+                    img = image_file(t)
+                    
+                    if c.get("creator") == addr:
+                        created_coins.append({
+                            "tick": t,
+                            "name": c.get("name"),
+                            "supply": supply,
+                            "image": img,
+                            "progress": c_prog,
+                            "spot_price": c_state["spot_price"]
+                        })
+                    bal = int(c.get("balances", {}).get(addr, 0))
+                    if bal > 0:
+                        pct = round((bal / supply * 100.0), 2) if supply > 0 else 0.0
+                        held_coins.append({
+                            "tick": t,
+                            "name": c.get("name"),
+                            "balance": bal,
+                            "supply": supply,
+                            "percentage": pct,
+                            "image": img,
+                            "spot_price": c_state["spot_price"]
+                        })
+                self._send(200, json.dumps({
+                    "address": addr,
+                    "zdc_balance": zdc_bal,
+                    "created_coins": created_coins,
+                    "held_coins": held_coins
+                }), "application/json")
             except Exception as exc:
                 self._send(400, json.dumps({"error": str(exc)}), "application/json")
             return
@@ -951,10 +1214,10 @@ class Handler(BaseHTTPRequestHandler):
                 view = view_state()
                 address = query_params.get("address", [""])[0].strip()
                 zdc_bal = get_address_zdc_balance(address) if address else 0.0
-                coins = []
+                coins_res = []
                 for tick, coin in sorted(view["coins"].items()):
                     balances = {key: int(value) for key, value in coin["balances"].items()}
-                    coins.append(
+                    coins_res.append(
                         {
                             "tick": tick,
                             "name": coin["name"],
@@ -969,7 +1232,7 @@ class Handler(BaseHTTPRequestHandler):
             except Exception as exc:
                 self._send(400, json.dumps({"error": str(exc)}), "application/json")
                 return
-            self._send(200, json.dumps({"coins": coins, "zdc_balance": zdc_bal}), "application/json")
+            self._send(200, json.dumps({"coins": coins_res, "zdc_balance": zdc_bal}), "application/json")
             return
 
         if path == "/api/explorer/stats":
@@ -1055,24 +1318,28 @@ class Handler(BaseHTTPRequestHandler):
             self._send(200, json.dumps(result), "application/json")
             return
 
-        if path == "/api/pump/trade":
+        # POST /api/trade/buy
+        if path == "/api/trade/buy":
             try:
-                tick = incoming.get("tick", "")
-                action = incoming.get("action", "buy")
-                amount = float(incoming.get("amount", 0))
-                trader = incoming.get("trader", "")
-                res = pump_engine.ENGINE.execute_trade(tick, action, amount, trader)
+                res = handle_trade_buy(incoming)
                 self._send(200, json.dumps(res), "application/json")
             except Exception as exc:
                 self._send(400, json.dumps({"error": str(exc)}), "application/json")
             return
 
-        if path == "/api/pump/comment":
+        # POST /api/trade/sell
+        if path == "/api/trade/sell":
             try:
-                tick = incoming.get("tick", "")
-                author = incoming.get("author", "zudio1anon")
-                text = incoming.get("text", "")
-                res = pump_engine.ENGINE.add_comment(tick, author, text)
+                res = handle_trade_sell(incoming)
+                self._send(200, json.dumps(res), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
+            return
+
+        # POST /api/comment
+        if path in ("/api/comment", "/api/pump/comment"):
+            try:
+                res = handle_comment(incoming)
                 self._send(200, json.dumps(res), "application/json")
             except Exception as exc:
                 self._send(400, json.dumps({"error": str(exc)}), "application/json")
