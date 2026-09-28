@@ -1008,15 +1008,354 @@
 .founder-notice-banner {
   background: rgba(15, 23, 42, 0.9);
   border: 1px solid #334155;
-  padding: 10px 16px;
-  font-size: 12px;
+  padding: 12px 18px;
+  font-size: 13px;
   color: #94a3b8;
   text-align: center;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 .founder-notice-banner code {
   color: #38bdf8;
-  font-family: monospace;
+  font-family: var(--font-mono, monospace);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* =====================================================================
+   OFFICIAL PROTOCOL STATS RIBBON
+   ===================================================================== */
+.protocol-stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1400px;
+  margin: 0 auto 36px;
+  padding: 0 20px;
+}
+@media (max-width: 900px) {
+  .protocol-stats-ribbon { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .protocol-stats-ribbon { grid-template-columns: 1fr; }
+}
+
+.proto-stat-card {
+  background: linear-gradient(145deg, rgba(18, 23, 34, 0.9), rgba(11, 15, 23, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+.proto-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 255, 136, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 255, 136, 0.12);
+}
+.proto-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+.proto-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+.proto-stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.proto-stat-val {
+  font-size: 19px;
+  font-weight: 800;
+  color: #fff;
+  font-family: var(--font-mono, monospace);
+  line-height: 1.2;
+}
+.proto-stat-sub {
+  font-size: 11px;
+  color: #10b981;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* =====================================================================
+   ECOSYSTEM ARCHITECTURE PILLARS (OFFICIAL SHOWCASE)
+   ===================================================================== */
+.ecosystem-section {
+  max-width: 1400px;
+  margin: 60px auto 40px;
+  padding: 0 20px;
+}
+.section-header-wrap {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.section-badge {
+  display: inline-block;
+  background: rgba(0, 242, 254, 0.1);
+  color: #00f2fe;
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.section-subtitle {
+  font-size: 15px;
+  color: #94a3b8;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .ecosystem-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .ecosystem-grid { grid-template-columns: 1fr; }
+}
+
+.eco-card {
+  background: linear-gradient(160deg, #111624 0%, #0c101a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.eco-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--card-accent, #00ff88), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.eco-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+.eco-card:hover::before {
+  opacity: 1;
+}
+.eco-card-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.eco-card-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.eco-card-desc {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 16px;
+}
+.eco-card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--card-accent, #00ff88);
+}
+
+/* =====================================================================
+   DOWNLOADS & DEVELOPER ECOSYSTEM HUB
+   ===================================================================== */
+.downloads-hub-section {
+  max-width: 1400px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+}
+.downloads-hub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 840px) {
+  .downloads-hub-grid { grid-template-columns: 1fr; }
+}
+
+.hub-card {
+  background: linear-gradient(145deg, #101625, #0a0e19);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hub-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.hub-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.hub-card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+}
+.hub-card-desc {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.hub-action-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =====================================================================
+   OFFICIAL FOOTER
+   ===================================================================== */
+.official-footer {
+  background: #060911;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 60px 20px 36px;
+  margin-top: 80px;
+}
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+@media (max-width: 900px) {
+  .footer-top-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 540px) {
+  .footer-top-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+.footer-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+.footer-brand-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+  max-width: 360px;
+  margin-bottom: 16px;
+}
+.footer-col-title {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+.footer-links-list a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links-list a:hover {
+  color: #00ff88;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: #475569;
+}
+.footer-bottom-bar a {
+  color: #64748b;
+  text-decoration: none;
+}
+.footer-bottom-bar a:hover {
+  color: #fff;
 }
 

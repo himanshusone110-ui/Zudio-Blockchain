@@ -4,36 +4,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZUDIO.FUN · The Layer-1 Meme Coin Launchpad</title>
-  <meta name="description" content="ZUDIO.FUN is a 100% fair launch meme coin launchpad on the Zudio Layer-1 blockchain with zero trade fees and instant bonding curve liquidity." />
+  <title>ZUDIO.FUN · Official Layer-1 Meme Coin Launchpad & Blockchain</title>
+  <meta name="description" content="Official fair-launch meme coin launchpad and ecosystem for Zudio Layer-1 blockchain with zero trade fees, instant bonding curves, and non-custodial wallets." />
   <link rel="icon" href="logo.png?v=2" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css?v=15" />
-  <link rel="stylesheet" href="pump.css?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=16" />
+  <link rel="stylesheet" href="pump.css?v=4" />
 </head>
 
 <body>
-  <!-- 1. LIVE MARQUEE TICKER -->
+  <!-- 1. LIVE MARQUEE TICKER BAR -->
   <div class="pump-ticker-bar">
     <div class="pump-ticker-track" id="pumpTickerTrack">
       <div class="pump-ticker-item">
-        <span class="badge-buy">🟢 ZUDIO.FUN</span>
+        <span class="badge-buy">🟢 ZUDIO MAINNET</span>
         <span class="tick-link">ZDC</span>
         <span>Native Proof-of-Work Layer-1 Coin</span>
       </div>
       <div class="pump-ticker-item">
-        <span class="badge-buy">🚀 FAIR LAUNCH</span>
+        <span class="badge-buy">🚀 PROTOCOL FEE: 0 ZDC</span>
         <span>Trade Fee: <b>0 ZDC</b></span>
         <span style="color: #64748b;">(k = zdc_reserve * token_reserve)</span>
+      </div>
+      <div class="pump-ticker-item">
+        <span class="badge-buy">⛏️ 50 ZDC REWARD</span>
+        <span>Target: <b>50,000 ZDC Graduation</b></span>
+        <span>Max Supply: <b>21,000,000 ZDC</b></span>
+      </div>
+      <div class="pump-ticker-item">
+        <span class="badge-buy">🛡️ NON-CUSTODIAL</span>
+        <span>Client-Side secp256k1 Signing Only</span>
       </div>
     </div>
   </div>
 
-  <!-- 2. TOP NAVIGATION -->
+  <!-- 2. OFFICIAL TOP NAVIGATION -->
   <header class="pump-nav">
     <div style="display: flex; align-items: center; gap: 14px;">
       <a href="index.html" class="pump-logo-wrap">
-        <img src="logo.png" alt="ZUDIO" style="width: 28px; height: 28px;" />
+        <img src="logo.png" alt="ZUDIO" style="width: 32px; height: 32px; filter: drop-shadow(0 0 10px rgba(0,255,136,0.3));" />
         <span class="pump-pill-logo">ZUDIO.FUN</span>
         <span class="pump-logo-tag">ZUDIO (ZDC)</span>
       </a>
@@ -42,14 +54,16 @@
 
     <!-- Center: Search Filter Bar -->
     <div class="pump-nav-center">
-      <input type="text" id="pumpSearchInput" class="pump-search-input" placeholder="🔍 Search for token name or ticker..." />
+      <input type="text" id="pumpSearchInput" class="pump-search-input" placeholder="🔍 Search for meme coin name or ticker..." />
     </div>
 
-    <!-- Right Controls -->
+    <!-- Right Controls & Navigation Links -->
     <div class="pump-nav-right">
       <button type="button" class="btn-pump-pill btn-pump-create" onclick="window.openCreateModal()">💊 [start a new coin]</button>
       <a href="wallet.html" class="btn-pump-pill btn-pump-subtle" style="color: var(--cyan) !important;">📱 Wallet</a>
       <a href="explorer.html" class="btn-pump-pill btn-pump-subtle">🔍 Explorer</a>
+      <a href="#downloads" class="btn-pump-pill btn-pump-subtle">⛏️ Node / Miner</a>
+      <a href="http://localhost:3000" target="_blank" class="btn-pump-pill btn-pump-subtle" style="border-color: #8b5cf6; color: #a78bfa !important;" title="Open Next.js EVM Meme App">⚡ Web3 App</a>
 
       <!-- Wallet Auth Area -->
       <div id="headerAuthArea" style="display: flex; align-items: center; gap: 8px;">
@@ -66,26 +80,70 @@
   </header>
 
   <!-- MANDATORY VISIBLE FOUNDER NOTICE -->
-  <div style="max-width: 1400px; margin: 16px auto 0; padding: 0 20px;">
+  <div style="max-width: 1400px; margin: 18px auto 0; padding: 0 20px;">
     <div class="founder-notice-banner">
       founder holds 7,350,000 ZDC at <code>zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc</code>. Do not mine to that address. Trade fee is 0.
     </div>
   </div>
 
-  <!-- 3. MAIN CONTENT CONTAINER -->
+  <!-- 3. MAIN HERO HEADER -->
   <main class="pump-hero-container">
-    <!-- Hero Title -->
     <div class="pump-hero-header">
+      <div style="margin-bottom: 12px;">
+        <span class="section-badge">🟢 Official Layer-1 Meme Protocol</span>
+      </div>
       <h1 class="pump-hero-title">Fair Launch Meme Coins on ZUDIO.FUN</h1>
-      <p class="pump-hero-desc">Zero presale. Constant-product bonding curve. Zero trade fees. Native ZUDIO Layer-1.</p>
-      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-        <button type="button" class="btn-pump-pill btn-pump-create" style="padding: 12px 28px; font-size: 15px;" onclick="window.openCreateModal()">💊 [start a new coin]</button>
-        <a href="downloads/ZUDIO-Windows-Release.zip" class="btn-pump-pill btn-pump-subtle" style="padding: 12px 20px; font-size: 14px;">📥 Download Windows Miner</a>
-        <a href="ZudioCoin.apk" download="ZudioCoin.apk" class="btn-pump-pill btn-pump-subtle" style="padding: 12px 20px; font-size: 14px; border-color: var(--pump-green); color: var(--pump-green);">📱 Android APK</a>
+      <p class="pump-hero-desc">Zero presale. No team tokens. Real constant-product mathematical bonding curves ($k = zdc\_reserve \times token\_reserve$). Trade fee is 0 ZDC. Built on native Zudio Layer-1 Blockchain.</p>
+      
+      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+        <button type="button" class="btn-pump-pill btn-pump-create" style="padding: 14px 32px; font-size: 15px;" onclick="window.openCreateModal()">💊 [start a new coin]</button>
+        <a href="wallet.html" class="btn-pump-pill btn-pump-subtle" style="padding: 14px 24px; font-size: 14px; border-color: var(--cyan); color: var(--cyan) !important;">📱 Open Web Wallet</a>
+        <a href="explorer.html" class="btn-pump-pill btn-pump-subtle" style="padding: 14px 24px; font-size: 14px;">🔍 Block Explorer</a>
+        <a href="downloads/ZUDIO-Windows-Release.zip" class="btn-pump-pill btn-pump-subtle" style="padding: 14px 24px; font-size: 14px;">📥 Windows Miner</a>
+        <a href="ZudioCoin.apk" download="ZudioCoin.apk" class="btn-pump-pill btn-pump-subtle" style="padding: 14px 24px; font-size: 14px; border-color: var(--pump-green); color: var(--pump-green);">📱 Android APK</a>
       </div>
     </div>
 
-    <!-- 4. THREE REAL FEED COLUMNS (Requirement 8) -->
+    <!-- 4. PROTOCOL STATS RIBBON -->
+    <div class="protocol-stats-ribbon">
+      <div class="proto-stat-card">
+        <div class="proto-stat-icon" style="color: #00ff88;">🪙</div>
+        <div class="proto-stat-info">
+          <span class="proto-stat-label">Active Meme Coins</span>
+          <span class="proto-stat-val" id="statCoinsCount">Loading...</span>
+          <span class="proto-stat-sub">100% Fair Launched</span>
+        </div>
+      </div>
+
+      <div class="proto-stat-card">
+        <div class="proto-stat-icon" style="color: #00f2fe;">⛽</div>
+        <div class="proto-stat-info">
+          <span class="proto-stat-label">Protocol Trade Fee</span>
+          <span class="proto-stat-val" style="color: #00ff88;">0 ZDC</span>
+          <span class="proto-stat-sub">Zero Fee Trading</span>
+        </div>
+      </div>
+
+      <div class="proto-stat-card">
+        <div class="proto-stat-icon" style="color: #f59e0b;">🎯</div>
+        <div class="proto-stat-info">
+          <span class="proto-stat-label">Graduation Target</span>
+          <span class="proto-stat-val">50,000 ZDC</span>
+          <span class="proto-stat-sub">Instant Full Curve</span>
+        </div>
+      </div>
+
+      <div class="proto-stat-card">
+        <div class="proto-stat-icon" style="color: #a78bfa;">⛏️</div>
+        <div class="proto-stat-info">
+          <span class="proto-stat-label">Consensus & Supply</span>
+          <span class="proto-stat-val">21M ZDC</span>
+          <span class="proto-stat-sub">PoW SHA-256d Native</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. THREE REAL FEED COLUMNS (Requirement 8) -->
     <div class="feed-three-columns">
       <!-- Column 1: Newest Coins -->
       <div class="feed-column">
@@ -120,7 +178,102 @@
   </main>
 
   <!-- ===================================================================== -->
-  <!-- 5. "START A NEW COIN" MODAL (Create-coin stays in site.js)              -->
+  <!-- 6. OFFICIAL ECOSYSTEM ARCHITECTURE PILLARS                             -->
+  <!-- ===================================================================== -->
+  <section class="ecosystem-section">
+    <div class="section-header-wrap">
+      <span class="section-badge">Zudio Blockchain Ecosystem</span>
+      <h2 class="section-title">Built for Real Decentralized Finance</h2>
+      <p class="section-subtitle">ZUDIO.FUN combines sovereign Layer-1 Satoshi Nakamoto security with fair mathematical launchpad mechanics.</p>
+    </div>
+
+    <div class="ecosystem-grid">
+      <!-- Pillar 1 -->
+      <div class="eco-card" style="--card-accent: #00ff88;">
+        <div class="eco-card-icon">⚡</div>
+        <h3 class="eco-card-title">Native Layer-1 PoW</h3>
+        <p class="eco-card-desc">Sovereign Proof-of-Work blockchain utilizing double SHA-256 with 50 ZDC block rewards. ASIC, GPU, and CPU mineable with true decentralization.</p>
+        <span class="eco-card-tag">✓ SHA-256d Security</span>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="eco-card" style="--card-accent: #00f2fe;">
+        <div class="eco-card-icon">🛡️</div>
+        <h3 class="eco-card-title">Mathematical Fair Launch</h3>
+        <p class="eco-card-desc">Constant-product bonding curve ($k = zdc \times token$). 100% fair launch with zero team tokens, zero presales, and no rug-pull capability.</p>
+        <span class="eco-card-tag">✓ Rug-Pull Immune</span>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="eco-card" style="--card-accent: #f59e0b;">
+        <div class="eco-card-icon">🔑</div>
+        <h3 class="eco-card-title">Non-Custodial Client Vault</h3>
+        <p class="eco-card-desc">Every transaction is signed client-side in your browser using secp256k1 elliptic curve cryptography. Private keys never leave your device.</p>
+        <span class="eco-card-tag">✓ 100% Self-Custodial</span>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="eco-card" style="--card-accent: #a78bfa;">
+        <div class="eco-card-icon">🌉</div>
+        <h3 class="eco-card-title">EVM & Web3 Launchpad</h3>
+        <p class="eco-card-desc">Wrapped Zudio (WZDC) on BNB Smart Chain and Polygon, with Next.js 15 Web3 pump engine for cross-chain liquidity and accessibility.</p>
+        <span class="eco-card-tag">✓ Multichain Ready</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 7. DOWNLOADS & DEVELOPER ECOSYSTEM HUB                                  -->
+  <!-- ===================================================================== -->
+  <section class="downloads-hub-section" id="downloads">
+    <div class="section-header-wrap">
+      <span class="section-badge">Ecosystem & Tooling</span>
+      <h2 class="section-title">Run a Node, Mine ZDC & Build on Zudio</h2>
+      <p class="section-subtitle">Get the official mining software, mobile apps, and developer RPC APIs.</p>
+    </div>
+
+    <div class="downloads-hub-grid">
+      <!-- Hub Card 1: Mining & Full Node -->
+      <div class="hub-card">
+        <div>
+          <div class="hub-card-header">
+            <div class="hub-card-icon">⛏️</div>
+            <div>
+              <h3 class="hub-card-title">Zudio Windows Miner & Node</h3>
+              <span style="font-size: 12px; color: #10b981; font-weight: 600;">Official v1.0.0 Release · Port 9333 / 8332</span>
+            </div>
+          </div>
+          <p class="hub-card-desc">Run your own independent validator node and participate in block verification. Includes 24/7 background Windows Task installer and Stratum solo mining scripts.</p>
+        </div>
+        <div class="hub-action-row">
+          <a href="downloads/ZUDIO-Windows-Release.zip" class="btn-pump-pill btn-pump-create" style="padding: 12px 20px; font-size: 13px;">📥 Download Windows Miner (.zip)</a>
+          <a href="ZudioCoin.apk" download="ZudioCoin.apk" class="btn-pump-pill btn-pump-subtle" style="padding: 12px 18px; font-size: 13px; border-color: var(--pump-green); color: var(--pump-green);">📱 Android Mobile APK</a>
+        </div>
+      </div>
+
+      <!-- Hub Card 2: Developer & Public APIs -->
+      <div class="hub-card">
+        <div>
+          <div class="hub-card-header">
+            <div class="hub-card-icon" style="background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.3);">💻</div>
+            <div>
+              <h3 class="hub-card-title">Public JSON-RPC & Explorer API</h3>
+              <span style="font-size: 12px; color: #38bdf8; font-weight: 600;">CORS Enabled · Open & Free · No Auth Required</span>
+            </div>
+          </div>
+          <p class="hub-card-desc">Query live block headers, transaction confirmations, mempool state, and ZRC-20 token balances directly via public REST and JSON-RPC endpoints.</p>
+        </div>
+        <div class="hub-action-row">
+          <a href="explorer.html" class="btn-pump-pill btn-pump-subtle" style="padding: 12px 18px; font-size: 13px;">🔍 Open Explorer</a>
+          <a href="https://github.com/himanshusone110-ui/Zudio-Blockchain" target="_blank" class="btn-pump-pill btn-pump-subtle" style="padding: 12px 18px; font-size: 13px;">💻 GitHub Repository</a>
+          <a href="http://localhost:3000" target="_blank" class="btn-pump-pill btn-pump-subtle" style="padding: 12px 18px; font-size: 13px; border-color: #8b5cf6; color: #a78bfa;">⚡ Next.js App (Port 3000)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 8. "START A NEW COIN" MODAL (Create-coin stays in site.js)              -->
   <!-- ===================================================================== -->
   <div class="pump-modal-overlay" id="pumpCreateModal">
     <div class="pump-modal-content" style="max-width: 540px;">
@@ -187,7 +340,7 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- 6. "HOW IT WORKS" MODAL                                               -->
+  <!-- 9. "HOW IT WORKS" MODAL                                               -->
   <!-- ===================================================================== -->
   <div class="pump-modal-overlay" id="pumpHowModal">
     <div class="pump-modal-content" style="max-width: 600px;">
@@ -226,6 +379,66 @@
     </div>
   </div>
 
+  <!-- ===================================================================== -->
+  <!-- 10. OFFICIAL FOOTER                                                   -->
+  <!-- ===================================================================== -->
+  <footer class="official-footer">
+    <div class="footer-inner">
+      <div class="footer-top-grid">
+        <div>
+          <a href="index.html" class="footer-brand-title">
+            <img src="logo.png" alt="ZUDIO" style="width: 26px; height: 26px;" />
+            <span>ZUDIO.FUN</span>
+          </a>
+          <p class="footer-brand-desc">The official decentralized fair-launch meme coin launchpad and sovereign Layer-1 Proof-of-Work blockchain ecosystem.</p>
+          <div style="font-size: 12px; color: #475569;">
+            Trade fee: 0 ZDC · Continuous Liquidity · Non-Custodial
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Ecosystem</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Launchpad Feed</a></li>
+            <li><a href="wallet.html">Web & Mobile Wallet</a></li>
+            <li><a href="explorer.html">Block Explorer</a></li>
+            <li><a href="profile.html">Creator Profile</a></li>
+            <li><a href="live.html">Live Stream Arena</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Mining & Node</h4>
+          <ul class="footer-links-list">
+            <li><a href="downloads/ZUDIO-Windows-Release.zip">Windows Miner (.zip)</a></li>
+            <li><a href="ZudioCoin.apk" download="ZudioCoin.apk">Android Mobile App (.apk)</a></li>
+            <li><a href="explorer.html">Mainnet Difficulty & Halving</a></li>
+            <li><a href="http://localhost:3000" target="_blank">Next.js Web3 App</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Developers</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://github.com/himanshusone110-ui/Zudio-Blockchain" target="_blank">GitHub Source Code</a></li>
+            <li><a href="explorer.html#rpc">Public JSON-RPC (/api/rpc)</a></li>
+            <li><a href="PUBLIC_API_LISTING.md">Public APIs Directory</a></li>
+            <li><a href="WrappedZudio_WZDC.sol">Wrapped Zudio (WZDC)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>
+          © 2026 Zudio Blockchain Foundation. Open-source under MIT License.
+        </div>
+        <div style="font-size: 11px;">
+          Founder notice: <code>zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc</code> holds 7,350,000 ZDC. Trade fee is 0.
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <!-- SCRIPTS -->
   <script type="module" src="feed.js"></script>
   <script type="module" src="site.js"></script>
@@ -246,6 +459,21 @@
       const m = document.getElementById("pumpHowModal");
       if (m) m.classList.remove("open");
     };
+
+    // Update active coins count dynamically from feed
+    async function updateHeaderStats() {
+      try {
+        const res = await fetch("/api/feed");
+        if (res.ok) {
+          const data = await res.json();
+          const total = (data.newest?.length || 0) + (data.curve_full?.length || 0);
+          const el = document.getElementById("statCoinsCount");
+          if (el) el.textContent = total > 0 ? total + " Coins" : "Live";
+        }
+      } catch (e) {}
+    }
+    updateHeaderStats();
+    setInterval(updateHeaderStats, 10000);
   </script>
 </body>
 
