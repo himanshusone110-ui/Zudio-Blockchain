@@ -4,393 +4,361 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZUDIO · Layer-1 Blockchain for Meme Coins</title>
-  <meta name="description" content="ZUDIO is an independent blockchain with zero-fee ZRC-20 meme tokens and client-side cryptographic signing." />
+  <title>ZUDIO.FUN · The Layer-1 Meme Coin Launchpad (Pump.fun on Zudio)</title>
+  <meta name="description" content="ZUDIO.FUN is a 100% fair launch meme coin launchpad on the Zudio Layer-1 blockchain with zero gas fees and instant bonding curve liquidity." />
   <link rel="icon" href="logo.png?v=2" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css?v=14" />
+  <link rel="stylesheet" href="style.css?v=15" />
+  <link rel="stylesheet" href="pump.css?v=2" />
 </head>
 
 <body>
-  <!-- 1. SHORT TOP BAR -->
-  <div class="network-bar">
-    <span class="dot"></span>
-    <span>ZUDIO mainnet · port 9333 · fee 0 ZDC · client-side signing.</span>
+  <!-- 1. LIVE MARQUEE TICKER (PUMP.FUN STYLE) -->
+  <div class="pump-ticker-bar">
+    <div class="pump-ticker-track" id="pumpTickerTrack">
+      <!-- Injected dynamically via pump.js -->
+      <div class="pump-ticker-item">
+        <span class="badge-buy">🟢 BUY</span>
+        <span class="tick-link">ZMEME</span>
+        <span>4,500 tokens for <b>25 ZDC</b></span>
+        <span style="color: #64748b;">(zudio1q5w...)</span>
+      </div>
+      <div class="pump-ticker-item">
+        <span class="badge-buy">🟢 BUY</span>
+        <span class="tick-link">SUN</span>
+        <span>1,800 tokens for <b>12 ZDC</b></span>
+        <span style="color: #64748b;">(zudio1qfy...)</span>
+      </div>
+    </div>
   </div>
 
-  <!-- HEADER NAVIGATION -->
-  <header class="site-header">
-    <a href="index.html" class="logo-link">
-      <img src="logo.png?v=2" alt="ZUDIO" class="brand-logo" />
-      <div class="logo-text-wrap">
-        <h1>ZUDIO</h1>
-        <span>Mainnet Network</span>
-      </div>
-    </a>
+  <!-- 2. TOP NAVIGATION -->
+  <header class="pump-nav">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <a href="index.html" class="pump-logo-wrap">
+        <span class="pump-pill-logo">💊 ZUDIO.FUN</span>
+        <span class="pump-logo-tag">Layer-1</span>
+      </a>
+      <button type="button" class="btn-pump-pill btn-pump-subtle" onclick="window.openHowModal()">[how it works]</button>
+    </div>
 
-    <nav class="nav-links">
-      <a href="index.html" class="nav-link active">Hub</a>
-      <a href="explorer.html" class="nav-link">Explorer</a>
-      <a href="wallet.html" class="nav-link" style="color: var(--cyan) !important;">📱 Mobile Wallet</a>
-      <a href="downloads/ZUDIO-Windows-Release.zip" class="nav-link nav-btn">Download Node</a>
-      <div id="headerAuthArea" style="display: flex; align-items: center; gap: 8px; margin-left: 6px;">
-        <button type="button" id="headerSignInBtn" class="nav-link nav-btn" style="background: var(--cyan); color: #050811 !important;">Sign in</button>
+    <!-- Center: Search Filter Bar -->
+    <div class="pump-nav-center">
+      <input type="text" id="pumpSearchInput" class="pump-search-input" placeholder="🔍 Search for token name, ticker, or creator..." />
+    </div>
+
+    <!-- Right Controls -->
+    <div class="pump-nav-right">
+      <button type="button" class="btn-pump-pill btn-pump-create" onclick="window.openCreateModal()">💊 [start a new coin]</button>
+      
+      <a href="wallet.html" class="btn-pump-pill btn-pump-subtle" style="color: var(--cyan) !important;">📱 Wallet</a>
+      <a href="explorer.html" class="btn-pump-pill btn-pump-subtle">🔍 Explorer</a>
+
+      <!-- Wallet Auth Area -->
+      <div id="headerAuthArea" style="display: flex; align-items: center; gap: 8px;">
+        <button type="button" id="headerSignInBtn" class="btn-pump-pill btn-pump-subtle" style="border-color: var(--pump-green); color: var(--pump-green);">Sign in</button>
         <div id="headerUserWrap" style="display: none; align-items: center; gap: 8px;">
-          <span id="headerUserAddress" class="header-user-badge">zudio1...</span>
-          <button type="button" id="headerSignOutBtn" class="nav-link" style="padding: 6px 12px; font-size: 12px; border: 1px solid var(--border);">Sign out</button>
+          <div class="pump-wallet-pill">
+            <span class="pump-status-dot"></span>
+            <span id="headerUserAddress">zudio1...</span>
+          </div>
+          <button type="button" id="headerSignOutBtn" class="btn-pump-pill btn-pump-subtle" style="padding: 6px 12px; font-size: 11px;">Out</button>
         </div>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <!-- 2. HERO SECTION WITH LARGE LOGO & TITLE -->
-  <section class="hero">
-    <img src="logo.png?v=2" alt="ZUDIO Logo" class="hero-logo-large" />
-    <h1 class="hero-title">ZUDIO</h1>
-    <p class="hero-subtitle">A separate chain. Ticker ZDC. Not Bitcoin.</p>
-
-    <!-- 3. THREE REAL ACTION BUTTONS -->
-    <div class="hero-cta-group">
-      <a href="#deployPanel" class="btn-cta primary">🚀 Create a meme coin</a>
-      <a href="explorer.html" class="btn-cta secondary">🔍 Open explorer</a>
-      <a href="ZudioCoin.apk" download="ZudioCoin.apk" class="btn-cta outline" style="border-color: var(--cyan); color: var(--cyan);">📱 Download Android APK</a>
-      <a href="downloads/ZUDIO-Windows-Release.zip" class="btn-cta outline">📥 Download node</a>
-    </div>
-
-    <!-- 4. FOUR FACTS ONLY WITH REAL NUMBERS -->
-    <div class="facts-grid">
-      <div class="fact-card">
-        <span class="fact-label">Block Reward</span>
-        <div class="fact-value">50 ZDC</div>
-        <div class="fact-sub">Per block to miner</div>
-      </div>
-
-      <div class="fact-card">
-        <span class="fact-label">Block Spacing</span>
-        <div class="fact-value">≥ 6m 12s</div>
-        <div class="fact-sub">372s consensus rule</div>
-      </div>
-
-      <div class="fact-card">
-        <span class="fact-label">Flagship Meme Token</span>
-        <div class="fact-value">1,000,000</div>
-        <div class="fact-sub">ZMEME total supply</div>
-      </div>
-
-      <div class="fact-card">
-        <span class="fact-label">Founder Balance</span>
-        <div class="fact-value">7,350,000 ZDC</div>
-        <div class="fact-sub">Mined on genesis chain</div>
+  <!-- 3. MAIN CONTENT CONTAINER -->
+  <main class="pump-hero-container">
+    <!-- Hero Title -->
+    <div class="pump-hero-header">
+      <h1 class="pump-hero-title">Fair Launch Meme Coins on Zudio Layer-1</h1>
+      <p class="pump-hero-desc">Zero presale. Zero team tokens. Instant bonding curve liquidity. Zero gas fees.</p>
+      <div style="display: flex; justify-content: center; gap: 12px;">
+        <button type="button" class="btn-pump-pill btn-pump-create" style="padding: 12px 28px; font-size: 15px;" onclick="window.openCreateModal()">💊 [start a new coin]</button>
+        <a href="downloads/ZUDIO-Windows-Release.zip" class="btn-pump-pill btn-pump-subtle" style="padding: 12px 20px; font-size: 14px;">📥 Download Windows Miner</a>
+        <a href="ZudioCoin.apk" download="ZudioCoin.apk" class="btn-pump-pill btn-pump-subtle" style="padding: 12px 20px; font-size: 14px; border-color: var(--pump-green); color: var(--pump-green);">📱 Android APK</a>
       </div>
     </div>
-  </section>
 
-  <!-- 5. HOW IT WORKS (3 STEPS) -->
-  <section class="panel" style="background: transparent; border: none; padding: 0; margin-bottom: 48px;">
-    <div class="section-header">
-      <h2>How it works</h2>
-      <p>Independent chain mechanics with zero gas fees for meme tokens.</p>
+    <!-- 4. KING OF THE HILL SPOTLIGHT -->
+    <div id="pumpKothArea">
+      <!-- Injected dynamically via pump.js -->
     </div>
 
-    <div class="how-it-works-grid">
-      <div class="step-card">
-        <div class="step-num">1</div>
-        <h3>Download the node, or use this site.</h3>
-        <p>Run your own full node on port 9333 with Windows 1-click binaries, or connect directly through this self-custodial browser portal.</p>
+    <!-- 5. FILTER & SORT CONTROLS -->
+    <div class="pump-controls-bar">
+      <div class="pump-sort-group">
+        <span style="font-size: 11px; color: #64748b; font-weight: 700; padding-left: 8px;">SORT BY:</span>
+        <button type="button" class="pump-sort-btn active" data-sort="bump">🔥 Bump Order</button>
+        <button type="button" class="pump-sort-btn" data-sort="mcap">💰 Market Cap</button>
+        <button type="button" class="pump-sort-btn" data-sort="progress">📈 Bonding %</button>
+        <button type="button" class="pump-sort-btn" data-sort="creation">🕒 Creation Time</button>
       </div>
 
-      <div class="step-card">
-        <div class="step-num">2</div>
-        <h3>Your browser creates a zudio1 address.</h3>
-        <p>Your ECDSA secp256k1 keypair is generated locally. The private key stays strictly in your browser and is never sent to any server.</p>
-      </div>
-
-      <div class="step-card">
-        <div class="step-num">3</div>
-        <h3>Create a meme coin or send one. Fee 0 ZDC.</h3>
-        <p>Deploy custom ZRC-20 tokens or transfer balances instantly. Sponsor nodes relay meme transactions with zero network fees.</p>
+      <div style="font-size: 12px; color: #94a3b8; font-family: var(--font-mono);">
+        Total Ecosystem Cap: <b id="pumpHeaderTotalMcap" style="color: var(--pump-green);">$0.00</b>
       </div>
     </div>
-  </section>
 
-  <main>
-    <!-- WALLET PANEL -->
-    <section class="panel" id="walletPanel">
-      <div class="panel-header">
-        <h2>👛 Your ZUDIO Wallet</h2>
-        <span class="badge-tag green">Self-Custodial</span>
-      </div>
-      <p style="color: var(--ink-secondary); font-size: 14px; margin-bottom: 14px;">
-        Keys are generated and stored locally in your browser’s localStorage. You sign transactions client-side.
-      </p>
-
-      <label for="myAddress">Your Bech32 Address (zudio1...)</label>
-      <div class="addr-row">
-        <code id="myAddress">Loading address...</code>
-        <button type="button" id="copyMine" class="btn-inline">Copy Address</button>
-      </div>
-
-      <div class="actions">
-        <button type="button" id="downloadBackupBtn" class="primary">💾 Download Backup File</button>
-        <button type="button" id="restoreBackupBtn" class="secondary">📥 Restore from File</button>
-        <button type="button" id="toggleKeyView" class="secondary">👁️ View Key</button>
-        <button type="button" id="newKeyBtn" class="ghost">🔄 Create New Wallet</button>
-      </div>
-
-      <!-- Hidden file input for box-free file restore -->
-      <input type="file" id="restoreFileInput" accept=".json,.txt,.key" style="display: none;" />
-
-      <div class="key-box" id="keyDetailsBox" hidden>
-        <div class="key-box-row">
-          <span>Private Key (WIF Format):</span>
-          <span class="key-val" id="wifDisplay"></span>
-        </div>
-        <p style="margin: 8px 0 0; font-size: 12px; color: var(--amber);">
-          ⚠️ Security notice: Never share your private key. Download your backup file so you can restore your wallet if your browser cache is cleared.
-        </p>
-      </div>
-
-      <p class="note" id="walletNote" hidden></p>
-    </section>
-
-    <!-- CREATE COIN PANEL -->
-    <section class="panel" id="deployPanel">
-      <div class="panel-header">
-        <h2>🚀 Create a Meme Coin (ZRC-20)</h2>
-        <span class="badge-tag cyan">0 ZDC Fee · Instant</span>
-      </div>
-      <p style="color: var(--ink-secondary); font-size: 14px; margin-bottom: 16px;">
-        Deploying a coin automatically mints 100% of the supply to your address above. Transactions are signed client-side.
-      </p>
-
-      <form id="deploy" novalidate>
-        <label for="coinName">Coin Name</label>
-        <input id="coinName" name="name" maxlength="24" placeholder="e.g. Galaxy Coin" required />
-
-        <label for="coinTick">Ticker / Symbol (Up to 8 characters)</label>
-        <input id="coinTick" name="tick" maxlength="8" placeholder="e.g. GALAXY" style="text-transform: uppercase;" required />
-
-        <label for="coinMax">Total Supply (Max coins to mint)</label>
-        <input id="coinMax" name="max" inputmode="numeric" placeholder="e.g. 1000000" required />
-
-        <label for="coinImage">Coin Logo Image (PNG, JPG, GIF, WebP)</label>
-        <div class="file-dropzone" id="uploadDropzone">
-          <input id="coinImage" name="image" type="file" accept="image/png,image/jpeg,image/gif,image/webp" style="display: none;" />
-          <span id="uploadLabelText">📁 Click or drag image here to upload logo (optional)</span>
-        </div>
-
-        <div id="previewWrapper" style="display: none; align-items: center; gap: 12px; margin-top: 12px;">
-          <img id="imagePreview" alt="Preview" class="coin-img-round" />
-          <span id="previewFileName" style="font-size: 13px; color: var(--ink-secondary);"></span>
-          <button type="button" id="removeImageBtn" class="btn-inline" style="padding: 4px 10px; font-size: 11px;">Remove</button>
-        </div>
-
-        <div class="signing-preview-card">
-          <span class="preview-label">Client-side signing payload</span>
-          <code id="deploySigningPreview">zrc-20:deploy:&lt;SYMBOL&gt;:&lt;NAME&gt;:&lt;SUPPLY&gt;:&lt;YOUR_ADDRESS&gt;:&lt;nonce&gt;</code>
-        </div>
-
-        <button type="submit" id="deploySubmitBtn">🚀 Deploy Meme Coin (0 ZDC Fee)</button>
-      </form>
-
-      <p class="note" id="deployNote" hidden></p>
-    </section>
-
-    <!-- SEND / TRANSFER PANEL -->
-    <section class="panel" id="transferPanel">
-      <div class="panel-header">
-        <h2>⚡ Send Meme Coins</h2>
-        <span class="badge-tag green">P2P Transfer · Zero Fee</span>
-      </div>
-      <p style="color: var(--ink-secondary); font-size: 14px; margin-bottom: 16px;">
-        Transfer your meme tokens directly to any ZUDIO address (zudio1...). Signed locally with your private key.
-      </p>
-
-      <form id="transfer" novalidate>
-        <label for="sendTick">Select Token</label>
-        <select id="sendTick" required>
-          <option value="">Select a token...</option>
-        </select>
-        <p style="font-size: 12px; color: var(--ink-muted); margin-top: 4px;" id="coinBalanceHint">Available balance: 0</p>
-
-        <label for="sendAmt">Amount to Send</label>
-        <div class="input-with-action">
-          <input id="sendAmt" inputmode="numeric" placeholder="e.g. 500" required />
-          <button type="button" id="maxBtn" class="btn-inline">MAX</button>
-        </div>
-
-        <label for="sendTo">Recipient Address (zudio1...)</label>
-        <input id="sendTo" required placeholder="zudio1q..." />
-        <p id="addrValidationNote" style="font-size: 12px; margin-top: 4px; display: none;"></p>
-
-        <div class="signing-preview-card">
-          <span class="preview-label">Client-side signing payload</span>
-          <code id="transferSigningPreview">zrc-20:transfer:&lt;SYMBOL&gt;:&lt;AMT&gt;:&lt;FROM&gt;:&lt;TO&gt;:&lt;nonce&gt;</code>
-        </div>
-
-        <button type="submit" id="transferSubmitBtn">⚡ Sign & Send Transaction</button>
-      </form>
-
-      <p class="note" id="transferNote" hidden></p>
-    </section>
-
-    <!-- COINS EXPLORER PANEL -->
-    <section class="panel" id="coinsPanel">
-      <div class="panel-header">
-        <h2>🪙 All Coins on ZUDIO Chain</h2>
-        <button type="button" id="refreshCoinsBtn" class="btn-inline" style="background: transparent;">🔄 Refresh</button>
-      </div>
-      <p style="color: var(--ink-secondary); font-size: 14px;">
-        Live registry of deployed ZRC-20 tokens, total supply, and your personal token balances.
-      </p>
-
-      <ul class="coin-list" id="coinList">
-        <li style="grid-column: 1/-1; text-align: center; color: var(--ink-muted); padding: 32px;">
-          Loading tokens from blockchain...
-        </li>
-      </ul>
-    </section>
-
-    <!-- FOUNDER & MINING ALLOCATION PANEL -->
-    <section class="panel" id="founderPanel">
-      <div class="panel-header">
-        <h2>⛏️ Mining & Genesis Allocation</h2>
-        <span class="badge-tag">Genesis Verified</span>
-      </div>
-      <p style="color: var(--ink-secondary); font-size: 14px; margin-bottom: 14px;">
-        Every block rewards the miner with <strong>50 ZDC</strong>. Founder address holds <strong>7,350,000 ZDC</strong> mined on the genesis chain.
-      </p>
-
-      <label for="founder">Founder Address</label>
-      <div class="addr-row">
-        <code id="founder">zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc</code>
-        <button type="button" id="copy" class="btn-inline">Copy Address</button>
-      </div>
-      <p class="note" id="copyNote" hidden>Founder address copied to clipboard.</p>
-    </section>
+    <!-- 6. MEME COINS GRID -->
+    <div class="pump-coins-grid" id="pumpCoinsGrid">
+      <!-- Rendered dynamically via pump.js -->
+    </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <p><strong>ZUDIO Blockchain</strong> · Mainnet Port 9333 · Native Ticker ZDC · Not Bitcoin</p>
-    <p style="font-size: 12px;">Zero Network Gas Fee for ZRC-20 Meme Tokens · Client-Side Cryptographic Signatures</p>
-  </footer>
-
-  <!-- FULL SCREEN GATE (BEFORE WEBSITE OPENS) -->
-  <div class="gate-overlay" id="zudioGate">
-    <div class="gate-card">
-      <div class="gate-header">
-        <img src="logo.png?v=2" alt="ZUDIO" class="gate-logo" />
-        <h1 class="gate-title">Zudio Coin</h1>
-        <p class="gate-subtitle">Mainnet Network · Client-Side Cryptographic Vault</p>
+  <!-- ===================================================================== -->
+  <!-- 7. INTERACTIVE TRADING MODAL (THE PUMP.FUN EXPERIENCE)                -->
+  <!-- ===================================================================== -->
+  <div class="pump-modal-overlay" id="pumpCoinModal">
+    <div class="pump-modal-content">
+      <!-- Modal Header -->
+      <div class="pump-modal-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 12px; font-weight: 700; color: var(--pump-green); background: var(--pump-green-dim); padding: 4px 10px; border-radius: 9999px;">ZUDIO BONDING CURVE</span>
+          <span id="modalCoinMcapUsd" style="font-family: var(--font-mono); font-size: 14px; font-weight: 800; color: #fff;">$0.00</span>
+          <span id="modalCoinMcapZdc" style="font-size: 12px; color: #94a3b8;">(0 ZDC)</span>
+        </div>
+        <button type="button" class="pump-modal-close" onclick="window.closeCoinModal()">✕</button>
       </div>
 
-      <!-- EXACT FOUR CHOICES -->
-      <div class="gate-tabs">
-        <button type="button" class="gate-tab-btn active" id="gateTabBtnSignup" data-tab="gateTabSignup">1. Sign up</button>
-        <button type="button" class="gate-tab-btn" id="gateTabBtnSignin" data-tab="gateTabSignin">2. Sign in</button>
-        <button type="button" class="gate-tab-btn" id="gateTabBtnKey" data-tab="gateTabKey">3. Key login</button>
-        <button type="button" class="gate-tab-btn" id="gateTabBtnGoogle" data-tab="gateTabGoogle">4. Continue with Google</button>
+      <!-- Trade Layout -->
+      <div class="pump-trade-layout">
+        <!-- Left: Chart, Bonding Status, Discussions, Trades -->
+        <div class="pump-left-col">
+          <!-- Coin Header Info -->
+          <div class="pump-coin-hero-row">
+            <img src="logo.png" alt="Coin Avatar" id="modalCoinAvatar" class="pump-modal-avatar" />
+            <div>
+              <div style="display: flex; align-items: baseline; gap: 8px;">
+                <h2 id="modalCoinName" style="color: #fff; font-size: 24px; font-weight: 800;">Coin Name</h2>
+                <span id="modalCoinTick" style="color: var(--pump-green); font-family: var(--font-mono); font-size: 16px; font-weight: 700;">[TICK]</span>
+              </div>
+              <div style="font-size: 12px; color: #64748b;">
+                Created by: <span id="modalCoinCreator" style="color: #94a3b8; font-family: var(--font-mono);">zudio1...</span>
+              </div>
+              <div style="display: flex; gap: 8px; margin-top: 6px;">
+                <a href="#" target="_blank" id="modalCoinTelegram" class="btn-pump-pill btn-pump-subtle" style="padding: 3px 8px; font-size: 11px;">Telegram</a>
+                <a href="#" target="_blank" id="modalCoinTwitter" class="btn-pump-pill btn-pump-subtle" style="padding: 3px 8px; font-size: 11px;">Twitter</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price Candlestick Chart -->
+          <div class="pump-chart-box">
+            <div class="pump-chart-header">
+              <span style="font-size: 13px; font-weight: 700; color: #fff;">Price Trajectory (ZDC)</span>
+              <span style="font-size: 11px; color: var(--pump-green); font-family: var(--font-mono);">LIVE BONDING CURVE</span>
+            </div>
+            <canvas id="pumpChartCanvas" class="pump-chart-canvas"></canvas>
+          </div>
+
+          <!-- Bonding Curve Progress Box -->
+          <div class="pump-bonding-box">
+            <div class="pump-bonding-title">
+              <span>Bonding Curve Progress</span>
+              <span id="modalCoinProgressPct" style="color: var(--pump-green); font-family: var(--font-mono);">0%</span>
+            </div>
+            <div class="pump-progress-bar">
+              <div class="pump-progress-fill" id="modalCoinProgressBar" style="width: 0%;"></div>
+            </div>
+            <div class="pump-bonding-desc">
+              When the market cap reaches <b>50,000 ZDC</b>, all remaining curve liquidity (<span id="modalCurveRemainingTokens">0</span> tokens) automatically graduates and gets permanently locked!
+            </div>
+          </div>
+
+          <!-- Top Holders List -->
+          <div style="background: #131926; border-radius: 14px; padding: 16px; margin-bottom: 20px; border: 1px solid var(--pump-border);">
+            <div style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px;">Top Holders Distribution</div>
+            <div id="modalHoldersList">
+              <!-- Holders injected dynamically -->
+            </div>
+          </div>
+
+          <!-- Tabs: Threads & Trades -->
+          <div class="pump-details-tabs">
+            <button type="button" class="pump-detail-tab-btn active" id="tabTradesBtn" onclick="document.getElementById('modalTradesSection').style.display='block'; document.getElementById('modalCommentsSection').style.display='none'; this.classList.add('active'); document.getElementById('tabCommentsBtn').classList.remove('active');">Recent Trades</button>
+            <button type="button" class="pump-detail-tab-btn" id="tabCommentsBtn" onclick="document.getElementById('modalCommentsSection').style.display='block'; document.getElementById('modalTradesSection').style.display='none'; this.classList.add('active'); document.getElementById('tabTradesBtn').classList.remove('active');">Meme Thread</button>
+          </div>
+
+          <!-- Trades Table -->
+          <div id="modalTradesSection">
+            <table class="pump-table">
+              <thead>
+                <tr>
+                  <th>Trader</th>
+                  <th>Type</th>
+                  <th>ZDC</th>
+                  <th>Tokens</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="modalTradesTableBody">
+                <!-- Trades injected dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Comments Section -->
+          <div id="modalCommentsSection" style="display: none;">
+            <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+              <input type="text" id="modalCommentInput" class="pump-search-input" placeholder="Drop a comment or meme about this coin..." />
+              <button type="button" class="btn-pump-pill btn-pump-create" onclick="window.postComment()">Post</button>
+            </div>
+            <div id="modalCommentsList">
+              <!-- Comments injected dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Instant Buy/Sell Swap Terminal -->
+        <div class="pump-right-col">
+          <div class="pump-swap-card">
+            <!-- Tabs: Buy / Sell -->
+            <div class="pump-swap-tabs">
+              <button type="button" class="pump-tab-btn buy active" id="tabBuyBtn" onclick="window.setTradeMode('buy')">Buy</button>
+              <button type="button" class="pump-tab-btn sell" id="tabSellBtn" onclick="window.setTradeMode('sell')">Sell</button>
+            </div>
+
+            <!-- Pay Input Field -->
+            <div class="pump-swap-field">
+              <div class="pump-swap-label">
+                <span>YOU PAY</span>
+                <span id="swapPayTokenLabel">Balance: Available</span>
+              </div>
+              <div class="pump-swap-input-row">
+                <input type="number" id="swapPayAmountInput" class="pump-swap-input" placeholder="0.00" step="any" oninput="window.onSwapInputChange()" />
+                <span class="pump-swap-token-badge" id="swapPayTokenBadge">ZDC</span>
+              </div>
+            </div>
+
+            <!-- Quick Amount Pills -->
+            <div class="pump-quick-amounts">
+              <button type="button" class="pump-quick-btn" onclick="window.setQuickAmount('reset')">reset</button>
+              <button type="button" class="pump-quick-btn" onclick="window.setQuickAmount('10')">10 ZDC</button>
+              <button type="button" class="pump-quick-btn" onclick="window.setQuickAmount('50')">50 ZDC</button>
+              <button type="button" class="pump-quick-btn" onclick="window.setQuickAmount('100')">100 ZDC</button>
+              <button type="button" class="pump-quick-btn" onclick="window.setQuickAmount('max')">max</button>
+            </div>
+
+            <!-- Estimated Receive Box -->
+            <div class="pump-swap-field" style="background: #111724;">
+              <div class="pump-swap-label">
+                <span>YOU RECEIVE (ESTIMATED)</span>
+                <span>Slippage: 1%</span>
+              </div>
+              <div class="pump-swap-input-row">
+                <span style="font-size: 20px; font-weight: 700; color: #fff; font-family: var(--font-mono);" id="swapEstimatedOutput">0.00</span>
+                <span class="pump-swap-token-badge" id="swapReceiveTokenBadge">TOKEN</span>
+              </div>
+            </div>
+
+            <!-- Platform Fee Note -->
+            <div class="pump-swap-estimate-box">
+              <div class="pump-estimate-row">
+                <span>Platform Fee:</span>
+                <span>1% (Secures L1 Liquidity)</span>
+              </div>
+              <div class="pump-estimate-row">
+                <span>Network Gas:</span>
+                <b style="color: var(--pump-green);">0 ZDC (Free)</b>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="button" id="btnExecuteTrade" class="btn-pump-execute" onclick="window.executeTrade()">
+              Buy Token
+            </button>
+          </div>
+        </div>
       </div>
-
-      <!-- CHOICE 1: SIGN UP -->
-      <div class="gate-panel" id="gateTabSignup">
-        <div class="gate-notice">
-          The browser creates a new <strong>zudio1</strong> address. Set a password to encrypt your key locally. The key never leaves your browser.
-        </div>
-        <div id="signupInputArea">
-          <label for="gateSignupPass">Set Wallet Password</label>
-          <input type="password" id="gateSignupPass" placeholder="Enter password (min 4 characters)" />
-          <label for="gateSignupPassConfirm">Confirm Password</label>
-          <input type="password" id="gateSignupPassConfirm" placeholder="Confirm password" />
-          <button type="button" id="btnGateDoSignup" class="btn-cta primary" style="width: 100%; margin-top: 14px;">✨ Create & Encrypt Wallet</button>
-        </div>
-        <div id="signupSuccessArea" style="display: none;">
-          <div class="note success" style="margin-bottom: 14px;">
-            🎉 Wallet created! Your private key is encrypted and stored locally in this browser.
-          </div>
-          <div class="addr-row" style="margin-bottom: 14px;">
-            <code id="gateCreatedAddress">zudio1...</code>
-          </div>
-          <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 14px;">
-            Your backup file has been saved to your downloads. Keep this file safe so you can restore your wallet on any device.
-          </p>
-          <div style="display: flex; gap: 10px; flex-direction: column;">
-            <button type="button" id="btnGateDownloadAgain" class="btn-cta secondary">💾 Download Backup Again</button>
-            <button type="button" id="btnGateOpenSite" class="btn-cta primary" style="font-size: 15px; padding: 14px;">🚀 Open Website</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- CHOICE 2: SIGN IN -->
-      <div class="gate-panel" id="gateTabSignin" style="display: none;">
-        <div class="gate-notice" id="gateSigninNotice">
-          Type the password for the wallet already saved in this browser.
-        </div>
-        <div id="gateSigninFormArea">
-          <label for="gateSigninPass">Wallet Password</label>
-          <input type="password" id="gateSigninPass" placeholder="Enter your wallet password" />
-          <button type="button" id="btnGateDoSignin" class="btn-cta primary" style="width: 100%; margin-top: 14px;">🔓 Unlock & Open Website</button>
-        </div>
-        <div id="gateNoWalletArea" style="display: none;">
-          <div class="note" style="border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.08); color: #fb7185; margin-bottom: 16px;">
-            ⚠️ No wallet is currently saved in this browser. Please use <strong>Sign up</strong> to create a new wallet or <strong>Key login</strong> to restore from a backup file.
-          </div>
-          <div style="display: flex; gap: 10px;">
-            <button type="button" id="btnGateGoSignup" class="btn-cta primary" style="flex: 1;">1. Go to Sign up</button>
-            <button type="button" id="btnGateGoKey" class="btn-cta secondary" style="flex: 1;">3. Go to Key login</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- CHOICE 3: KEY LOGIN -->
-      <div class="gate-panel" id="gateTabKey" style="display: none;">
-        <div class="gate-notice">
-          Enter your <strong>Private Key</strong> (WIF or 64-hex) to login instantly. <strong>No password required.</strong> Your key stays 100% in your browser.
-        </div>
-        <label for="gatePrivateKeyInput">Private Key (WIF or Hex)</label>
-        <textarea id="gatePrivateKeyInput" rows="2" placeholder="Paste your private key (e.g. 5K... / L... / TQ... or 64-char hex key)" style="font-family: var(--font-mono); font-size: 13px; resize: vertical;"></textarea>
-
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px; margin-bottom: 6px;">
-          <label for="gateKeyFile" class="btn-inline" style="cursor: pointer; font-size: 12px; padding: 6px 12px; background: rgba(255,255,255,0.06); border: 1px solid var(--border);">📁 Or Select Key / Backup File</label>
-          <input type="file" id="gateKeyFile" accept=".json,.txt" style="display: none;" />
-          <span id="gateKeyFileName" style="font-size: 12px; color: var(--cyan); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 250px;"></span>
-        </div>
-
-        <button type="button" id="btnGateDoRestore" class="btn-cta primary" style="width: 100%; margin-top: 10px; font-size: 15px; padding: 13px;">🔓 Login with Private Key & Open Website</button>
-      </div>
-
-      <!-- CHOICE 4: CONTINUE WITH GOOGLE -->
-      <div class="gate-panel" id="gateTabGoogle" style="display: none;">
-        <div class="gate-notice">
-          Sign in with Google to show your name. Your private key stays 100% in your browser and is never sent to Google or to the server.
-        </div>
-        <div id="googleInitialArea">
-          <button type="button" class="btn-google" id="btnGateGoogle">
-            <svg viewBox="0 0 24 24">
-              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-            </svg>
-            Continue with Google
-          </button>
-        </div>
-        <div id="googleConnectedArea" style="display: none;">
-          <div class="note success" style="margin-bottom: 12px;" id="googleUserGreeting">
-            Signed in as Google user.
-          </div>
-          <div id="googleWalletSetupArea"></div>
-        </div>
-      </div>
-
-      <!-- STATUS MESSAGES -->
-      <p class="note error" id="gateErrorNote" hidden style="margin-top: 14px;"></p>
-      <p class="note success" id="gateSuccessNote" hidden style="margin-top: 14px;"></p>
     </div>
   </div>
 
-  <script type="module" src="site.js?v=14"></script>
+  <!-- ===================================================================== -->
+  <!-- 8. "START A NEW COIN" MODAL (PUMP.FUN LAUNCHPAD)                      -->
+  <!-- ===================================================================== -->
+  <div class="pump-modal-overlay" id="pumpCreateModal">
+    <div class="pump-modal-content" style="max-width: 540px;">
+      <div class="pump-modal-header">
+        <h3 style="color: #fff; font-size: 18px; font-weight: 800;">💊 Start a New Meme Coin</h3>
+        <button type="button" class="pump-modal-close" onclick="window.closeCreateModal()">✕</button>
+      </div>
+
+      <form onsubmit="window.submitNewCoin(event)" style="padding: 24px;">
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">COIN NAME *</label>
+          <input type="text" id="createCoinName" class="pump-search-input" placeholder="e.g. Pepe Zudio" required />
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">TICKER SYMBOL * (Max 8 letters)</label>
+          <input type="text" id="createCoinTick" class="pump-search-input" placeholder="e.g. PEPE" maxlength="8" required style="text-transform: uppercase;" />
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">DESCRIPTION</label>
+          <textarea id="createCoinDesc" class="pump-search-input" rows="3" placeholder="Tell the world why your meme coin will pump..." style="border-radius: 12px; resize: vertical;"></textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 6px;">INITIAL BUY (OPTIONAL ZDC)</label>
+          <input type="number" id="createCoinInitialBuy" class="pump-search-input" placeholder="e.g. 20 (Be the first buyer on the curve!)" step="any" />
+        </div>
+
+        <div style="background: #111724; border-radius: 10px; padding: 12px; font-size: 12px; color: #94a3b8; margin-bottom: 20px;">
+          💡 <b>Fair Launch Guarantee:</b> Total supply is fixed at 1,000,000 tokens. 80% goes directly to the public bonding curve with zero presale. Deployment cost is <b>0 ZDC</b>!
+        </div>
+
+        <button type="submit" id="btnSubmitNewCoin" class="btn-pump-execute">
+          💊 Create Coin (0 Gas)
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 9. "HOW IT WORKS" MODAL                                               -->
+  <!-- ===================================================================== -->
+  <div class="pump-modal-overlay" id="pumpHowModal">
+    <div class="pump-modal-content" style="max-width: 600px;">
+      <div class="pump-modal-header">
+        <h3 style="color: #fff; font-size: 18px; font-weight: 800;">💊 How ZUDIO.FUN Works</h3>
+        <button type="button" class="pump-modal-close" onclick="window.closeHowModal()">✕</button>
+      </div>
+
+      <div style="padding: 24px; font-size: 14px; color: #cbd5e1; line-height: 1.6;">
+        <p style="margin-bottom: 16px;">ZUDIO.FUN prevents rug pulls by making sure all created tokens are 100% fair launch with no insider pre-mines or team allocation.</p>
+
+        <div style="display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start;">
+          <div style="background: var(--pump-green); color: #050811; font-weight: 900; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+          <div><b>Pick a coin:</b> Browse trending meme coins on the King of the Hill and the live feed.</div>
+        </div>
+
+        <div style="display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start;">
+          <div style="background: var(--pump-green); color: #050811; font-weight: 900; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+          <div><b>Buy on the bonding curve:</b> Every purchase increases the price along the mathematical curve.</div>
+        </div>
+
+        <div style="display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start;">
+          <div style="background: var(--pump-green); color: #050811; font-weight: 900; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+          <div><b>Sell anytime:</b> Sell your tokens back to the curve whenever you want to lock in profits.</div>
+        </div>
+
+        <div style="display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start;">
+          <div style="background: var(--pump-green); color: #050811; font-weight: 900; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+          <div><b>Graduate at 50,000 ZDC:</b> When the bonding curve reaches 100%, remaining tokens and collected liquidity are permanently locked!</div>
+        </div>
+
+        <button type="button" class="btn-pump-pill btn-pump-create" style="width: 100%; justify-content: center; padding: 12px;" onclick="window.closeHowModal()">
+          I'm Ready to Pump! 🚀
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH SCRIPTS & PUMP SCRIPT -->
+  <script type="module" src="pump.js?v=2"></script>
 </body>
 
 </html>

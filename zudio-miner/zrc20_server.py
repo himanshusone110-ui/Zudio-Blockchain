@@ -12,6 +12,7 @@ from urllib.parse import parse_qs, urlparse
 from ecdsa import SECP256k1, VerifyingKey
 from ecdsa.ellipticcurve import Point
 from ecdsa.util import sigdecode_string
+import pump_engine
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 COIN_DIR = os.path.join(ROOT, "coins")
@@ -388,7 +389,11 @@ def refresh_locked():
 
 def view_state():
     with LOCK:
-        return refresh_locked()
+        try:
+            return refresh_locked()
+        except Exception:
+            import copy
+            return copy.deepcopy(STATE)
 
 
 def publish(payload):
@@ -920,6 +925,27 @@ class Handler(BaseHTTPRequestHandler):
         path = parsed.path
         query_params = parse_qs(parsed.query)
 
+        if path == "/api/pump/coins":
+            try:
+                addr = query_params.get("address", [""])[0].strip()
+                view = view_state()
+                data = pump_engine.ENGINE.get_overview(view["coins"], addr)
+                self._send(200, json.dumps(data), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
+            return
+
+        if path == "/api/pump/coin":
+            try:
+                tick = query_params.get("tick", [""])[0].strip()
+                addr = query_params.get("address", [""])[0].strip()
+                view = view_state()
+                data = pump_engine.ENGINE.get_coin_detail(tick, view["coins"], addr)
+                self._send(200, json.dumps(data), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
+            return
+
         if path == "/api/coins":
             try:
                 view = view_state()
@@ -1027,6 +1053,29 @@ class Handler(BaseHTTPRequestHandler):
         if path in ("/api/rpc", "/rpc"):
             result = handle_public_rpc(incoming)
             self._send(200, json.dumps(result), "application/json")
+            return
+
+        if path == "/api/pump/trade":
+            try:
+                tick = incoming.get("tick", "")
+                action = incoming.get("action", "buy")
+                amount = float(incoming.get("amount", 0))
+                trader = incoming.get("trader", "")
+                res = pump_engine.ENGINE.execute_trade(tick, action, amount, trader)
+                self._send(200, json.dumps(res), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
+            return
+
+        if path == "/api/pump/comment":
+            try:
+                tick = incoming.get("tick", "")
+                author = incoming.get("author", "zudio1anon")
+                text = incoming.get("text", "")
+                res = pump_engine.ENGINE.add_comment(tick, author, text)
+                self._send(200, json.dumps(res), "application/json")
+            except Exception as exc:
+                self._send(400, json.dumps({"error": str(exc)}), "application/json")
             return
 
         if path in ("/api/deploy", "/api/transfer"):

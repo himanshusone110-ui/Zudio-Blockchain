@@ -1,0 +1,3132 @@
+{
+  "coins": {
+    "DEMO": {
+      "tick": "DEMO",
+      "name": "Demo",
+      "desc": "Community fair launch token Demo on Zudio Blockchain.",
+      "supply": 1000,
+      "creator": "",
+      "curve_tokens": 800,
+      "v_zdc": 311.68831168831167,
+      "v_tokens": 770.0,
+      "k": 240000.0,
+      "progress": 3.9,
+      "spot_price": 0.40479001517962554,
+      "mcap_zdc": 404.79,
+      "mcap_usd": 20.24,
+      "trades_count": 14,
+      "replies_count": 8,
+      "created_at": 1790440779,
+      "avatar": "",
+      "twitter": "",
+      "telegram": "",
+      "website": "",
+      "graduated": false,
+      "trades": [
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 32.6,
+          "tokens": 80,
+          "time": 1790592094,
+          "txid": "ffd1bcc00d6c8e36a548c13d238fa048"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 53.28,
+          "tokens": 131,
+          "time": 1790591784,
+          "txid": "5b750dd50d406a1b9b7a2965534b4e6a"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 60.99,
+          "tokens": 150,
+          "time": 1790590714,
+          "txid": "c914a8448f8b2faf074eb6ad770d0cf6"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 37.05,
+          "tokens": 91,
+          "time": 1790590480,
+          "txid": "046f71bbb08c5c1fb7e14da030b94e60"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 61.79,
+          "tokens": 152,
+          "time": 1790590034,
+          "txid": "88dcd88a1a7c21877f6e10927739773f"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "sell",
+          "zdc": 6.92,
+          "tokens": 17,
+          "time": 1790589784,
+          "txid": "c4f7c98b333cadaf81e5719a753bfbb3"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 33.87,
+          "tokens": 83,
+          "time": 1790586991,
+          "txid": "fe8e46e667a83c3e55bd05a03256d566"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 70.62,
+          "tokens": 174,
+          "time": 1790586804,
+          "txid": "377deff6c76937ccef94633ba9892252"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 55.05,
+          "tokens": 135,
+          "time": 1790586431,
+          "txid": "7fe698d6b71b60e4f4025c2d2f9f53d1"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "sell",
+          "zdc": 59.32,
+          "tokens": 146,
+          "time": 1790586214,
+          "txid": "e201f4b5b216066b21768af0220c9b37"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 13.28,
+          "tokens": 32,
+          "time": 1790585208,
+          "txid": "29b74d621c3dcdfaa468b39262be95de"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 52.41,
+          "tokens": 129,
+          "time": 1790583606,
+          "txid": "2ee7181f05589ccbe12234969cda3ce7"
+        }
+      ],
+      "comments": [
+        {
+          "id": "c_1",
+          "author": "zudio1q5w...",
+          "text": "dev is based! DEMO to 10M mcap minimum \ud83d\ude80\ud83d\ude80",
+          "time": 1790592094,
+          "likes": 15
+        },
+        {
+          "id": "c_2",
+          "author": "zudio1qtgh...",
+          "text": "just bought 50 ZDC worth on the curve, LFGGG!",
+          "time": 1790590018,
+          "likes": 17
+        },
+        {
+          "id": "c_3",
+          "author": "zudio1qjyh...",
+          "text": "Zudio Layer 1 zero gas is actually so clean compared to solana congestion",
+          "time": 1790591348,
+          "likes": 3
+        },
+        {
+          "id": "c_4",
+          "author": "zudio1q8y9...",
+          "text": "bonding curve is moving fast, almost 80%!",
+          "time": 1790587663,
+          "likes": 8
+        },
+        {
+          "id": "c_5",
+          "author": "zudio1qqh7...",
+          "text": "chart looks primed for a massive pump \ud83d\udcc8",
+          "time": 1790585310,
+          "likes": 12
+        }
+      ],
+      "candles": [
+        {
+          "time": 1790584894,
+          "open": 0.101198,
+          "high": 0.12208,
+          "low": 0.099309,
+          "close": 0.118176,
+          "volume": 37027.14
+        },
+        {
+          "time": 1790585194,
+          "open": 0.118176,
+          "high": 0.133137,
+          "low": 0.116389,
+          "close": 0.131177,
+          "volume": 17669.2
+        },
+        {
+          "time": 1790585494,
+          "open": 0.131177,
+          "high": 0.162915,
+          "low": 0.127676,
+          "close": 0.157291,
+          "volume": 34916.44
+        },
+        {
+          "time": 1790585794,
+          "open": 0.157291,
+          "high": 0.19234,
+          "low": 0.154424,
+          "close": 0.184373,
+          "volume": 18467.3
+        },
+        {
+          "time": 1790586094,
+          "open": 0.184373,
+          "high": 0.205087,
+          "low": 0.177224,
+          "close": 0.198609,
+          "volume": 17564.45
+        },
+        {
+          "time": 1790586394,
+          "open": 0.198609,
+          "high": 0.204356,
+          "low": 0.192427,
+          "close": 0.195905,
+          "volume": 59045.45
+        },
+        {
+          "time": 1790586694,
+          "open": 0.195905,
+          "high": 0.206496,
+          "low": 0.188892,
+          "close": 0.200591,
+          "volume": 34495.61
+        },
+        {
+          "time": 1790586994,
+          "open": 0.200591,
+          "high": 0.242978,
+          "low": 0.194472,
+          "close": 0.235601,
+          "volume": 24229.19
+        },
+        {
+          "time": 1790587294,
+          "open": 0.235601,
+          "high": 0.244769,
+          "low": 0.224283,
+          "close": 0.229663,
+          "volume": 80385.25
+        },
+        {
+          "time": 1790587594,
+          "open": 0.229663,
+          "high": 0.272687,
+          "low": 0.223404,
+          "close": 0.264892,
+          "volume": 36013.85
+        },
+        {
+          "time": 1790587894,
+          "open": 0.264892,
+          "high": 0.298782,
+          "low": 0.255136,
+          "close": 0.286309,
+          "volume": 85214.26
+        },
+        {
+          "time": 1790588194,
+          "open": 0.286309,
+          "high": 0.29092,
+          "low": 0.266699,
+          "close": 0.274057,
+          "volume": 70641.09
+        },
+        {
+          "time": 1790588494,
+          "open": 0.274057,
+          "high": 0.283414,
+          "low": 0.261062,
+          "close": 0.269558,
+          "volume": 68096.07
+        },
+        {
+          "time": 1790588794,
+          "open": 0.269558,
+          "high": 0.305794,
+          "low": 0.261925,
+          "close": 0.296193,
+          "volume": 61429.7
+        },
+        {
+          "time": 1790589094,
+          "open": 0.296193,
+          "high": 0.299573,
+          "low": 0.288893,
+          "close": 0.296258,
+          "volume": 93239.19
+        },
+        {
+          "time": 1790589394,
+          "open": 0.296258,
+          "high": 0.302886,
+          "low": 0.286799,
+          "close": 0.294369,
+          "volume": 22272.94
+        },
+        {
+          "time": 1790589694,
+          "open": 0.294369,
+          "high": 0.308825,
+          "low": 0.279421,
+          "close": 0.290657,
+          "volume": 106191.24
+        },
+        {
+          "time": 1790589994,
+          "open": 0.290657,
+          "high": 0.309303,
+          "low": 0.279576,
+          "close": 0.302487,
+          "volume": 72048.05
+        },
+        {
+          "time": 1790590294,
+          "open": 0.302487,
+          "high": 0.323887,
+          "low": 0.294397,
+          "close": 0.310168,
+          "volume": 94861.14
+        },
+        {
+          "time": 1790590594,
+          "open": 0.310168,
+          "high": 0.363028,
+          "low": 0.302458,
+          "close": 0.349255,
+          "volume": 21856.92
+        },
+        {
+          "time": 1790590894,
+          "open": 0.349255,
+          "high": 0.40683,
+          "low": 0.336479,
+          "close": 0.390761,
+          "volume": 79518.48
+        },
+        {
+          "time": 1790591194,
+          "open": 0.390761,
+          "high": 0.399882,
+          "low": 0.359231,
+          "close": 0.370881,
+          "volume": 49759.83
+        },
+        {
+          "time": 1790591494,
+          "open": 0.370881,
+          "high": 0.411337,
+          "low": 0.364413,
+          "close": 0.405105,
+          "volume": 43759.64
+        },
+        {
+          "time": 1790591794,
+          "open": 0.405105,
+          "high": 0.438961,
+          "low": 0.399672,
+          "close": 0.40479,
+          "volume": 124576.91
+        }
+      ]
+    },
+    "PZDC": {
+      "tick": "PZDC",
+      "name": "Pepe Zudio",
+      "desc": "Community fair launch token Pepe Zudio on Zudio Blockchain.",
+      "supply": 1000000,
+      "creator": "",
+      "curve_tokens": 800000,
+      "v_zdc": 306.5733150922211,
+      "v_tokens": 782847.0,
+      "k": 240000000.0,
+      "progress": 2.1,
+      "spot_price": 0.0003916133230276428,
+      "mcap_zdc": 391.61,
+      "mcap_usd": 19.58,
+      "trades_count": 30,
+      "replies_count": 11,
+      "created_at": 1790524547,
+      "avatar": "",
+      "twitter": "",
+      "telegram": "",
+      "website": "",
+      "graduated": false,
+      "trades": [
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 50.61,
+          "tokens": 129234,
+          "time": 1790592094,
+          "txid": "abce47647927a6d886a9744e8713a93d"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 63.24,
+          "tokens": 161485,
+          "time": 1790590964,
+          "txid": "c5b77435bf23bc725b125bb0d58abfa7"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 78.68,
+          "tokens": 200912,
+          "time": 1790590624,
+          "txid": "ef970c414f1ac66c0cf26af4a34c045c"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 75.87,
+          "tokens": 193737,
+          "time": 1790590604,
+          "txid": "9599beb0c0862b7ded9f3dfcf6d26467"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 78.81,
+          "tokens": 201244,
+          "time": 1790590542,
+          "txid": "32f922e3816717a349af60aa1fcf2c18"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 50.09,
+          "tokens": 127906,
+          "time": 1790590246,
+          "txid": "7f0a4b7b26c92f1d5ec1a0e60bfd4564"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 31.89,
+          "tokens": 81432,
+          "time": 1790589190,
+          "txid": "7266cba6d8994d8fb7be36981a38ff08"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 8.54,
+          "tokens": 21807,
+          "time": 1790589160,
+          "txid": "8c3bc73fd50e9ed37e4548894d648d46"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 77.41,
+          "tokens": 197669,
+          "time": 1790588194,
+          "txid": "9adbd7127b17df7ae574ddf81c6f6e97"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 21.8,
+          "tokens": 55667,
+          "time": 1790588084,
+          "txid": "23b5ab8e4e54c199db495d00fea911e8"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 64.22,
+          "tokens": 163988,
+          "time": 1790585942,
+          "txid": "6a7b9f66ce889789aebdc4d5efc0b1af"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 69.09,
+          "tokens": 176424,
+          "time": 1790581393,
+          "txid": "4cd6854533826016b37849b46d8ca6c1"
+        }
+      ],
+      "comments": [
+        {
+          "id": "c_1",
+          "author": "zudio1q5w...",
+          "text": "dev is based! PZDC to 10M mcap minimum \ud83d\ude80\ud83d\ude80",
+          "time": 1790592094,
+          "likes": 3
+        },
+        {
+          "id": "c_2",
+          "author": "zudio1qtgh...",
+          "text": "just bought 50 ZDC worth on the curve, LFGGG!",
+          "time": 1790590134,
+          "likes": 6
+        },
+        {
+          "id": "c_3",
+          "author": "zudio1qjyh...",
+          "text": "Zudio Layer 1 zero gas is actually so clean compared to solana congestion",
+          "time": 1790588840,
+          "likes": 14
+        },
+        {
+          "id": "c_4",
+          "author": "zudio1q8y9...",
+          "text": "bonding curve is moving fast, almost 80%!",
+          "time": 1790589757,
+          "likes": 13
+        },
+        {
+          "id": "c_5",
+          "author": "zudio1qqh7...",
+          "text": "chart looks primed for a massive pump \ud83d\udcc8",
+          "time": 1790587138,
+          "likes": 14
+        },
+        {
+          "id": "c_6",
+          "author": "zudio1qfyh...",
+          "text": "gem alert! early buyers are going to feast \ud83d\udc8e\ud83d\ude4c",
+          "time": 1790586819,
+          "likes": 3
+        }
+      ],
+      "candles": [
+        {
+          "time": 1790584894,
+          "open": 9.8e-05,
+          "high": 0.000118,
+          "low": 9.5e-05,
+          "close": 0.000114,
+          "volume": 49.72
+        },
+        {
+          "time": 1790585194,
+          "open": 0.000114,
+          "high": 0.000121,
+          "low": 0.000113,
+          "close": 0.000117,
+          "volume": 27.82
+        },
+        {
+          "time": 1790585494,
+          "open": 0.000117,
+          "high": 0.000131,
+          "low": 0.000115,
+          "close": 0.000126,
+          "volume": 9.06
+        },
+        {
+          "time": 1790585794,
+          "open": 0.000126,
+          "high": 0.000143,
+          "low": 0.000124,
+          "close": 0.000136,
+          "volume": 33.76
+        },
+        {
+          "time": 1790586094,
+          "open": 0.000136,
+          "high": 0.000169,
+          "low": 0.000133,
+          "close": 0.000161,
+          "volume": 17.27
+        },
+        {
+          "time": 1790586394,
+          "open": 0.000161,
+          "high": 0.000168,
+          "low": 0.000155,
+          "close": 0.000164,
+          "volume": 65.81
+        },
+        {
+          "time": 1790586694,
+          "open": 0.000164,
+          "high": 0.000178,
+          "low": 0.000159,
+          "close": 0.000174,
+          "volume": 11.97
+        },
+        {
+          "time": 1790586994,
+          "open": 0.000174,
+          "high": 0.000196,
+          "low": 0.00017,
+          "close": 0.000192,
+          "volume": 12.18
+        },
+        {
+          "time": 1790587294,
+          "open": 0.000192,
+          "high": 0.000217,
+          "low": 0.000186,
+          "close": 0.000211,
+          "volume": 91.84
+        },
+        {
+          "time": 1790587594,
+          "open": 0.000211,
+          "high": 0.000226,
+          "low": 0.000208,
+          "close": 0.000221,
+          "volume": 21.05
+        },
+        {
+          "time": 1790587894,
+          "open": 0.000221,
+          "high": 0.000233,
+          "low": 0.000218,
+          "close": 0.000228,
+          "volume": 84.5
+        },
+        {
+          "time": 1790588194,
+          "open": 0.000228,
+          "high": 0.000272,
+          "low": 0.000222,
+          "close": 0.000264,
+          "volume": 41.74
+        },
+        {
+          "time": 1790588494,
+          "open": 0.000264,
+          "high": 0.000267,
+          "low": 0.000246,
+          "close": 0.000254,
+          "volume": 40.75
+        },
+        {
+          "time": 1790588794,
+          "open": 0.000254,
+          "high": 0.000273,
+          "low": 0.000249,
+          "close": 0.000261,
+          "volume": 16.07
+        },
+        {
+          "time": 1790589094,
+          "open": 0.000261,
+          "high": 0.000284,
+          "low": 0.000258,
+          "close": 0.000276,
+          "volume": 48.2
+        },
+        {
+          "time": 1790589394,
+          "open": 0.000276,
+          "high": 0.000292,
+          "low": 0.00027,
+          "close": 0.000286,
+          "volume": 29.75
+        },
+        {
+          "time": 1790589694,
+          "open": 0.000286,
+          "high": 0.000317,
+          "low": 0.000282,
+          "close": 0.000304,
+          "volume": 33.3
+        },
+        {
+          "time": 1790589994,
+          "open": 0.000304,
+          "high": 0.000327,
+          "low": 0.000298,
+          "close": 0.000312,
+          "volume": 17.13
+        },
+        {
+          "time": 1790590294,
+          "open": 0.000312,
+          "high": 0.00032,
+          "low": 0.000309,
+          "close": 0.000315,
+          "volume": 102.36
+        },
+        {
+          "time": 1790590594,
+          "open": 0.000315,
+          "high": 0.000367,
+          "low": 0.000306,
+          "close": 0.000351,
+          "volume": 130.26
+        },
+        {
+          "time": 1790590894,
+          "open": 0.000351,
+          "high": 0.000367,
+          "low": 0.000335,
+          "close": 0.000347,
+          "volume": 92.98
+        },
+        {
+          "time": 1790591194,
+          "open": 0.000347,
+          "high": 0.000376,
+          "low": 0.000335,
+          "close": 0.000363,
+          "volume": 59.81
+        },
+        {
+          "time": 1790591494,
+          "open": 0.000363,
+          "high": 0.000372,
+          "low": 0.000352,
+          "close": 0.000364,
+          "volume": 108.58
+        },
+        {
+          "time": 1790591794,
+          "open": 0.000364,
+          "high": 0.000378,
+          "low": 0.000343,
+          "close": 0.000392,
+          "volume": 111.24
+        }
+      ]
+    },
+    "FLOKI": {
+      "tick": "FLOKI",
+      "name": "Pepe Zudio",
+      "desc": "Viking meme warrior pillaging high gas fees across all chains. Powered by Zudio Layer-1.",
+      "supply": 1000000,
+      "creator": "",
+      "curve_tokens": 800000,
+      "v_zdc": 327.8688524590164,
+      "v_tokens": 732000.0,
+      "k": 240000000.0,
+      "progress": 8.5,
+      "spot_price": 0.00044790826838663443,
+      "mcap_zdc": 447.91,
+      "mcap_usd": 22.4,
+      "trades_count": 34,
+      "replies_count": 8,
+      "created_at": 1790543327,
+      "avatar": "",
+      "twitter": "",
+      "telegram": "",
+      "website": "",
+      "graduated": false,
+      "trades": [
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 9.14,
+          "tokens": 20405,
+          "time": 1790592094,
+          "txid": "97df90ebf842c65b8d932afc0c8f20dd"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "sell",
+          "zdc": 6.56,
+          "tokens": 14645,
+          "time": 1790591708,
+          "txid": "b4fab80d1bc2bc84c62d57b58fcd883d"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 7.37,
+          "tokens": 16454,
+          "time": 1790591390,
+          "txid": "d4579aa8a1c2d61d299c0b56a4095f1c"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "sell",
+          "zdc": 14.11,
+          "tokens": 31501,
+          "time": 1790590686,
+          "txid": "7360cda3731fd6e083419bc24e5b296c"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 25.35,
+          "tokens": 56596,
+          "time": 1790590051,
+          "txid": "ada6b744c0fa17ac8da1bad28f186618"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "sell",
+          "zdc": 65.66,
+          "tokens": 146592,
+          "time": 1790589614,
+          "txid": "1cd0b59c72c4ef5eb2b83b43a818a463"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 31.55,
+          "tokens": 70438,
+          "time": 1790588166,
+          "txid": "0cdc790f3155214e19be413af480a4ec"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 29.95,
+          "tokens": 66866,
+          "time": 1790586816,
+          "txid": "388b61133153a28e05fdb1a158c5eff4"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 7.49,
+          "tokens": 16722,
+          "time": 1790585470,
+          "txid": "26be4d6856090c5bc42fbb43bee8cc25"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "sell",
+          "zdc": 80.81,
+          "tokens": 180416,
+          "time": 1790583859,
+          "txid": "61ac210c6fbf702c399f7f54d820baf3"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 27.25,
+          "tokens": 60838,
+          "time": 1790582447,
+          "txid": "2f72776a10825a3fa4fc9e62971b17a6"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 56.43,
+          "tokens": 125985,
+          "time": 1790581854,
+          "txid": "64ed573a683f5408fa970cc16de7b0d6"
+        }
+      ],
+      "comments": [
+        {
+          "id": "c_1",
+          "author": "zudio1q5w...",
+          "text": "dev is based! FLOKI to 10M mcap minimum \ud83d\ude80\ud83d\ude80",
+          "time": 1790592094,
+          "likes": 16
+        },
+        {
+          "id": "c_2",
+          "author": "zudio1qtgh...",
+          "text": "just bought 50 ZDC worth on the curve, LFGGG!",
+          "time": 1790591677,
+          "likes": 12
+        },
+        {
+          "id": "c_3",
+          "author": "zudio1qjyh...",
+          "text": "Zudio Layer 1 zero gas is actually so clean compared to solana congestion",
+          "time": 1790590066,
+          "likes": 8
+        }
+      ],
+      "candles": [
+        {
+          "time": 1790584894,
+          "open": 0.000112,
+          "high": 0.00013,
+          "low": 0.000108,
+          "close": 0.000128,
+          "volume": 8.53
+        },
+        {
+          "time": 1790585194,
+          "open": 0.000128,
+          "high": 0.000149,
+          "low": 0.000124,
+          "close": 0.000144,
+          "volume": 16.61
+        },
+        {
+          "time": 1790585494,
+          "open": 0.000144,
+          "high": 0.000161,
+          "low": 0.000141,
+          "close": 0.000157,
+          "volume": 22.23
+        },
+        {
+          "time": 1790585794,
+          "open": 0.000157,
+          "high": 0.000166,
+          "low": 0.000155,
+          "close": 0.000163,
+          "volume": 67.17
+        },
+        {
+          "time": 1790586094,
+          "open": 0.000163,
+          "high": 0.000193,
+          "low": 0.000159,
+          "close": 0.000188,
+          "volume": 15.7
+        },
+        {
+          "time": 1790586394,
+          "open": 0.000188,
+          "high": 0.000214,
+          "low": 0.000182,
+          "close": 0.000206,
+          "volume": 85.78
+        },
+        {
+          "time": 1790586694,
+          "open": 0.000206,
+          "high": 0.000214,
+          "low": 0.000198,
+          "close": 0.000206,
+          "volume": 41.04
+        },
+        {
+          "time": 1790586994,
+          "open": 0.000206,
+          "high": 0.000215,
+          "low": 0.000199,
+          "close": 0.000209,
+          "volume": 87.01
+        },
+        {
+          "time": 1790587294,
+          "open": 0.000209,
+          "high": 0.000245,
+          "low": 0.000207,
+          "close": 0.000239,
+          "volume": 76.9
+        },
+        {
+          "time": 1790587594,
+          "open": 0.000239,
+          "high": 0.000267,
+          "low": 0.000231,
+          "close": 0.000262,
+          "volume": 14.07
+        },
+        {
+          "time": 1790587894,
+          "open": 0.000262,
+          "high": 0.000302,
+          "low": 0.000258,
+          "close": 0.000293,
+          "volume": 117.78
+        },
+        {
+          "time": 1790588194,
+          "open": 0.000293,
+          "high": 0.000328,
+          "low": 0.000282,
+          "close": 0.000319,
+          "volume": 20.5
+        },
+        {
+          "time": 1790588494,
+          "open": 0.000319,
+          "high": 0.000329,
+          "low": 0.000309,
+          "close": 0.00032,
+          "volume": 44.26
+        },
+        {
+          "time": 1790588794,
+          "open": 0.00032,
+          "high": 0.000326,
+          "low": 0.000311,
+          "close": 0.000319,
+          "volume": 114.31
+        },
+        {
+          "time": 1790589094,
+          "open": 0.000319,
+          "high": 0.000371,
+          "low": 0.000306,
+          "close": 0.000365,
+          "volume": 92.47
+        },
+        {
+          "time": 1790589394,
+          "open": 0.000365,
+          "high": 0.0004,
+          "low": 0.000352,
+          "close": 0.000395,
+          "volume": 38.65
+        },
+        {
+          "time": 1790589694,
+          "open": 0.000395,
+          "high": 0.000443,
+          "low": 0.000381,
+          "close": 0.000422,
+          "volume": 185.06
+        },
+        {
+          "time": 1790589994,
+          "open": 0.000422,
+          "high": 0.000485,
+          "low": 0.000406,
+          "close": 0.000467,
+          "volume": 208.71
+        },
+        {
+          "time": 1790590294,
+          "open": 0.000467,
+          "high": 0.000487,
+          "low": 0.000455,
+          "close": 0.000464,
+          "volume": 202.33
+        },
+        {
+          "time": 1790590594,
+          "open": 0.000464,
+          "high": 0.000492,
+          "low": 0.00045,
+          "close": 0.000477,
+          "volume": 80.98
+        },
+        {
+          "time": 1790590894,
+          "open": 0.000477,
+          "high": 0.000493,
+          "low": 0.000431,
+          "close": 0.000448,
+          "volume": 149.78
+        },
+        {
+          "time": 1790591194,
+          "open": 0.000448,
+          "high": 0.00047,
+          "low": 0.000436,
+          "close": 0.000449,
+          "volume": 188.73
+        },
+        {
+          "time": 1790591494,
+          "open": 0.000449,
+          "high": 0.00049,
+          "low": 0.000441,
+          "close": 0.000476,
+          "volume": 135.41
+        },
+        {
+          "time": 1790591794,
+          "open": 0.000476,
+          "high": 0.000509,
+          "low": 0.000458,
+          "close": 0.000448,
+          "volume": 50.63
+        }
+      ]
+    },
+    "ZDOG": {
+      "tick": "ZDOG",
+      "name": "Zudio Dog",
+      "desc": "Man's best friend engineered on an ultra-fast, zero-fee proof-of-work layer. Woof!",
+      "supply": 1000,
+      "creator": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+      "curve_tokens": 800,
+      "v_zdc": 487.8048780487805,
+      "v_tokens": 492.0,
+      "k": 240000.0,
+      "progress": 38.6,
+      "spot_price": 0.99147332936744,
+      "mcap_zdc": 991.47,
+      "mcap_usd": 49.57,
+      "trades_count": 20,
+      "replies_count": 13,
+      "created_at": 1790526116,
+      "avatar": "",
+      "twitter": "",
+      "telegram": "",
+      "website": "",
+      "graduated": false,
+      "trades": [
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 58.04,
+          "tokens": 58,
+          "time": 1790592094,
+          "txid": "c2d2286e76f793e318dc0f0d6d0c2f3e"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 54.82,
+          "tokens": 55,
+          "time": 1790591054,
+          "txid": "be8dec715906dfd6e145b8786f123cf1"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 32.85,
+          "tokens": 33,
+          "time": 1790590996,
+          "txid": "a168094c534edcce61c9dcee442ebd0b"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 61.53,
+          "tokens": 62,
+          "time": 1790590936,
+          "txid": "07677a3eb97b98f00dbb58c75245e591"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 69.82,
+          "tokens": 70,
+          "time": 1790589214,
+          "txid": "173625cd9efd396f47d632e286c690c5"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 15.24,
+          "tokens": 15,
+          "time": 1790588544,
+          "txid": "d5f0672d3206973db46a377b529c58c0"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 57.21,
+          "tokens": 57,
+          "time": 1790587927,
+          "txid": "ada37cf065244617253e08d52f6db289"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "sell",
+          "zdc": 23.8,
+          "tokens": 24,
+          "time": 1790587882,
+          "txid": "60395fbca8a3e4e87e806750028ba36b"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "sell",
+          "zdc": 25.04,
+          "tokens": 25,
+          "time": 1790587346,
+          "txid": "86f166518737080fa510c4d3e54869eb"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 33.51,
+          "tokens": 33,
+          "time": 1790586529,
+          "txid": "96507c734003e614adfc13378246ad3e"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 32.83,
+          "tokens": 33,
+          "time": 1790586024,
+          "txid": "1e75df95fb9f83542bbd28cc3c631e13"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 17.94,
+          "tokens": 18,
+          "time": 1790582843,
+          "txid": "8b7d95f87c71c4c4bd18ce1b819ea9f5"
+        }
+      ],
+      "comments": [
+        {
+          "id": "c_1",
+          "author": "zudio1q5w...",
+          "text": "dev is based! ZDOG to 10M mcap minimum \ud83d\ude80\ud83d\ude80",
+          "time": 1790592094,
+          "likes": 4
+        },
+        {
+          "id": "c_2",
+          "author": "zudio1qtgh...",
+          "text": "just bought 50 ZDC worth on the curve, LFGGG!",
+          "time": 1790591689,
+          "likes": 16
+        },
+        {
+          "id": "c_3",
+          "author": "zudio1qjyh...",
+          "text": "Zudio Layer 1 zero gas is actually so clean compared to solana congestion",
+          "time": 1790588840,
+          "likes": 7
+        },
+        {
+          "id": "c_4",
+          "author": "zudio1q8y9...",
+          "text": "bonding curve is moving fast, almost 80%!",
+          "time": 1790587954,
+          "likes": 10
+        }
+      ],
+      "candles": [
+        {
+          "time": 1790584894,
+          "open": 0.247868,
+          "high": 0.290164,
+          "low": 0.240907,
+          "close": 0.28663,
+          "volume": 127882.0
+        },
+        {
+          "time": 1790585194,
+          "open": 0.28663,
+          "high": 0.302764,
+          "low": 0.281345,
+          "close": 0.294955,
+          "volume": 48596.24
+        },
+        {
+          "time": 1790585494,
+          "open": 0.294955,
+          "high": 0.344389,
+          "low": 0.289036,
+          "close": 0.336172,
+          "volume": 144472.45
+        },
+        {
+          "time": 1790585794,
+          "open": 0.336172,
+          "high": 0.382435,
+          "low": 0.329635,
+          "close": 0.372882,
+          "volume": 69256.8
+        },
+        {
+          "time": 1790586094,
+          "open": 0.372882,
+          "high": 0.45963,
+          "low": 0.367756,
+          "close": 0.439659,
+          "volume": 131666.84
+        },
+        {
+          "time": 1790586394,
+          "open": 0.439659,
+          "high": 0.50893,
+          "low": 0.422403,
+          "close": 0.499956,
+          "volume": 153095.31
+        },
+        {
+          "time": 1790586694,
+          "open": 0.499956,
+          "high": 0.600891,
+          "low": 0.488092,
+          "close": 0.573385,
+          "volume": 141615.98
+        },
+        {
+          "time": 1790586994,
+          "open": 0.573385,
+          "high": 0.634482,
+          "low": 0.554402,
+          "close": 0.617081,
+          "volume": 218130.8
+        },
+        {
+          "time": 1790587294,
+          "open": 0.617081,
+          "high": 0.663929,
+          "low": 0.597166,
+          "close": 0.646808,
+          "volume": 97888.87
+        },
+        {
+          "time": 1790587594,
+          "open": 0.646808,
+          "high": 0.658659,
+          "low": 0.598296,
+          "close": 0.616791,
+          "volume": 99325.63
+        },
+        {
+          "time": 1790587894,
+          "open": 0.616791,
+          "high": 0.734976,
+          "low": 0.600418,
+          "close": 0.709676,
+          "volume": 89459.15
+        },
+        {
+          "time": 1790588194,
+          "open": 0.709676,
+          "high": 0.718476,
+          "low": 0.668255,
+          "close": 0.690158,
+          "volume": 230137.15
+        },
+        {
+          "time": 1790588494,
+          "open": 0.690158,
+          "high": 0.710686,
+          "low": 0.681469,
+          "close": 0.698947,
+          "volume": 306341.88
+        },
+        {
+          "time": 1790588794,
+          "open": 0.698947,
+          "high": 0.80895,
+          "low": 0.67116,
+          "close": 0.797957,
+          "volume": 341728.31
+        },
+        {
+          "time": 1790589094,
+          "open": 0.797957,
+          "high": 0.915855,
+          "low": 0.770725,
+          "close": 0.87377,
+          "volume": 210666.25
+        },
+        {
+          "time": 1790589394,
+          "open": 0.87377,
+          "high": 0.89555,
+          "low": 0.855718,
+          "close": 0.866497,
+          "volume": 344669.58
+        },
+        {
+          "time": 1790589694,
+          "open": 0.866497,
+          "high": 1.001439,
+          "low": 0.846795,
+          "close": 0.954001,
+          "volume": 266582.83
+        },
+        {
+          "time": 1790589994,
+          "open": 0.954001,
+          "high": 0.999043,
+          "low": 0.907223,
+          "close": 0.932832,
+          "volume": 308894.97
+        },
+        {
+          "time": 1790590294,
+          "open": 0.932832,
+          "high": 1.017869,
+          "low": 0.917341,
+          "close": 0.974898,
+          "volume": 403277.51
+        },
+        {
+          "time": 1790590594,
+          "open": 0.974898,
+          "high": 1.010951,
+          "low": 0.94964,
+          "close": 0.961061,
+          "volume": 397798.54
+        },
+        {
+          "time": 1790590894,
+          "open": 0.961061,
+          "high": 1.115549,
+          "low": 0.950943,
+          "close": 1.078083,
+          "volume": 389258.38
+        },
+        {
+          "time": 1790591194,
+          "open": 1.078083,
+          "high": 1.109171,
+          "low": 0.997066,
+          "close": 1.026639,
+          "volume": 260332.51
+        },
+        {
+          "time": 1790591494,
+          "open": 1.026639,
+          "high": 1.051623,
+          "low": 0.900086,
+          "close": 0.93632,
+          "volume": 289801.97
+        },
+        {
+          "time": 1790591794,
+          "open": 0.93632,
+          "high": 0.947273,
+          "low": 0.878868,
+          "close": 0.991473,
+          "volume": 399335.11
+        }
+      ]
+    },
+    "SUN": {
+      "tick": "SUN",
+      "name": "Sun Coin",
+      "desc": "Bright decentralized sunshine radiating pure meme energy on Zudio. Zero gas solar power.",
+      "supply": 2000000,
+      "creator": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+      "curve_tokens": 1600000,
+      "v_zdc": 655.0218340611353,
+      "v_tokens": 732800.0,
+      "k": 480000000.0,
+      "progress": 54.2,
+      "spot_price": 0.0008938616731183615,
+      "mcap_zdc": 1787.72,
+      "mcap_usd": 89.39,
+      "trades_count": 44,
+      "replies_count": 20,
+      "created_at": 1790518380,
+      "avatar": "",
+      "twitter": "",
+      "telegram": "https://t.me/ZudioCoin",
+      "website": "",
+      "graduated": false,
+      "trades": [
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 38.11,
+          "tokens": 42635,
+          "time": 1790592094,
+          "txid": "7075ccb42af425e14eefbfb60ccd4c69"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 6.19,
+          "tokens": 6925,
+          "time": 1790591899,
+          "txid": "5f6edb4b3a33d376891c7d85578e3445"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 29.79,
+          "tokens": 33327,
+          "time": 1790591636,
+          "txid": "0ae038809b20d9899a96c827b5e61b5a"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 59.66,
+          "tokens": 66744,
+          "time": 1790591254,
+          "txid": "f1a17de18d75ab09e11ee02f39ba2853"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 46.71,
+          "tokens": 52256,
+          "time": 1790589457,
+          "txid": "f9cd13a0cfb0ce338c4cbcb610f4e9bc"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "sell",
+          "zdc": 51.03,
+          "tokens": 57089,
+          "time": 1790589283,
+          "txid": "52c811990db282e0e8f239cf19ac950f"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 72.89,
+          "tokens": 81545,
+          "time": 1790588989,
+          "txid": "f7327f4a2766c3fb7d473f80f961890a"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 46.16,
+          "tokens": 51641,
+          "time": 1790588811,
+          "txid": "47caa15c3d7ea90998ed9907d9f156e5"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 45.88,
+          "tokens": 51327,
+          "time": 1790586754,
+          "txid": "5cd094b0776db293b2c7be560e88e770"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 72.76,
+          "tokens": 81399,
+          "time": 1790583022,
+          "txid": "a31810920e5e1be43e89d725b4f7634d"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "sell",
+          "zdc": 34.64,
+          "tokens": 38753,
+          "time": 1790580863,
+          "txid": "c2555d21ec33ddfbd6b2233bc6039e40"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 73.54,
+          "tokens": 82272,
+          "time": 1790580624,
+          "txid": "ed4e97c5a6665c8da7f71f787eb6d527"
+        }
+      ],
+      "comments": [
+        {
+          "id": "c_1",
+          "author": "zudio1q5w...",
+          "text": "dev is based! SUN to 10M mcap minimum \ud83d\ude80\ud83d\ude80",
+          "time": 1790592094,
+          "likes": 2
+        },
+        {
+          "id": "c_2",
+          "author": "zudio1qtgh...",
+          "text": "just bought 50 ZDC worth on the curve, LFGGG!",
+          "time": 1790591375,
+          "likes": 10
+        },
+        {
+          "id": "c_3",
+          "author": "zudio1qjyh...",
+          "text": "Zudio Layer 1 zero gas is actually so clean compared to solana congestion",
+          "time": 1790590218,
+          "likes": 17
+        }
+      ],
+      "candles": [
+        {
+          "time": 1790584894,
+          "open": 0.000223,
+          "high": 0.000254,
+          "low": 0.00022,
+          "close": 0.000245,
+          "volume": 27.84
+        },
+        {
+          "time": 1790585194,
+          "open": 0.000245,
+          "high": 0.000308,
+          "low": 0.00024,
+          "close": 0.000295,
+          "volume": 73.14
+        },
+        {
+          "time": 1790585494,
+          "open": 0.000295,
+          "high": 0.000345,
+          "low": 0.000284,
+          "close": 0.000336,
+          "volume": 93.48
+        },
+        {
+          "time": 1790585794,
+          "open": 0.000336,
+          "high": 0.000397,
+          "low": 0.00033,
+          "close": 0.00039,
+          "volume": 28.0
+        },
+        {
+          "time": 1790586094,
+          "open": 0.00039,
+          "high": 0.000419,
+          "low": 0.000383,
+          "close": 0.000402,
+          "volume": 93.86
+        },
+        {
+          "time": 1790586394,
+          "open": 0.000402,
+          "high": 0.000463,
+          "low": 0.000394,
+          "close": 0.000445,
+          "volume": 151.9
+        },
+        {
+          "time": 1790586694,
+          "open": 0.000445,
+          "high": 0.000511,
+          "low": 0.000435,
+          "close": 0.000502,
+          "volume": 69.31
+        },
+        {
+          "time": 1790586994,
+          "open": 0.000502,
+          "high": 0.000563,
+          "low": 0.000488,
+          "close": 0.000541,
+          "volume": 192.59
+        },
+        {
+          "time": 1790587294,
+          "open": 0.000541,
+          "high": 0.000549,
+          "low": 0.000509,
+          "close": 0.000524,
+          "volume": 159.48
+        },
+        {
+          "time": 1790587594,
+          "open": 0.000524,
+          "high": 0.0006,
+          "low": 0.000503,
+          "close": 0.000576,
+          "volume": 253.48
+        },
+        {
+          "time": 1790587894,
+          "open": 0.000576,
+          "high": 0.000586,
+          "low": 0.000544,
+          "close": 0.000555,
+          "volume": 246.86
+        },
+        {
+          "time": 1790588194,
+          "open": 0.000555,
+          "high": 0.000597,
+          "low": 0.000537,
+          "close": 0.000581,
+          "volume": 201.37
+        },
+        {
+          "time": 1790588494,
+          "open": 0.000581,
+          "high": 0.000607,
+          "low": 0.00055,
+          "close": 0.000561,
+          "volume": 157.73
+        },
+        {
+          "time": 1790588794,
+          "open": 0.000561,
+          "high": 0.000602,
+          "low": 0.000551,
+          "close": 0.000574,
+          "volume": 154.94
+        },
+        {
+          "time": 1790589094,
+          "open": 0.000574,
+          "high": 0.000662,
+          "low": 0.000559,
+          "close": 0.000655,
+          "volume": 231.22
+        },
+        {
+          "time": 1790589394,
+          "open": 0.000655,
+          "high": 0.00069,
+          "low": 0.000648,
+          "close": 0.000675,
+          "volume": 254.4
+        },
+        {
+          "time": 1790589694,
+          "open": 0.000675,
+          "high": 0.000702,
+          "low": 0.000662,
+          "close": 0.000694,
+          "volume": 100.36
+        },
+        {
+          "time": 1790589994,
+          "open": 0.000694,
+          "high": 0.000806,
+          "low": 0.000685,
+          "close": 0.000784,
+          "volume": 310.95
+        },
+        {
+          "time": 1790590294,
+          "open": 0.000784,
+          "high": 0.000848,
+          "low": 0.000767,
+          "close": 0.00083,
+          "volume": 240.69
+        },
+        {
+          "time": 1790590594,
+          "open": 0.00083,
+          "high": 0.000888,
+          "low": 0.000802,
+          "close": 0.00085,
+          "volume": 236.4
+        },
+        {
+          "time": 1790590894,
+          "open": 0.00085,
+          "high": 0.000953,
+          "low": 0.000838,
+          "close": 0.000912,
+          "volume": 231.96
+        },
+        {
+          "time": 1790591194,
+          "open": 0.000912,
+          "high": 0.000927,
+          "low": 0.000854,
+          "close": 0.000873,
+          "volume": 263.22
+        },
+        {
+          "time": 1790591494,
+          "open": 0.000873,
+          "high": 0.000991,
+          "low": 0.000849,
+          "close": 0.000952,
+          "volume": 373.58
+        },
+        {
+          "time": 1790591794,
+          "open": 0.000952,
+          "high": 0.001012,
+          "low": 0.000916,
+          "close": 0.000894,
+          "volume": 175.46
+        }
+      ]
+    },
+    "ZMEME": {
+      "tick": "ZMEME",
+      "name": "Zudio Meme",
+      "desc": "The official flagship meme coin of the Zudio Layer-1 Blockchain. King of all meme coins.",
+      "supply": 1000000,
+      "creator": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+      "curve_tokens": 800000,
+      "v_zdc": 1398.788888888889,
+      "v_tokens": 171576.99915005837,
+      "k": 240000000.0,
+      "progress": 78.6,
+      "spot_price": 0.008152543148662553,
+      "mcap_zdc": 8152.54,
+      "mcap_usd": 407.63,
+      "trades_count": 16,
+      "replies_count": 5,
+      "created_at": 1790535531,
+      "avatar": "logo.png",
+      "twitter": "https://twitter.com/ZudioCoin",
+      "telegram": "https://t.me/ZudioCoin",
+      "website": "",
+      "graduated": false,
+      "trades": [
+        {
+          "trader": "zudio1qtesttrader",
+          "action": "buy",
+          "zdc": 10.0,
+          "tokens": 1223,
+          "time": 1790592416,
+          "txid": "774eb2f9d72cb1302b00cbd23c8a2b74"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 27.66,
+          "tokens": 3441,
+          "time": 1790592094,
+          "txid": "a39cc566401fbe2c8b254ae94d357bfc"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "sell",
+          "zdc": 77.4,
+          "tokens": 9629,
+          "time": 1790591306,
+          "txid": "56c9d43bce5cb165ed2efe20fe06bb46"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "sell",
+          "zdc": 69.62,
+          "tokens": 8661,
+          "time": 1790591277,
+          "txid": "db4cc1a442c611080d8d8ce652d4ea09"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 8.95,
+          "tokens": 1113,
+          "time": 1790589929,
+          "txid": "1254ea7318275faeeff5ba796275f190"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "sell",
+          "zdc": 39.6,
+          "tokens": 4926,
+          "time": 1790589892,
+          "txid": "4cab9d90a4a023ddfab6d619e8b9c524"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "sell",
+          "zdc": 50.72,
+          "tokens": 6310,
+          "time": 1790589594,
+          "txid": "03651c0c6713a8e578fbec94b62f21ea"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 35.28,
+          "tokens": 4389,
+          "time": 1790589179,
+          "txid": "bf686a3f01bd27e0279b5642819e577f"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 74.03,
+          "tokens": 9210,
+          "time": 1790587828,
+          "txid": "d0f366e9642f56aa60873d4aa3bd5eea"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 42.52,
+          "tokens": 5290,
+          "time": 1790587294,
+          "txid": "10ceb091850b19f3c9c18a8182340655"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 55.58,
+          "tokens": 6915,
+          "time": 1790585675,
+          "txid": "75897deff0df15bef5a837f22102b7f6"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "sell",
+          "zdc": 16.2,
+          "tokens": 2015,
+          "time": 1790585380,
+          "txid": "0c58d3b18b7970ccb76ecb89d6453624"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 73.81,
+          "tokens": 9183,
+          "time": 1790583670,
+          "txid": "46f4f5810d44c359363195874aab9ec3"
+        }
+      ],
+      "comments": [
+        {
+          "id": "c_1790592441033",
+          "author": "zudio1qmem...",
+          "text": "ZMEME to the moon! Best layer 1 ever",
+          "time": 1790592441,
+          "likes": 1
+        },
+        {
+          "id": "c_1",
+          "author": "zudio1q5w...",
+          "text": "dev is based! ZMEME to 10M mcap minimum \ud83d\ude80\ud83d\ude80",
+          "time": 1790592094,
+          "likes": 10
+        },
+        {
+          "id": "c_2",
+          "author": "zudio1qtgh...",
+          "text": "just bought 50 ZDC worth on the curve, LFGGG!",
+          "time": 1790590776,
+          "likes": 5
+        },
+        {
+          "id": "c_3",
+          "author": "zudio1qjyh...",
+          "text": "Zudio Layer 1 zero gas is actually so clean compared to solana congestion",
+          "time": 1790589208,
+          "likes": 15
+        },
+        {
+          "id": "c_4",
+          "author": "zudio1q8y9...",
+          "text": "bonding curve is moving fast, almost 80%!",
+          "time": 1790586811,
+          "likes": 13
+        },
+        {
+          "id": "c_5",
+          "author": "zudio1qqh7...",
+          "text": "chart looks primed for a massive pump \ud83d\udcc8",
+          "time": 1790583390,
+          "likes": 14
+        }
+      ],
+      "candles": [
+        {
+          "time": 1790584894,
+          "open": 0.002009,
+          "high": 0.002184,
+          "low": 0.001957,
+          "close": 0.002125,
+          "volume": 392.5
+        },
+        {
+          "time": 1790585194,
+          "open": 0.002125,
+          "high": 0.002482,
+          "low": 0.002094,
+          "close": 0.002403,
+          "volume": 863.75
+        },
+        {
+          "time": 1790585494,
+          "open": 0.002403,
+          "high": 0.002909,
+          "low": 0.002359,
+          "close": 0.0028,
+          "volume": 386.07
+        },
+        {
+          "time": 1790585794,
+          "open": 0.0028,
+          "high": 0.003373,
+          "low": 0.002712,
+          "close": 0.003337,
+          "volume": 1424.8
+        },
+        {
+          "time": 1790586094,
+          "open": 0.003337,
+          "high": 0.003629,
+          "low": 0.003289,
+          "close": 0.003551,
+          "volume": 1116.17
+        },
+        {
+          "time": 1790586394,
+          "open": 0.003551,
+          "high": 0.003808,
+          "low": 0.003431,
+          "close": 0.003715,
+          "volume": 290.73
+        },
+        {
+          "time": 1790586694,
+          "open": 0.003715,
+          "high": 0.003919,
+          "low": 0.003591,
+          "close": 0.003766,
+          "volume": 888.23
+        },
+        {
+          "time": 1790586994,
+          "open": 0.003766,
+          "high": 0.004548,
+          "low": 0.003677,
+          "close": 0.004452,
+          "volume": 1831.82
+        },
+        {
+          "time": 1790587294,
+          "open": 0.004452,
+          "high": 0.005231,
+          "low": 0.004351,
+          "close": 0.00517,
+          "volume": 911.08
+        },
+        {
+          "time": 1790587594,
+          "open": 0.00517,
+          "high": 0.00539,
+          "low": 0.005011,
+          "close": 0.005284,
+          "volume": 443.68
+        },
+        {
+          "time": 1790587894,
+          "open": 0.005284,
+          "high": 0.005364,
+          "low": 0.004983,
+          "close": 0.005075,
+          "volume": 1611.07
+        },
+        {
+          "time": 1790588194,
+          "open": 0.005075,
+          "high": 0.006023,
+          "low": 0.004898,
+          "close": 0.005769,
+          "volume": 668.9
+        },
+        {
+          "time": 1790588494,
+          "open": 0.005769,
+          "high": 0.006681,
+          "low": 0.005554,
+          "close": 0.006604,
+          "volume": 1229.58
+        },
+        {
+          "time": 1790588794,
+          "open": 0.006604,
+          "high": 0.007534,
+          "low": 0.006453,
+          "close": 0.007211,
+          "volume": 1373.18
+        },
+        {
+          "time": 1790589094,
+          "open": 0.007211,
+          "high": 0.008236,
+          "low": 0.006954,
+          "close": 0.008137,
+          "volume": 2279.77
+        },
+        {
+          "time": 1790589394,
+          "open": 0.008137,
+          "high": 0.009035,
+          "low": 0.008041,
+          "close": 0.008638,
+          "volume": 2673.38
+        },
+        {
+          "time": 1790589694,
+          "open": 0.008638,
+          "high": 0.00954,
+          "low": 0.008482,
+          "close": 0.00919,
+          "volume": 3577.11
+        },
+        {
+          "time": 1790589994,
+          "open": 0.00919,
+          "high": 0.010065,
+          "low": 0.008872,
+          "close": 0.009883,
+          "volume": 1551.87
+        },
+        {
+          "time": 1790590294,
+          "open": 0.009883,
+          "high": 0.009983,
+          "low": 0.009334,
+          "close": 0.009585,
+          "volume": 3906.06
+        },
+        {
+          "time": 1790590594,
+          "open": 0.009585,
+          "high": 0.010343,
+          "low": 0.009257,
+          "close": 0.00993,
+          "volume": 4114.5
+        },
+        {
+          "time": 1790590894,
+          "open": 0.00993,
+          "high": 0.010595,
+          "low": 0.009619,
+          "close": 0.010104,
+          "volume": 3104.88
+        },
+        {
+          "time": 1790591194,
+          "open": 0.010104,
+          "high": 0.010546,
+          "low": 0.009473,
+          "close": 0.009676,
+          "volume": 572.84
+        },
+        {
+          "time": 1790591494,
+          "open": 0.009676,
+          "high": 0.00998,
+          "low": 0.008634,
+          "close": 0.008736,
+          "volume": 3733.55
+        },
+        {
+          "time": 1790591794,
+          "open": 0.008736,
+          "high": 0.009477,
+          "low": 0.008153,
+          "close": 0.008153,
+          "volume": 2957.12
+        }
+      ]
+    },
+    "GALAXY": {
+      "tick": "GALAXY",
+      "name": "Galaxy Coin",
+      "desc": "Cosmic meme token exploring the outer reaches of Layer-1 scaling and zero-fee transactions.",
+      "supply": 5000000,
+      "creator": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+      "curve_tokens": 4000000,
+      "v_zdc": 385.10911424903725,
+      "v_tokens": 3116000.0,
+      "k": 1200000000.0,
+      "progress": 22.1,
+      "spot_price": 0.00012359085823139836,
+      "mcap_zdc": 617.95,
+      "mcap_usd": 30.9,
+      "trades_count": 25,
+      "replies_count": 9,
+      "created_at": 1790503841,
+      "avatar": "",
+      "twitter": "",
+      "telegram": "",
+      "website": "",
+      "graduated": false,
+      "trades": [
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 84.63,
+          "tokens": 684759,
+          "time": 1790592094,
+          "txid": "fc9cdb65ab507b48d3405695ffd2936a"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 29.1,
+          "tokens": 235454,
+          "time": 1790591423,
+          "txid": "ee36491313c6fa35e13c286a62e2c312"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 12.57,
+          "tokens": 101706,
+          "time": 1790590750,
+          "txid": "0c35c7a032896e4ef758633624e70c55"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 57.33,
+          "tokens": 463869,
+          "time": 1790590462,
+          "txid": "479505fd0a7ad554a8ebb51dad9358da"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 37.71,
+          "tokens": 305119,
+          "time": 1790590350,
+          "txid": "b5673b8dc7129cf04034db929cda8ef8"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 7.74,
+          "tokens": 62625,
+          "time": 1790589729,
+          "txid": "bd50f2a7d2f69521766a558cc17ce1f8"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "sell",
+          "zdc": 6.3,
+          "tokens": 50974,
+          "time": 1790589196,
+          "txid": "aaa6ea2865ddd3d9ad765519711c918a"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "sell",
+          "zdc": 61.16,
+          "tokens": 494858,
+          "time": 1790588264,
+          "txid": "d6bc689eb0b72c4c9ce5a7b68f715873"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 20.01,
+          "tokens": 161905,
+          "time": 1790588204,
+          "txid": "d6bebeb571f5442b6314427142222407"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "sell",
+          "zdc": 66.77,
+          "tokens": 540250,
+          "time": 1790588195,
+          "txid": "32b58703f10b239bed1e682894c0998c"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 10.35,
+          "tokens": 83744,
+          "time": 1790587518,
+          "txid": "1c09b4e7b854ca87a621595120c522aa"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 39.54,
+          "tokens": 319926,
+          "time": 1790587315,
+          "txid": "2a83a3e88ff46b9ad4fa8952c9164b4e"
+        }
+      ],
+      "comments": [
+        {
+          "id": "c_1",
+          "author": "zudio1q5w...",
+          "text": "dev is based! GALAXY to 10M mcap minimum \ud83d\ude80\ud83d\ude80",
+          "time": 1790592094,
+          "likes": 6
+        },
+        {
+          "id": "c_2",
+          "author": "zudio1qtgh...",
+          "text": "just bought 50 ZDC worth on the curve, LFGGG!",
+          "time": 1790591199,
+          "likes": 5
+        },
+        {
+          "id": "c_3",
+          "author": "zudio1qjyh...",
+          "text": "Zudio Layer 1 zero gas is actually so clean compared to solana congestion",
+          "time": 1790587440,
+          "likes": 17
+        },
+        {
+          "id": "c_4",
+          "author": "zudio1q8y9...",
+          "text": "bonding curve is moving fast, almost 80%!",
+          "time": 1790587939,
+          "likes": 17
+        }
+      ],
+      "candles": [
+        {
+          "time": 1790584894,
+          "open": 3.1e-05,
+          "high": 3.4e-05,
+          "low": 3e-05,
+          "close": 3.2e-05,
+          "volume": 6.63
+        },
+        {
+          "time": 1790585194,
+          "open": 3.2e-05,
+          "high": 3.8e-05,
+          "low": 3.1e-05,
+          "close": 3.7e-05,
+          "volume": 2.2
+        },
+        {
+          "time": 1790585494,
+          "open": 3.7e-05,
+          "high": 4.4e-05,
+          "low": 3.7e-05,
+          "close": 4.3e-05,
+          "volume": 4.38
+        },
+        {
+          "time": 1790585794,
+          "open": 4.3e-05,
+          "high": 5e-05,
+          "low": 4.2e-05,
+          "close": 4.8e-05,
+          "volume": 11.23
+        },
+        {
+          "time": 1790586094,
+          "open": 4.8e-05,
+          "high": 4.9e-05,
+          "low": 4.7e-05,
+          "close": 4.9e-05,
+          "volume": 6.69
+        },
+        {
+          "time": 1790586394,
+          "open": 4.9e-05,
+          "high": 5.1e-05,
+          "low": 4.7e-05,
+          "close": 5e-05,
+          "volume": 12.43
+        },
+        {
+          "time": 1790586694,
+          "open": 5e-05,
+          "high": 6e-05,
+          "low": 4.9e-05,
+          "close": 5.9e-05,
+          "volume": 15.53
+        },
+        {
+          "time": 1790586994,
+          "open": 5.9e-05,
+          "high": 6.1e-05,
+          "low": 5.7e-05,
+          "close": 5.9e-05,
+          "volume": 4.49
+        },
+        {
+          "time": 1790587294,
+          "open": 5.9e-05,
+          "high": 6.5e-05,
+          "low": 5.8e-05,
+          "close": 6.3e-05,
+          "volume": 10.54
+        },
+        {
+          "time": 1790587594,
+          "open": 6.3e-05,
+          "high": 6.6e-05,
+          "low": 6.2e-05,
+          "close": 6.2e-05,
+          "volume": 17.29
+        },
+        {
+          "time": 1790587894,
+          "open": 6.2e-05,
+          "high": 7.2e-05,
+          "low": 6e-05,
+          "close": 7.1e-05,
+          "volume": 14.95
+        },
+        {
+          "time": 1790588194,
+          "open": 7.1e-05,
+          "high": 7.3e-05,
+          "low": 6.7e-05,
+          "close": 6.9e-05,
+          "volume": 29.99
+        },
+        {
+          "time": 1790588494,
+          "open": 6.9e-05,
+          "high": 7.9e-05,
+          "low": 6.7e-05,
+          "close": 7.7e-05,
+          "volume": 7.03
+        },
+        {
+          "time": 1790588794,
+          "open": 7.7e-05,
+          "high": 9e-05,
+          "low": 7.6e-05,
+          "close": 8.9e-05,
+          "volume": 17.28
+        },
+        {
+          "time": 1790589094,
+          "open": 8.9e-05,
+          "high": 9.1e-05,
+          "low": 8.2e-05,
+          "close": 8.5e-05,
+          "volume": 15.79
+        },
+        {
+          "time": 1790589394,
+          "open": 8.5e-05,
+          "high": 9.6e-05,
+          "low": 8.2e-05,
+          "close": 9.4e-05,
+          "volume": 23.96
+        },
+        {
+          "time": 1790589694,
+          "open": 9.4e-05,
+          "high": 0.00011,
+          "low": 9.2e-05,
+          "close": 0.000108,
+          "volume": 23.77
+        },
+        {
+          "time": 1790589994,
+          "open": 0.000108,
+          "high": 0.000118,
+          "low": 0.000105,
+          "close": 0.000114,
+          "volume": 14.89
+        },
+        {
+          "time": 1790590294,
+          "open": 0.000114,
+          "high": 0.000117,
+          "low": 0.000113,
+          "close": 0.000115,
+          "volume": 9.3
+        },
+        {
+          "time": 1790590594,
+          "open": 0.000115,
+          "high": 0.00012,
+          "low": 0.000108,
+          "close": 0.000111,
+          "volume": 33.09
+        },
+        {
+          "time": 1790590894,
+          "open": 0.000111,
+          "high": 0.000126,
+          "low": 0.000108,
+          "close": 0.000122,
+          "volume": 51.15
+        },
+        {
+          "time": 1790591194,
+          "open": 0.000122,
+          "high": 0.00013,
+          "low": 0.00012,
+          "close": 0.000125,
+          "volume": 7.55
+        },
+        {
+          "time": 1790591494,
+          "open": 0.000125,
+          "high": 0.00013,
+          "low": 0.000115,
+          "close": 0.000119,
+          "volume": 34.16
+        },
+        {
+          "time": 1790591794,
+          "open": 0.000119,
+          "high": 0.000124,
+          "low": 0.000108,
+          "close": 0.000124,
+          "volume": 42.85
+        }
+      ]
+    },
+    "NEBULA": {
+      "tick": "NEBULA",
+      "name": "Nebula Coin",
+      "desc": "Interstellar community token with 100% fair launch mechanics and decentralized liquidity.",
+      "supply": 888888,
+      "creator": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+      "curve_tokens": 711110,
+      "v_zdc": 354.19077519753085,
+      "v_tokens": 602311.0,
+      "k": 213333000.0,
+      "progress": 15.3,
+      "spot_price": 0.0005880529746219659,
+      "mcap_zdc": 522.71,
+      "mcap_usd": 26.14,
+      "trades_count": 14,
+      "replies_count": 17,
+      "created_at": 1790447141,
+      "avatar": "",
+      "twitter": "",
+      "telegram": "",
+      "website": "",
+      "graduated": false,
+      "trades": [
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 46.52,
+          "tokens": 79108,
+          "time": 1790592094,
+          "txid": "ad07cc1fc0ea1eaebe65f1d7a0aa1503"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 40.28,
+          "tokens": 68497,
+          "time": 1790591296,
+          "txid": "39969a15cd7704130be62d1202fb6355"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "buy",
+          "zdc": 55.8,
+          "tokens": 94889,
+          "time": 1790591281,
+          "txid": "2c039ecb976165fa7fcfee0d7216305c"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 22.44,
+          "tokens": 38159,
+          "time": 1790591124,
+          "txid": "d3ca1bb0deaf30356fe51b82f4d3227a"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 82.95,
+          "tokens": 141058,
+          "time": 1790590702,
+          "txid": "559a8af6793158a550becc07a0f29c89"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 42.03,
+          "tokens": 71473,
+          "time": 1790589010,
+          "txid": "a295c94e61ebf3c22d4f4c247594eb4f"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 25.01,
+          "tokens": 42530,
+          "time": 1790588683,
+          "txid": "a9f5e125fffe6b879f608baaf78f84e4"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "sell",
+          "zdc": 14.45,
+          "tokens": 24572,
+          "time": 1790587822,
+          "txid": "c35ea78c2d703895a40a1154f288d594"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 24.95,
+          "tokens": 42428,
+          "time": 1790587089,
+          "txid": "725a3defd773a8a9f0831a59d9cc1051"
+        },
+        {
+          "trader": "zudio1q5wgtkntdf26hqan77g0kdsldcxjddypxxmu4xu",
+          "action": "sell",
+          "zdc": 72.91,
+          "tokens": 123985,
+          "time": 1790586190,
+          "txid": "1bc1bf96217bafc34607589d28915fa8"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "sell",
+          "zdc": 49.75,
+          "tokens": 84601,
+          "time": 1790582464,
+          "txid": "d41fecd0f8aae13dc1ff38e9931bc9ab"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 52.79,
+          "tokens": 89770,
+          "time": 1790581017,
+          "txid": "27cec87b8646dd678f47af5663c18a6e"
+        }
+      ],
+      "comments": [
+        {
+          "id": "c_1",
+          "author": "zudio1q5w...",
+          "text": "dev is based! NEBULA to 10M mcap minimum \ud83d\ude80\ud83d\ude80",
+          "time": 1790592094,
+          "likes": 5
+        },
+        {
+          "id": "c_2",
+          "author": "zudio1qtgh...",
+          "text": "just bought 50 ZDC worth on the curve, LFGGG!",
+          "time": 1790590716,
+          "likes": 2
+        },
+        {
+          "id": "c_3",
+          "author": "zudio1qjyh...",
+          "text": "Zudio Layer 1 zero gas is actually so clean compared to solana congestion",
+          "time": 1790589068,
+          "likes": 15
+        }
+      ],
+      "candles": [
+        {
+          "time": 1790584894,
+          "open": 0.000147,
+          "high": 0.000172,
+          "low": 0.000143,
+          "close": 0.000166,
+          "volume": 26.99
+        },
+        {
+          "time": 1790585194,
+          "open": 0.000166,
+          "high": 0.000175,
+          "low": 0.00016,
+          "close": 0.000171,
+          "volume": 42.4
+        },
+        {
+          "time": 1790585494,
+          "open": 0.000171,
+          "high": 0.000206,
+          "low": 0.000168,
+          "close": 0.0002,
+          "volume": 72.71
+        },
+        {
+          "time": 1790585794,
+          "open": 0.0002,
+          "high": 0.000236,
+          "low": 0.000196,
+          "close": 0.00023,
+          "volume": 91.04
+        },
+        {
+          "time": 1790586094,
+          "open": 0.00023,
+          "high": 0.000274,
+          "low": 0.000224,
+          "close": 0.000267,
+          "volume": 101.37
+        },
+        {
+          "time": 1790586394,
+          "open": 0.000267,
+          "high": 0.000306,
+          "low": 0.000257,
+          "close": 0.000293,
+          "volume": 121.48
+        },
+        {
+          "time": 1790586694,
+          "open": 0.000293,
+          "high": 0.000318,
+          "low": 0.000285,
+          "close": 0.000309,
+          "volume": 116.0
+        },
+        {
+          "time": 1790586994,
+          "open": 0.000309,
+          "high": 0.000342,
+          "low": 0.000302,
+          "close": 0.000335,
+          "volume": 55.2
+        },
+        {
+          "time": 1790587294,
+          "open": 0.000335,
+          "high": 0.000378,
+          "low": 0.000325,
+          "close": 0.000374,
+          "volume": 73.31
+        },
+        {
+          "time": 1790587594,
+          "open": 0.000374,
+          "high": 0.000389,
+          "low": 0.000368,
+          "close": 0.000373,
+          "volume": 160.01
+        },
+        {
+          "time": 1790587894,
+          "open": 0.000373,
+          "high": 0.000399,
+          "low": 0.000358,
+          "close": 0.000392,
+          "volume": 104.67
+        },
+        {
+          "time": 1790588194,
+          "open": 0.000392,
+          "high": 0.000411,
+          "low": 0.000368,
+          "close": 0.000376,
+          "volume": 105.54
+        },
+        {
+          "time": 1790588494,
+          "open": 0.000376,
+          "high": 0.000442,
+          "low": 0.000362,
+          "close": 0.000429,
+          "volume": 57.53
+        },
+        {
+          "time": 1790588794,
+          "open": 0.000429,
+          "high": 0.000443,
+          "low": 0.000406,
+          "close": 0.000411,
+          "volume": 155.63
+        },
+        {
+          "time": 1790589094,
+          "open": 0.000411,
+          "high": 0.000423,
+          "low": 0.000391,
+          "close": 0.000406,
+          "volume": 153.15
+        },
+        {
+          "time": 1790589394,
+          "open": 0.000406,
+          "high": 0.000482,
+          "low": 0.000399,
+          "close": 0.000468,
+          "volume": 41.4
+        },
+        {
+          "time": 1790589694,
+          "open": 0.000468,
+          "high": 0.000548,
+          "low": 0.000454,
+          "close": 0.000525,
+          "volume": 93.44
+        },
+        {
+          "time": 1790589994,
+          "open": 0.000525,
+          "high": 0.000545,
+          "low": 0.000514,
+          "close": 0.000538,
+          "volume": 128.48
+        },
+        {
+          "time": 1790590294,
+          "open": 0.000538,
+          "high": 0.000601,
+          "low": 0.000527,
+          "close": 0.000585,
+          "volume": 189.82
+        },
+        {
+          "time": 1790590594,
+          "open": 0.000585,
+          "high": 0.000653,
+          "low": 0.000561,
+          "close": 0.000641,
+          "volume": 183.05
+        },
+        {
+          "time": 1790590894,
+          "open": 0.000641,
+          "high": 0.000684,
+          "low": 0.000622,
+          "close": 0.000665,
+          "volume": 117.31
+        },
+        {
+          "time": 1790591194,
+          "open": 0.000665,
+          "high": 0.000727,
+          "low": 0.000647,
+          "close": 0.000707,
+          "volume": 248.18
+        },
+        {
+          "time": 1790591494,
+          "open": 0.000707,
+          "high": 0.000741,
+          "low": 0.000669,
+          "close": 0.00069,
+          "volume": 284.05
+        },
+        {
+          "time": 1790591794,
+          "open": 0.00069,
+          "high": 0.000718,
+          "low": 0.000643,
+          "close": 0.000588,
+          "volume": 68.18
+        }
+      ]
+    },
+    "SOLAR": {
+      "tick": "SOLAR",
+      "name": "Solar Coin",
+      "desc": "Community fair launch token Solar Coin on Zudio Blockchain.",
+      "supply": 1000000,
+      "creator": "zudio1q0tzaqdtmx7vgsxlz74mel78rmv0s0pq70jr0pu",
+      "curve_tokens": 800000,
+      "v_zdc": 306.8386667859928,
+      "v_tokens": 782170.0,
+      "k": 240000000.0,
+      "progress": 2.2,
+      "spot_price": 0.0003922915309791897,
+      "mcap_zdc": 392.29,
+      "mcap_usd": 19.61,
+      "trades_count": 13,
+      "replies_count": 12,
+      "created_at": 1790499230,
+      "avatar": "",
+      "twitter": "",
+      "telegram": "",
+      "website": "",
+      "graduated": false,
+      "trades": [
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 40.41,
+          "tokens": 103010,
+          "time": 1790592351,
+          "txid": "6da3062e4114c93ce5a3becf808cb250"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "buy",
+          "zdc": 25.36,
+          "tokens": 64645,
+          "time": 1790591841,
+          "txid": "5ceab62522ee1eaaf41ec2fa17bb5939"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "sell",
+          "zdc": 83.56,
+          "tokens": 213004,
+          "time": 1790591147,
+          "txid": "74ce777c026202186891cf3581987996"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 14.82,
+          "tokens": 37778,
+          "time": 1790589919,
+          "txid": "de4524068594c0791f2445530e8a1621"
+        },
+        {
+          "trader": "zudio1q8y9mg0fgmmmd2j9zranxjs5wf4a8cp5vdr88sv",
+          "action": "sell",
+          "zdc": 79.1,
+          "tokens": 201635,
+          "time": 1790589318,
+          "txid": "0a615ec9c1e3ed4a2e9483a20a74a84a"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "sell",
+          "zdc": 58.82,
+          "tokens": 149939,
+          "time": 1790588904,
+          "txid": "ad79f530c1d5fa8fc9a6a493b3b40604"
+        },
+        {
+          "trader": "zudio1qfyhmlcnz4q2lhj4ss9qlf3scc8e476fqteg2d2",
+          "action": "buy",
+          "zdc": 20.43,
+          "tokens": 52078,
+          "time": 1790588137,
+          "txid": "34d1c5723b4de90529ee03c878c3c5f9"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "buy",
+          "zdc": 46.27,
+          "tokens": 117947,
+          "time": 1790587401,
+          "txid": "2a1cd68033fdc34da27a1a300e0bc4fc"
+        },
+        {
+          "trader": "zudio1qtghu5zufruwzwv89csspllqdqs466hfcjd7rwc",
+          "action": "buy",
+          "zdc": 56.57,
+          "tokens": 144203,
+          "time": 1790586481,
+          "txid": "8bcff7e0c2f3dd5e4da0d2225df6e78b"
+        },
+        {
+          "trader": "zudio1qjyhxvydg7m9lfn8pk88frmzpr5n2kj08ejdl2z",
+          "action": "sell",
+          "zdc": 27.3,
+          "tokens": 69591,
+          "time": 1790584959,
+          "txid": "355a4c79c8ab5dd8ff4506cca09a0719"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "buy",
+          "zdc": 80.04,
+          "tokens": 204031,
+          "time": 1790584503,
+          "txid": "a033182b5736f8418eb23a12316cfea7"
+        },
+        {
+          "trader": "zudio1qqh72ezwkldsrg00dlh8n92uerm4y3azfwc5a2w",
+          "action": "sell",
+          "zdc": 7.67,
+          "tokens": 19551,
+          "time": 1790584501,
+          "txid": "c2c6d97855f480fce177eb7568bcb6ea"
+        }
+      ],
+      "comments": [
+        {
+          "id": "c_1",
+          "author": "zudio1q5w...",
+          "text": "dev is based! SOLAR to 10M mcap minimum \ud83d\ude80\ud83d\ude80",
+          "time": 1790592351,
+          "likes": 18
+        },
+        {
+          "id": "c_2",
+          "author": "zudio1qtgh...",
+          "text": "just bought 50 ZDC worth on the curve, LFGGG!",
+          "time": 1790592038,
+          "likes": 17
+        },
+        {
+          "id": "c_3",
+          "author": "zudio1qjyh...",
+          "text": "Zudio Layer 1 zero gas is actually so clean compared to solana congestion",
+          "time": 1790587955,
+          "likes": 18
+        },
+        {
+          "id": "c_4",
+          "author": "zudio1q8y9...",
+          "text": "bonding curve is moving fast, almost 80%!",
+          "time": 1790588802,
+          "likes": 13
+        }
+      ],
+      "candles": [
+        {
+          "time": 1790585151,
+          "open": 9.8e-05,
+          "high": 0.000111,
+          "low": 9.7e-05,
+          "close": 0.000107,
+          "volume": 39.97
+        },
+        {
+          "time": 1790585451,
+          "open": 0.000107,
+          "high": 0.00012,
+          "low": 0.000105,
+          "close": 0.000117,
+          "volume": 44.37
+        },
+        {
+          "time": 1790585751,
+          "open": 0.000117,
+          "high": 0.000135,
+          "low": 0.000114,
+          "close": 0.00013,
+          "volume": 10.65
+        },
+        {
+          "time": 1790586051,
+          "open": 0.00013,
+          "high": 0.00014,
+          "low": 0.000127,
+          "close": 0.000136,
+          "volume": 49.08
+        },
+        {
+          "time": 1790586351,
+          "open": 0.000136,
+          "high": 0.000152,
+          "low": 0.000131,
+          "close": 0.000145,
+          "volume": 32.16
+        },
+        {
+          "time": 1790586651,
+          "open": 0.000145,
+          "high": 0.000156,
+          "low": 0.000141,
+          "close": 0.000153,
+          "volume": 59.72
+        },
+        {
+          "time": 1790586951,
+          "open": 0.000153,
+          "high": 0.000164,
+          "low": 0.000148,
+          "close": 0.000161,
+          "volume": 47.43
+        },
+        {
+          "time": 1790587251,
+          "open": 0.000161,
+          "high": 0.000186,
+          "low": 0.000156,
+          "close": 0.000183,
+          "volume": 57.74
+        },
+        {
+          "time": 1790587551,
+          "open": 0.000183,
+          "high": 0.00019,
+          "low": 0.000179,
+          "close": 0.000186,
+          "volume": 52.05
+        },
+        {
+          "time": 1790587851,
+          "open": 0.000186,
+          "high": 0.000208,
+          "low": 0.00018,
+          "close": 0.000205,
+          "volume": 51.01
+        },
+        {
+          "time": 1790588151,
+          "open": 0.000205,
+          "high": 0.000212,
+          "low": 0.0002,
+          "close": 0.000209,
+          "volume": 75.59
+        },
+        {
+          "time": 1790588451,
+          "open": 0.000209,
+          "high": 0.000252,
+          "low": 0.000206,
+          "close": 0.00024,
+          "volume": 17.99
+        },
+        {
+          "time": 1790588751,
+          "open": 0.00024,
+          "high": 0.000285,
+          "low": 0.000236,
+          "close": 0.000277,
+          "volume": 41.66
+        },
+        {
+          "time": 1790589051,
+          "open": 0.000277,
+          "high": 0.000303,
+          "low": 0.000272,
+          "close": 0.00029,
+          "volume": 39.75
+        },
+        {
+          "time": 1790589351,
+          "open": 0.00029,
+          "high": 0.000304,
+          "low": 0.00028,
+          "close": 0.000291,
+          "volume": 87.73
+        },
+        {
+          "time": 1790589651,
+          "open": 0.000291,
+          "high": 0.000313,
+          "low": 0.000281,
+          "close": 0.000308,
+          "volume": 88.66
+        },
+        {
+          "time": 1790589951,
+          "open": 0.000308,
+          "high": 0.000359,
+          "low": 0.0003,
+          "close": 0.000342,
+          "volume": 129.43
+        },
+        {
+          "time": 1790590251,
+          "open": 0.000342,
+          "high": 0.00038,
+          "low": 0.000336,
+          "close": 0.000362,
+          "volume": 143.83
+        },
+        {
+          "time": 1790590551,
+          "open": 0.000362,
+          "high": 0.000374,
+          "low": 0.000333,
+          "close": 0.000342,
+          "volume": 149.44
+        },
+        {
+          "time": 1790590851,
+          "open": 0.000342,
+          "high": 0.000348,
+          "low": 0.000323,
+          "close": 0.000332,
+          "volume": 101.69
+        },
+        {
+          "time": 1790591151,
+          "open": 0.000332,
+          "high": 0.000396,
+          "low": 0.000328,
+          "close": 0.000379,
+          "volume": 84.73
+        },
+        {
+          "time": 1790591451,
+          "open": 0.000379,
+          "high": 0.000391,
+          "low": 0.000359,
+          "close": 0.000363,
+          "volume": 114.08
+        },
+        {
+          "time": 1790591751,
+          "open": 0.000363,
+          "high": 0.000403,
+          "low": 0.000357,
+          "close": 0.000385,
+          "volume": 139.01
+        },
+        {
+          "time": 1790592051,
+          "open": 0.000385,
+          "high": 0.000399,
+          "low": 0.000374,
+          "close": 0.000392,
+          "volume": 103.32
+        }
+      ]
+    }
+  },
+  "global_trades": []
+}
